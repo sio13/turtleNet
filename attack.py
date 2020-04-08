@@ -30,7 +30,7 @@ class Attack:
     def generate_perturbations(self, x_train, model):
         attack_params = {'eps': self.epsilon, 'clip_min': self.clip_min, 'clip_max': self.clip_max}
         wrapped_model = KerasModelWrapper(model)
-        attack = self.attack_type(model=wrapped_model, sess=sess)
+        attack = FastGradientMethod(model=wrapped_model, sess=sess)
 
-        perturbed_x_samples = attack.generate(x_train, **attack_params)
+        perturbed_x_samples = attack.generate_np(x_train, **attack_params)
         return perturbed_x_samples
