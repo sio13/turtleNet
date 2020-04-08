@@ -1,9 +1,11 @@
 from attack import Attack
 from target_model import CNNModel
 from keras.datasets import mnist
+from keras.models import load_model
 
 from cleverhans.attacks import FastGradientMethod
 import cleverhans
+import numpy as np
 
 def main():
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -12,11 +14,13 @@ def main():
 
     attack = Attack(FastGradientMethod, 0.3, 0, 1)
 
-    net = CNNModel()
-    net.train_on_mnist()
-    net.test_on_mnist()
+    # net = CNNModel()
+    # net.train_on_mnist()
+    # net.test_on_mnist()
+    model = load_model("models/conv_nn.h5")
 
-    pert = attack.generate_perturbations(x_train, net.model)
+    pert = attack.generate_perturbations(np.array(x_train), model)
+
 
 
 if __name__ == '__main__':
