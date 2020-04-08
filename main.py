@@ -3,7 +3,7 @@ from target_model import CNNModel
 from keras.datasets import mnist
 
 from cleverhans.attacks import FastGradientMethod
-
+import cleverhans
 
 def main():
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
