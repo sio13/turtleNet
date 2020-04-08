@@ -11,6 +11,7 @@ from keras import layers, Model
 from keras.models import *
 from keras.layers import *
 
+import cleverhans
 from cleverhans.attacks import FastGradientMethod
 from cleverhans.utils_keras import KerasModelWrapper
 
