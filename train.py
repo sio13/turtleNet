@@ -19,7 +19,7 @@ class TurtleNet:
                           num_chunks: int,
                           epochs: int,
                           x_train: np.array,
-                          y_train: np_array):
+                          y_train: np.array):
         pass
 
     def eval_on_attack(self,
