@@ -39,7 +39,7 @@ def main2():
                              epochs_per_iteration=5)
 
     net.eval_on_attack(ProjectedGradientDescent, 0.3, 0, 1, x_train, y_train)
-    net.eval_on_attack(FastGradientDescent, 0.3, 0, 1, x_train, y_train)
+    net.eval_on_attack(FastGradientMethod, 0.3, 0, 1, x_train, y_train)
 
     print(net.model.evaluate(x_train, to_categorical(y_train)))
 
