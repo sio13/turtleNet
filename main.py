@@ -1,4 +1,7 @@
 from attack import Attack
+from train import TurtleNet
+
+
 from target_model import CNNModel
 from keras.datasets import mnist
 from keras.models import load_model
