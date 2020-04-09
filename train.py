@@ -17,12 +17,17 @@ class TurtleNet:
         self.attack = Attack(attack_type, epsilon, clip_min, clip_max)
         self.perturbed_data = None
 
-    def adversarial_train(self,
-                          num_chunks: int,
-                          epochs: int,
+    def adversarial_training(self,
+                          iterations: int,
                           x_train: np.array,
-                          y_train: np.array):
-        pass
+                          y_train: np.array,
+                          chunk_size: int,
+                          epochs_per_iteration: int):
+        for iteration in range(iterations):
+            self.perturbed_data = evaluation_attack.generate_perturbations(np.array(x_train), self.model,
+                                                                           len(x_train) // chunk_size)
+            self.model.fit(self.perturbed_data, to_categorical(y_train), epochs=epochs_per_iteration)
+            print(f"Iteration number {iteration}")
 
     def eval_on_attack(self,
                        attack_type: cleverhans.attacks,
@@ -30,10 +35,11 @@ class TurtleNet:
                        clip_min: float,
                        clip_max: float,
                        x_train: np.array,
-                       y_train: np.array):
+                       y_train: np.array,
+                       chunk_size: int):
         evaluation_attack = Attack(attack_type, epsilon, clip_min, clip_max)
         self.perturbed_data = evaluation_attack.generate_perturbations(np.array(x_train), self.model,
-                                                                       len(x_train) // 10_000)
+                                                                       len(x_train) // chunk_size)
         results = self.model.evaluate(self.perturbed_data, to_categorical(y_train))
 
         print(f"Total loss of target model is {results[0]} and its accuracy is {results[1]}")
