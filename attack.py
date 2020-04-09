@@ -18,6 +18,8 @@ from cleverhans.utils_keras import KerasModelWrapper
 import pandas as pd
 import numpy as np
 
+from utils import chunk
+
 sess = backend.get_session()
 
 class Attack:
