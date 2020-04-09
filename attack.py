@@ -17,10 +17,12 @@ from cleverhans.utils_keras import KerasModelWrapper
 
 import pandas as pd
 import numpy as np
+import itertools
 
 from utils import chunk
 
 sess = backend.get_session()
+
 
 class Attack:
     def __init__(self, attack_type: cleverhans.attacks, epsilon: float, clip_min: float, clip_max: float):
@@ -35,6 +37,7 @@ class Attack:
         attack = FastGradientMethod(model=wrapped_model, sess=sess)
 
         chunks = chunk(x_train, len(x_train) // num_chunks)
-        perturbed_x_samples = map(lambda x: attack.generate_np(np.array(x), **attack_params), chunks)
-        print(len(list(*perturbed_x_samples)))
+        perturbed_x_samples = itertools.chain.from_iterable(
+            (map(lambda x: attack.generate_np(np.array(x), **attack_params), chunks))
+        print(len(list(perturbed_x_samples)))
         return list(perturbed_x_samples)
