@@ -36,7 +36,7 @@ def main2():
     net = TurtleNet(model, ProjectedGradientDescent, 0.3, 0, 1)
 
     net.adversarial_training(iterations=5, x_train=x_train, y_train=y_train, chunk_size=10_000,
-                             epochs_per_iteration=5)
+                             epochs_per_iteration=2)
 
     net.eval_on_attack(ProjectedGradientDescent, 0.3, 0, 1, x_train, y_train)
     net.eval_on_attack(FastGradientMethod, 0.3, 0, 1, x_train, y_train)
