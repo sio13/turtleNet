@@ -36,5 +36,5 @@ class Attack:
 
         chunks = chunk(x_train, len(x_train) // num_chunks)
         perturbed_x_samples = map(lambda x: attack.generate_np(np.array(x), **attack_params), chunks)
-        print(list(perturbed_x_samples))
+        print(len(list(**perturbed_x_samples)))
         return list(perturbed_x_samples)
