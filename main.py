@@ -6,7 +6,7 @@ from keras.datasets import mnist
 from keras.models import load_model
 from keras.utils import to_categorical
 
-from cleverhans.attacks import ProjectedGradientDescent, FastGradientDescent, BasicIterativeMethod
+from cleverhans.attacks import ProjectedGradientDescent, FastGradientMethod, BasicIterativeMethod
 import cleverhans
 import numpy as np
 
