@@ -26,7 +26,7 @@ class TurtleNet:
         for iteration in range(iterations):
             self.perturbed_data = self.attack.generate_perturbations(np.array(x_train), self.model,
                                                                            len(x_train) // chunk_size)
-            self.model.fit(self.perturbed_data, to_categorical(y_train), epochs=epochs_per_iteration)
+            print(self.model.fit(self.perturbed_data, to_categorical(y_train), epochs=epochs_per_iteration))
             print(f"Iteration number {iteration}")
 
     def eval_on_attack(self,
