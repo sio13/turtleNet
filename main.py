@@ -34,8 +34,8 @@ def main2():
 
     model = load_model("models/conv_nn.h5")
 
-    net = TurtleNet(model, ProjectedGadientDescent, 0.3, 0, 1)
-    net.eval_on_attack(ProjectedGadientDescent, 0.3, 0, 1, x_train, y_train)
+    net = TurtleNet(model, ProjectedGradientDescent, 0.3, 0, 1)
+    net.eval_on_attack(ProjectedGradientDescent, 0.3, 0, 1, x_train, y_train)
 
     print(net.model.evaluate(x_train, to_categorical(y_train)))
 
