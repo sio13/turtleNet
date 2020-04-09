@@ -27,10 +27,12 @@ class Attack:
         self.clip_min = clip_min
         self.clip_max = clip_max
 
-    def generate_perturbations(self, x_train, model):
+    def generate_perturbations(self, x_train, model, num_chunks: int):
         attack_params = {'eps': self.epsilon, 'clip_min': self.clip_min, 'clip_max': self.clip_max}
         wrapped_model = KerasModelWrapper(model)
         attack = FastGradientMethod(model=wrapped_model, sess=sess)
 
-        perturbed_x_samples = attack.generate_np(x_train, **attack_params)
-        return perturbed_x_samples
+        chunks = chunk(x_train, len(x_train) // num_chunks)
+        perturbed_x_samples = map(lambda x: attack.generate_np(x, **attack_params), chunks)
+        print(list(perturbed_x_samples))
+        return list(perturbed_x_samples)

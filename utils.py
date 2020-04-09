@@ -1,3 +1,9 @@
+from itertools import islice
+
+def chunk(it, size: int):
+    iter_list = iter(it)
+    return iter(lambda: tuple(islice(iter_list, size)), ())
+
 def save_collage(filepath: str,
                  batch: list,
                  rows: int,
