@@ -31,9 +31,11 @@ def main2():
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
     x_train = (x_train / 255).reshape((len(x_train), 28, 28, 1))
 
-    model = load_model("models/conv_nn.h5")
+    network = CNNModel()
+    network.train_on_mnist()
+    network.test_on_mnist()
 
-    net = TurtleNet(model, ProjectedGradientDescent, 0.3, 0, 1)
+    net = TurtleNet(network.model, ProjectedGradientDescent, 0.3, 0, 1)
 
     net.adversarial_training(iterations=5, x_train=x_train, y_train=y_train, chunk_size=10_000,
                              epochs_per_iteration=2)
