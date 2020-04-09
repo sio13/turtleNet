@@ -1,11 +1,12 @@
 from itertools import islice
+import numpy as np
 
 def chunk(it, size: int):
     iter_list = iter(it)
     return iter(lambda: tuple(islice(iter_list, size)), ())
 
 def save_collage(filepath: str,
-                 batch: list,
+                 batch: np.array,
                  rows: int,
                  columns: int,
                  width: int = 28,
