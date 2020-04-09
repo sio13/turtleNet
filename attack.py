@@ -40,3 +40,4 @@ class Attack:
         perturbed_x_samples = itertools.chain.from_iterable(
             map(lambda x: attack.generate_np(np.array(x), **attack_params), chunks))
         return np.array(list(perturbed_x_samples))
+
