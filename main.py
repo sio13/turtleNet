@@ -22,7 +22,7 @@ def main():
 
     pert = attack.generate_perturbations(np.array(x_train), model, 6)
     print("adv data")
-    model.evaluate(pert.reshape(-1,28,28,1), to_categorical(y_train))
+    print(model.evaluate(pert.reshape(-1,28,28,1), to_categorical(y_train)))
 
 
 
