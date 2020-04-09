@@ -37,6 +37,9 @@ def main2():
     net = TurtleNet(model, FastGradientMethod, 0.3, 0, 1)
     net.eval_on_attack(FastGradientMethod, 0.3, 0, 1, x_train, y_train)
 
+    print(net.evaluate(x_train, to_categorical(y_train)))
+
+
 
 if __name__ == '__main__':
     main2()
