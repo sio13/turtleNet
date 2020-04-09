@@ -28,7 +28,7 @@ class TurtleNet:
                        clip_min: float,
                        clip_max: float,
                        x_train: np.array,
-                       y_train: np_array):
+                       y_train: np.array):
         evaluation_attack = Attack(attack_type, epsilon, clip_min, clip_max)
         perturbed_data = evaluation_attack.generate_perturbations(np.array(x_train), self.model, len(x_train) // 10_000)
         results = self.model.evaluate(perturbed_data, to_categorical(y_train))
