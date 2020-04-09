@@ -19,7 +19,7 @@ def main():
     # net.test_on_mnist()
     model = load_model("models/conv_nn.h5")
 
-    pert = attack.generate_perturbations(x_train[:10000], model, 6)
+    pert = attack.generate_perturbations(np.array(x_train), model, 6)
 
 
 
