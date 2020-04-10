@@ -30,7 +30,7 @@ class TurtleNet:
                 self.model,
                 1)
             print(self.model.fit(self.perturbed_data,
-                                 to_categorical(y_train[batch_size * iteration:(iteration + 1) * batch_size]),
+                                 to_categorical(y_train[batch_size * iteration:(iteration + 1) * batch_size], num_classes=10),
                                  epochs=epochs_per_iteration))
             print(f"Iteration number {iteration}")
 
