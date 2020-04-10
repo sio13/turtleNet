@@ -28,7 +28,7 @@ class TurtleNet:
             self.perturbed_data = self.attack.generate_perturbations(
                 np.array(x_train)[batch_size * iteration:(iteration + 1) * batch_size],
                 self.model,
-                1)
+                len(np.array(x_train)[batch_size * iteration:(iteration + 1) * batch_size]) // chunk_size)
             print(self.model.fit(self.perturbed_data,
                                  to_categorical(y_train[batch_size * iteration:(iteration + 1) * batch_size], num_classes=10),
                                  epochs=epochs_per_iteration))
