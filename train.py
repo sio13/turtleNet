@@ -26,10 +26,12 @@ class TurtleNet:
                              epochs_per_iteration: int):
         for iteration in range(iterations):
             self.perturbed_data = self.attack.generate_perturbations(
-                np.array(x_train)[batch_size * iteration:(batch_size + 1) * iteration],
+                np.array(x_train)[batch_size * iteration:(iteration + 1) * batch_size],
                 self.model,
                 1)
-            print(self.model.fit(self.perturbed_data, to_categorical(y_train[batch_size * iteration:(batch_size + 1) * iteration]), epochs=epochs_per_iteration))
+            print(self.model.fit(self.perturbed_data,
+                                 to_categorical(y_train[batch_size * iteration:(iteration + 1) * batch_size]),
+                                 epochs=epochs_per_iteration))
             print(f"Iteration number {iteration}")
 
     def eval_on_attack(self,
