@@ -30,9 +30,9 @@ class TurtleNet:
                 batch,
                 self.model,
                 len(batch) // chunk_size)
-            print(self.model.fit(self.perturbed_data,
-                                 to_categorical(y_train[batch_size * iteration:(iteration + 1) * batch_size],
-                                                num_classes=10), epochs=epochs_per_iteration))
+            self.model.fit(self.perturbed_data,
+                           to_categorical(batch, num_classes=10),
+                           epochs=epochs_per_iteration)
             print(f"Iteration number {iteration}")
 
     def eval_on_attack(self,
@@ -43,6 +43,7 @@ class TurtleNet:
                        x_train: np.array,
                        y_train: np.array,
                        chunk_size: int):
+
         evaluation_attack = Attack(attack_type, epsilon, clip_min, clip_max)
         self.perturbed_data = evaluation_attack.generate_perturbations(np.array(x_train), self.model,
                                                                        len(x_train) // chunk_size)
