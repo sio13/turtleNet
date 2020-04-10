@@ -44,7 +44,7 @@ class TurtleNet:
                        chunk_size: int):
         evaluation_attack = Attack(attack_type, epsilon, clip_min, clip_max)
         self.perturbed_data = evaluation_attack.generate_perturbations(np.array(x_train), self.model,
-                                                                       len(x_train) // chunk_size)
+                                                                       1)
         results = self.model.evaluate(self.perturbed_data, to_categorical(y_train))
 
         print(f"Total loss of target model is {results[0]} and its accuracy is {results[1]}")
