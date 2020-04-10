@@ -30,10 +30,11 @@ def main1():
 def main2():
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
     x_train = (x_train / 255).reshape((len(x_train), 28, 28, 1))
+    x_test = (x_test / 255).reshape((len(x_test), 28, 28, 1))
 
     network = CNNModel()
     # network.train_on_mnist()
-    network.test_on_mnist()
+    print(network.test_on_mnist())
 
     net = TurtleNet(network.model, ProjectedGradientDescent, 0.3, 0, 1)
 
