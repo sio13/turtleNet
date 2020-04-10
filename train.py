@@ -29,7 +29,7 @@ class TurtleNet:
                 np.array(x_train)[batch_size * iteration:(batch_size + 1) * iteration],
                 self.model,
                 1)
-            print(self.model.fit(self.perturbed_data, to_categorical(y_train), epochs=epochs_per_iteration))
+            print(self.model.fit(self.perturbed_data, to_categorical(y_train[batch_size * iteration:(batch_size + 1) * iteration]), epochs=epochs_per_iteration))
             print(f"Iteration number {iteration}")
 
     def eval_on_attack(self,
