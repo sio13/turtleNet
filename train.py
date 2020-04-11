@@ -32,6 +32,8 @@ class TurtleNet:
             batch_index_start = (batch_size * iteration) % len(x_train)
             batch_index_end = max(batch_index_start + batch_size, len(x_train))
 
+            print(f"Generating samples for slice from {batch_index_start} to {batch_index_end}.")
+
             batch = np.array(x_train)[batch_index_start:batch_index_end]
             labels = np.array(y_train)[batch_index_start:batch_index_end]
 
