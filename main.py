@@ -10,6 +10,7 @@ from cleverhans.attacks import ProjectedGradientDescent, FastGradientMethod, Bas
 import cleverhans
 import numpy as np
 
+from utils import get_mnist_data
 from evaluation import eval_models
 
 
@@ -53,7 +54,12 @@ def main2():
 
 
 def main3():
-    eval_models(attack_types=[ProjectedGradientDescent, FastGradientMethod],
+    eval_models(attack_types=[MomentumIterativeMethod,
+                              MaxConfidence,
+                              MadryEtAl,
+                              BasicIterativeMethod,
+                              ProjectedGradientDescent,
+                              FastGradientMethod],
                 epsilon=0.3,
                 clip_min=0,
                 clip_max=1,

@@ -24,7 +24,7 @@ def eval_models(attack_types: list,
 
     _, _, x_test, y_test = get_mnist_data()
 
-    json_test_results = {}
+    json_test_results = []
 
     for model_name in model_names:
         try:
@@ -52,13 +52,14 @@ def eval_models(attack_types: list,
             results = model.evaluate(perturbations, to_categorical(y_test, num_classes=10))
             loss, accuracy = results[0], results[1]
 
-            model_results_json[attack_str] = {"loss": loss,
-                                              "accuracy": accuracy,
-                                              "attack_time": total_attack_time}
+            model_results_json = {"attack": attack_str.split('.')[-1],
+                                  "loss": loss,
+                                  "accuracy": accuracy,
+                                  "attack_time": total_attack_time}
             print(f"Model {model_name} was successfully evaluated on attack '{attack_str}'.")
             print(f"Loss: {loss} - - Accuracy: {accuracy}")
 
-        json_test_results[iteration_number] = model_results_json
+        json_test_results.append(model_results_json)
 
     print(json_test_results)
 
