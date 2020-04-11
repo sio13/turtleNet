@@ -1,6 +1,7 @@
 from attack import Attack
 from utils import get_mnist_data
 from keras.models import load_model
+from keras.utils import to_categorical
 
 import json
 import re
@@ -48,7 +49,7 @@ def eval_models(attack_types: list,
             total_attack_time = end_attack - start_attack
             print(f"Attack took {total_attack_time} seconds.")
 
-            results = model.evaluate(perturbations, y_test)
+            results = model.evaluate(perturbations, to_categorical(y_test, num_classes=10))
 
             model_results_json[attack_str] = {"loss": results[0],
                                               "accuracy": results[1],
