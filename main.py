@@ -46,7 +46,7 @@ def main2():
 
     print(net.model.evaluate(x_train, to_categorical(y_train)))
 
-    net.save_model("models/robust_model")
+    net.save_model("models/robust_model.h5")
 
     model_new = load_model("models/robust_model.h5")
 
