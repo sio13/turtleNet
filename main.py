@@ -61,7 +61,7 @@ def main3():
                 save_to_file=True,
                 results_file_path="results/test.json",
                 folder_list=["checkpoint_0", "checkpoint_500", "checkpoint_1000", "checkpoint_1200"],
-                prefix="checkpoint")
+                prefix="checkpoint_")
 
 
 if __name__ == '__main__':
