@@ -27,7 +27,7 @@ def eval_models(attack_types: list,
 
     for model_name in model_names:
         try:
-            iteration_number = int(re.search(f"{prefix}(.*){suffix}", string).group(1))
+            iteration_number = int(re.search(f"{prefix}(.*){suffix}", model_name).group(1))
         except Exception as e:
             print(f"An exception {e} occurred! with model {model_name}")
             return
