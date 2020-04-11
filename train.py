@@ -63,3 +63,8 @@ class TurtleNet:
             return
 
         save_collage(file_path, self.perturbed_data, rows, columns, width, height)
+
+    def save_model(self, model_path: str):
+        print(f"Saving model into {model_path}")
+        self.model.save(model_path)
+
