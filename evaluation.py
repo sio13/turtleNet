@@ -50,16 +50,19 @@ def eval_models(attack_types: list,
             print(f"Attack took {total_attack_time} seconds.")
 
             results = model.evaluate(perturbations, to_categorical(y_test, num_classes=10))
+            loss, accuracy = results[0], results[1]
 
-            model_results_json[attack_str] = {"loss": results[0],
-                                              "accuracy": results[1],
+            model_results_json[attack_str] = {"loss": loss,
+                                              "accuracy": accuracy,
                                               "attack_time": total_attack_time}
+            print(f"Model {model_name} was successfully evaluated on attack '{attack_str}'.")
+            print(f"Loss: {loss} - - Accuracy: {accuracy}")
 
         json_test_results[iteration_number] = model_results_json
 
     print(json_test_results)
 
     if save_to_file:
-        json.dump(json_test_results, open(results_file_path))
+        json.dump(json_test_results, open(results_file_path, "w"))
 
     return json_test_results
