@@ -60,7 +60,7 @@ def eval_models(attack_types: list,
             print(f"Model {model_name} was successfully evaluated on attack '{attack_str}'.")
             print(f"Loss: {loss} - - Accuracy: {accuracy}")
 
-        json_test_results.append(model_results_json)
+            json_test_results.append(model_results_json)
 
     print(json_test_results)
 
