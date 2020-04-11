@@ -67,16 +67,6 @@ def main3():
                 save_to_file=True,
                 results_file_path="results/comparison.json",
                 folder_name="models",
-                folder_list=["checkpoint_0",
-                             "checkpoint_500",
-                             "checkpoint_550",
-                             "checkpoint_1000",
-                             "checkpoint_1200",
-                             "checkpoint_1300",
-                             "checkpoint_1350",
-                             "checkpoint_1400",
-                             "checkpoint_1450",
-                             "checkpoint_1500"],
                 prefix="checkpoint_")
 
 
