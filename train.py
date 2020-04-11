@@ -30,7 +30,7 @@ class TurtleNet:
                              checkpoint_filename: str = "checkpoint"):
         for iteration in range(iterations):
             batch_index_start = (batch_size * iteration) % len(x_train)
-            batch_index_end = max(batch_index_start + batch_size, len(x_train))
+            batch_index_end = min(batch_index_start + batch_size, len(x_train))
 
             print(f"Generating samples for slice from {batch_index_start} to {batch_index_end}.")
 
