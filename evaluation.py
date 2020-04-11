@@ -3,6 +3,7 @@ from utils import get_mnist_data
 from keras.models import load_model
 from keras.utils import to_categorical
 
+import os
 import json
 import re
 import time
