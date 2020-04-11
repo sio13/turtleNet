@@ -10,7 +10,7 @@ from cleverhans.attacks import ProjectedGradientDescent, FastGradientMethod, Bas
 import cleverhans
 import numpy as np
 
-from utils import eval_models
+from evaluation import eval_models
 
 
 def main1():
