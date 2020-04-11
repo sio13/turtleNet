@@ -54,11 +54,7 @@ def main2():
 
 
 def main3():
-    eval_models(attack_types=[MomentumIterativeMethod,
-                              MaxConfidence,
-                              MadryEtAl,
-                              BasicIterativeMethod,
-                              ProjectedGradientDescent,
+    eval_models(attack_types=[
                               FastGradientMethod],
                 epsilon=0.3,
                 clip_min=0,
@@ -67,7 +63,7 @@ def main3():
                 save_to_file=True,
                 results_file_path="results/test.json",
                 folder_name="models",
-                folder_list=["checkpoint_0", "checkpoint_500", "checkpoint_1000", "checkpoint_1200"],
+                folder_list=["checkpoint_1200"],
                 prefix="checkpoint_")
 
 
