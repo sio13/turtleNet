@@ -60,6 +60,7 @@ def main3():
                 num_chunks=1,
                 save_to_file=True,
                 results_file_path="results/test.json",
+                folder_name="models",
                 folder_list=["checkpoint_0", "checkpoint_500", "checkpoint_1000", "checkpoint_1200"],
                 prefix="checkpoint_")
 
