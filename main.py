@@ -55,7 +55,6 @@ def main2():
 
 def main3():
     eval_models(attack_types=[MomentumIterativeMethod,
-                              MaxConfidence,
                               MadryEtAl,
                               BasicIterativeMethod,
                               ProjectedGradientDescent,
