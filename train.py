@@ -23,10 +23,18 @@ class TurtleNet:
                              y_train: np.array,
                              chunk_size: int,
                              batch_size: int,
-                             epochs_per_iteration: int):
+                             epochs_per_iteration: int,
+                             checkpoint_dir: str = 'models',
+                             make_checkpoints: bool = False,
+                             checkpoint_frequency: int = 50,
+                             checkpoint_filename: str = "checkpoint"):
         for iteration in range(iterations):
-            batch = np.array(x_train)[batch_size * iteration:(iteration + 1) * batch_size]
-            labels = np.array(y_train)[batch_size * iteration:(iteration + 1) * batch_size]
+            batch_index_start = (batch_size * iteration) % len(x_train)
+            batch_index_end = max(batch_index + batch_size, len(x_train))
+
+            batch = np.array(x_train)[batch_index_start:batch_index_end]
+            labels = np.array(y_train)[batch_index_start:batch_index_end]
+
             self.perturbed_data = self.attack.generate_perturbations(
                 batch,
                 self.model,
@@ -35,6 +43,10 @@ class TurtleNet:
                            to_categorical(labels, num_classes=10),
                            epochs=epochs_per_iteration)
             print(f"Iteration number {iteration}")
+            if make_checkpoints and iteration % checkpoint_frequency == 0:
+                checkpoint_full_path = f"{checkpoint_dir}/{checkpoint_filename}_{iteration}"
+                self.save_model(checkpoint_full_path)
+                print(f"Saving checkpoint for iteration number {iteration} into {checkpoint_full_path}.")
 
     def eval_on_attack(self,
                        attack_type: cleverhans.attacks,
@@ -67,4 +79,3 @@ class TurtleNet:
     def save_model(self, model_path: str):
         print(f"Saving model into {model_path}")
         self.model.save(model_path)
-
