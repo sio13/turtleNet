@@ -52,7 +52,8 @@ def eval_models(attack_types: list,
             results = model.evaluate(perturbations, to_categorical(y_test, num_classes=10))
             loss, accuracy = results[0], results[1]
 
-            model_results_json = {"attack": attack_str.split('.')[-1],
+            model_results_json = {"iteration": iteration_number,
+                                  "attack": attack_str.split('.')[-1],
                                   "loss": loss,
                                   "accuracy": accuracy,
                                   "attack_time": total_attack_time}

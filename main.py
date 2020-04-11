@@ -63,7 +63,8 @@ def main3():
                 save_to_file=True,
                 results_file_path="results/test.json",
                 folder_name="models",
-                folder_list=["checkpoint_0", "checkpoint_500", "checkpoint_1000", "checkpoint_1200"],
+                folder_list=["checkpoint_0", "checkpoint_500", "checkpoint_1000", "checkpoint_1200", "checkpoint_1300",
+                             "checkpoint_1350", "checkpoint_1400"],
                 prefix="checkpoint_")
 
 
