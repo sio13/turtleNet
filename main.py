@@ -10,10 +10,11 @@ from cleverhans.attacks import ProjectedGradientDescent, FastGradientMethod, Bas
 import cleverhans
 import numpy as np
 
+from utils import eval_models
+
 
 def main1():
-    (x_train, y_train), (x_test, y_test) = mnist.load_data()
-    x_train = (x_train / 255).reshape((len(x_train), 28, 28, 1))
+    x_train, y_train, x_test, y_test = get_mnist_data()
 
     attack = Attack(BasicIterativeMethod, 0.3, 0, 1)
 
@@ -28,9 +29,7 @@ def main1():
 
 
 def main2():
-    (x_train, y_train), (x_test, y_test) = mnist.load_data()
-    x_train = (x_train / 255).reshape((len(x_train), 28, 28, 1))
-    x_test = (x_test / 255).reshape((len(x_test), 28, 28, 1))
+    x_train, y_train, x_test, y_test = get_mnist_data()
 
     network = CNNModel()
     # network.train_on_mnist()
@@ -53,5 +52,16 @@ def main2():
     # print(model_new.evaluate(x_train, to_categorical(y_train)))
 
 
+def main3():
+    eval_models(attack_types=[ProjectedGradientDescent, FastGradientMethod],
+                epsilon=0.3,
+                clip_min=0,
+                clip_max=1,
+                num_chunks=1,
+                save_to_file=True,
+                results_file_path="results/test.json",
+                folder_list=["checkpoint_0", "checkpoint_500", "checkpoint_1000", "checkpoint_1200"])
+
+
 if __name__ == '__main__':
-    main2()
+    main3()

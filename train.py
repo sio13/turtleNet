@@ -46,7 +46,7 @@ class TurtleNet:
                            epochs=epochs_per_iteration)
             print(f"Iteration number {iteration}")
             if make_checkpoints and iteration % checkpoint_frequency == 0:
-                checkpoint_full_path = f"{checkpoint_dir}/{checkpoint_filename}_{iteration}"
+                checkpoint_full_path = f"{checkpoint_dir}/{checkpoint_filename}_{iteration}.h5"
                 self.save_model(checkpoint_full_path)
                 print(f"Saving checkpoint for iteration number {iteration} into {checkpoint_full_path}.")
 
@@ -81,3 +81,6 @@ class TurtleNet:
     def save_model(self, model_path: str):
         print(f"Saving model into {model_path}")
         self.model.save(model_path)
+
+
+

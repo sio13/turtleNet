@@ -2,6 +2,7 @@
   <dictionary name="Acer">
     <words>
       <w>cmap</w>
+      <w>mnist</w>
     </words>
   </dictionary>
 </component>
