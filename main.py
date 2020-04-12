@@ -65,7 +65,7 @@ def main3():
                 clip_max=1,
                 num_chunks=1,
                 save_to_file=True,
-                results_file_path="results/all_models.json",
+                results_file_path="results/all_models_full.json",
                 folder_name="models",
                 prefix="checkpoint_")
 

@@ -3,9 +3,10 @@ import pandas as pd
 
 def main():
 
-    pictures = '../pictures'
+    pictures = '../result_pictures'
 
-    df_all_models = pd.read_csv(open("../results/all_models.csv"))
+    df_all_models = pd.read_csv(open("../results/all_models_full.csv"))
+    print(df_all_models)
     attacks = list(df_all_models.attack.unique())
     for attack in attacks:
         df_specific_attack = df_all_models.loc[df_all_models['attack'] == attack]
