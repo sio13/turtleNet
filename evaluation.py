@@ -36,8 +36,6 @@ def eval_models(attack_types: list,
 
         model = load_model(f"{folder_name}/{model_name}")
 
-        model_results_json = {}
-
         for attack_type in attack_types:
             attack_str = str(attack_type).split("'")[1]
             print(f"Evaluating model '{model_name}' for attack '{attack_str}' ...")
