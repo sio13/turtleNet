@@ -67,7 +67,8 @@ def main3():
                 save_to_file=True,
                 results_file_path="results/models_fgsm.json",
                 folder_name="models_fgsm",
-                prefix="checkpoint_")
+                prefix="checkpoint_",
+                suffix=".h5")
 
 
 if __name__ == '__main__':
