@@ -1,7 +1,9 @@
+import numpy as np
+
 from itertools import islice
 from keras.datasets import mnist
 
-import numpy as np
+
 
 
 def chunk(it, size: int):

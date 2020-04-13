@@ -1,9 +1,13 @@
-from attack import Attack
-from utils import save_collage
 import cleverhans
+import numpy as np
 
 from keras.utils import to_categorical
-import numpy as np
+from attack import Attack
+from utils import save_collage
+
+
+
+
 
 
 class TurtleNet:
