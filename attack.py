@@ -1,9 +1,12 @@
 import os
+import pandas as pd
+import numpy as np
+import itertools
+import keras
 
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 from keras import backend as K
 
-import keras
 from keras import backend
 from keras.datasets import mnist
 from keras.utils import to_categorical
@@ -14,10 +17,6 @@ from keras.layers import *
 import cleverhans
 from cleverhans.attacks import FastGradientMethod
 from cleverhans.utils_keras import KerasModelWrapper
-
-import pandas as pd
-import numpy as np
-import itertools
 
 from utils import chunk
 
@@ -40,4 +39,3 @@ class Attack:
         perturbed_x_samples = itertools.chain.from_iterable(
             map(lambda x: attack.generate_np(np.array(x), **attack_params), chunks))
         return np.array(list(perturbed_x_samples))
-
