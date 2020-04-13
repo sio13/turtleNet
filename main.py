@@ -38,7 +38,7 @@ def main2():
 
     net = TurtleNet(network.model, FastGradientMethod, 0.3, 0, 1)
 
-    net.adversarial_training(iterations=500, x_train=x_train, y_train=y_train, chunk_size=50,
+    net.adversarial_training(iterations=3000, x_train=x_train, y_train=y_train, chunk_size=50,
                              epochs_per_iteration=3, batch_size=50, make_checkpoints=True, checkpoint_dir='models_fgsm/')
 
     net.eval_on_attack(ProjectedGradientDescent, 0.3, 0, 1, x_test, y_test, chunk_size=50)
@@ -65,10 +65,10 @@ def main3():
                 clip_max=1,
                 num_chunks=1,
                 save_to_file=True,
-                results_file_path="results/all_models_full.json",
-                folder_name="models",
+                results_file_path="results/models_fgsm.json",
+                folder_name="models_fgsm",
                 prefix="checkpoint_")
 
 
 if __name__ == '__main__':
-    main2()
+    main3()
