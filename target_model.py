@@ -49,3 +49,7 @@ class CNNModel:
     def test_on_mnist(self):
         _, _, x_test, y_test = get_mnist_data()
         return self.model.evaluate(x_test, to_categorical(y_test, num_classes=10))
+
+    def save_model(self, model_path: str):
+        print(f"Saving model into {model_path}")
+        self.model.save(model_path)

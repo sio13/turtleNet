@@ -39,7 +39,8 @@ def main2():
     net = TurtleNet(network.model, FastGradientMethod, 0.3, 0, 1)
 
     net.adversarial_training(iterations=3000, x_train=x_train, y_train=y_train, chunk_size=50,
-                             epochs_per_iteration=3, batch_size=50, make_checkpoints=True, checkpoint_dir='models_fgsm/')
+                             epochs_per_iteration=3, batch_size=50, make_checkpoints=True,
+                             checkpoint_dir='models_fgsm/')
 
     net.eval_on_attack(ProjectedGradientDescent, 0.3, 0, 1, x_test, y_test, chunk_size=50)
     net.eval_on_attack(FastGradientMethod, 0.3, 0, 1, x_test, y_test, chunk_size=50)
@@ -68,6 +69,33 @@ def main3():
                 results_file_path="results/models_fgsm.json",
                 folder_name="models_fgsm",
                 prefix="checkpoint_",
+                suffix=".h5")
+
+
+def main4():
+    """
+    train natural model
+    """
+
+    network = CNNModel()
+    network.train_on_mnist()
+    network.save_model("models_natural/conv_nn.h5")
+
+    eval_models(attack_types=[MomentumIterativeMethod,
+                              # MaxConfidence,
+                              MadryEtAl,
+                              BasicIterativeMethod,
+                              ProjectedGradientDescent,
+                              FastGradientMethod],
+                epsilon=0.3,
+                clip_min=0,
+                clip_max=1,
+                num_chunks=1,
+                save_to_file=True,
+                results_file_path="results/model_natural.json",
+                folder_name="models_natural",
+                folder_list=["conv_nn_0.h5"],
+                prefix="conv_nn_",
                 suffix=".h5")
 
 
