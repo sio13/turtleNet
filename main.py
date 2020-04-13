@@ -1,3 +1,7 @@
+import os
+
+os.environ['KERAS_BACKEND'] = 'tensorflow'
+
 from attack import Attack
 from train import TurtleNet
 
