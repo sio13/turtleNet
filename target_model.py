@@ -1,4 +1,5 @@
 import os
+import numpy as np
 
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 from keras import backend as K
@@ -10,7 +11,8 @@ from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D
 from keras.optimizers import RMSprop
 from keras.datasets import mnist
 from keras.utils import to_categorical
-import numpy as np
+
+from utils import get_mnist_data
 
 
 class CNNModel:
@@ -39,26 +41,11 @@ class CNNModel:
         self.model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
 
     def train_on_mnist(self, epochs=5, target_name="conv_nn.h5"):
-        train, _ = mnist.load_data()
-        Y_train = train[1]
-        Y_train = to_categorical(Y_train, num_classes=10)
-        X_train = train[0]
+        x_train, y_train, _, _ = get_mnist_data()
 
-        # normalizing data
-        X_train = np.divide(X_train, 255.0)
-        X_train = X_train.reshape(-1, 28, 28, 1)
-
-        self.model.fit(X_train, Y_train, epochs=epochs)
+        self.model.fit(x_train, to_categorical(y_train, num_classes=10), epochs=epochs)
         self.model.save(f"models/{target_name}")
 
     def test_on_mnist(self):
-        _, test = mnist.load_data()
-        Y_test = test[1]
-        Y_test = to_categorical(Y_test, num_classes=10)
-        X_test = test[0]
-
-        # normalizing data
-        X_test = np.divide(X_test, 255.0)
-        X_test = X_test.reshape(-1, 28, 28, 1)
-
-        return self.model.evaluate(X_test, Y_test)
+        _, _, x_test, y_test = get_mnist_data()
+        return self.model.evaluate(x_test, to_categorical(y_test, num_classes=10))
