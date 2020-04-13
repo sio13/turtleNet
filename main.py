@@ -36,9 +36,9 @@ def main2():
     # network.train_on_mnist()
     print(network.test_on_mnist())
 
-    net = TurtleNet(network.model, ProjectedGradientDescent, 0.3, 0, 1)
+    net = TurtleNet(network.model, FastGradientMethod, 0.3, 0, 1)
 
-    net.adversarial_training(iterations=3000, x_train=x_train, y_train=y_train, chunk_size=50,
+    net.adversarial_training(iterations=500, x_train=x_train, y_train=y_train, chunk_size=50,
                              epochs_per_iteration=3, batch_size=50, make_checkpoints=True)
 
     net.eval_on_attack(ProjectedGradientDescent, 0.3, 0, 1, x_test, y_test, chunk_size=50)
