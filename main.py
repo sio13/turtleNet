@@ -144,7 +144,7 @@ def main7():
     # model = load_model("models/conv_nn.h5")
     print(network.model.evaluate(x_test, to_categorical(y_test, num_classes=100)))
 
-    target_attack = attack.Attack(ProjectedGradientDescent, 0.3, 0, 1)
+    target_attack = attack.Attack(FastGradientMethod, 0.3, 0, 1)
     pert = target_attack.generate_perturbations(np.array(x_test), network.model, 6)
     print("adv data")
     print(network.model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_test, num_classes=100)))

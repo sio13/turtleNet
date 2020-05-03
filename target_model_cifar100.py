@@ -33,13 +33,13 @@ class CNNModel:
         self.model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
 
     def train_on_cifar100(self, epochs=5, batch_size=64, target_name="conv_nn_cifar100.h5"):
-        x_train, y_train, _, _ = get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3))
+        x_train, y_train, _, _ = get_keras_dataset(cifar100.load_data(), input_shape=(-1, 32, 32, 3))
 
         self.model.fit(x_train, to_categorical(y_train, num_classes=100), epochs=epochs, batch_size=batch_size)
         self.model.save(f"models/{target_name}")
 
     def test_on_cifar100(self):
-        _, _, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3))
+        _, _, x_test, y_test = get_keras_dataset(cifar100.load_data(), input_shape=(-1, 32, 32, 3))
         return self.model.evaluate(x_test, to_categorical(y_test, num_classes=100))
 
     def save_model(self, model_path: str):
