@@ -122,12 +122,12 @@ def main5():
     print(model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_test)))
 
 def main6():
-    network = CNNModel()
-    network.train_on_mnist(epochs=10, batch_size=64)
-    print(network.test_on_mnist())
-    x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data(), input_shape=(-1, 32, 32, 3))
+    # network = CNNModel()
+    # network.train_on_mnist(epochs=10, batch_size=64)
+    # print(network.test_on_mnist())
+    x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
 
-    #model = load_model("models/conv_nn_cifar.h5")
+    model = load_model("models/conv_nn.h5")
     print(model.evaluate(x_test, to_categorical(y_test)))
 
     target_attack = attack.Attack(FastGradientMethod, 0.3, 0, 1)
