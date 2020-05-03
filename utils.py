@@ -17,15 +17,13 @@ def save_collage(filepath: str,
                  columns: int,
                  width: int = 28,
                  height: int = 28,
-                 color: int = 1,
-                 interpolation: str = 'nearest',
-                 cmap: str = 'RdBu_r'):
+                 color: int = 1):
     batch = batch.reshape(batch.shape[0], width, height, color)
     fig, axs = plt.subplots(rows, columns)
     cnt = 0
     for i in range(rows):
         for j in range(columns):
-            axs[i, j].imshow((batch[cnt] + 1) / 2., interpolation=interpolation, cmap=cmap)
+            axs[i, j].imshow((batch[cnt] + 1) / 2.)
             axs[i, j].axis('off')
             cnt += 1
     fig.savefig(f"{filepath}.png")
