@@ -9,7 +9,7 @@ K.tensorflow_backend._get_available_gpus()
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D
 from keras.optimizers import RMSprop, SGD
-from keras.datasets import cifar10
+from keras.datasets import cifar100
 from keras.utils import to_categorical
 
 from utils import get_keras_dataset
