@@ -137,17 +137,17 @@ def main6():
 
 def main7():
     network = CNNModel()
-    network.train_on_cifar100(epochs=10, batch_size=64)
+    network.train_on_cifar100(epochs=50, batch_size=64)
     print(network.test_on_cifar100())
     x_train, y_train, x_test, y_test = get_keras_dataset(cifar100.load_data(), input_shape=(-1, 32, 32, 3))
 
     # model = load_model("models/conv_nn.h5")
-    print(model.evaluate(x_test, to_categorical(y_test, num_classes=100)))
+    print(network.model.evaluate(x_test, to_categorical(y_test, num_classes=100)))
 
     target_attack = attack.Attack(ProjectedGradientDescent, 0.3, 0, 1)
-    pert = target_attack.generate_perturbations(np.array(x_test), model, 6)
+    pert = target_attack.generate_perturbations(np.array(x_test), network.model, 6)
     print("adv data")
-    print(model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_test, num_classes=100)))
+    print(network.model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_test, num_classes=100)))
 
 
 if __name__ == '__main__':
