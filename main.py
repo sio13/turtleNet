@@ -133,7 +133,7 @@ def main6():
     target_attack = attack.Attack(FastGradientMethod, 0.3, 0, 1)
     pert = target_attack.generate_perturbations(np.array(x_test), model, 6)
     print("adv data")
-    print(model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_test)))
+    print(model.evaluate(pert.reshape(-1, 28, 28, 1), to_categorical(y_test)))
 
 
 if __name__ == '__main__':
