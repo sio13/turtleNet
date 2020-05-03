@@ -116,7 +116,7 @@ def main5():
 
     target_attack = attack.Attack(FastGradientMethod, 0.3, 0, 1)
     pert = target_attack.generate_perturbations(np.array(x_train), model, 6)
-    save_collage("cifar_samples.png", pert[:9], 3, 3, 32, 32, 1)
+    save_collage("cifar_samples.png", pert[:9], 3, 3, 32, 32, 3)
     print("adv data")
     print(model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_train)))
 
