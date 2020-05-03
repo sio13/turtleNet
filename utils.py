@@ -19,7 +19,7 @@ def save_collage(filepath: str,
                  height: int = 28,
                  color: int = 1,
                  interpolation: str = 'nearest',
-                 cmap: str = 'grey'):
+                 cmap: str = 'summer'):
     batch = batch.reshape(batch.shape[0], width, height, color)
     fig, axs = plt.subplots(rows, columns)
     cnt = 0
