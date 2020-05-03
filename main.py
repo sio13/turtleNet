@@ -2,7 +2,7 @@ import os
 
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 
-from attack import Attack
+import attack
 from train import TurtleNet
 
 from target_model import CNNModel
@@ -23,14 +23,14 @@ from target_model_cifar import CNNModel
 def main1():
     x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
 
-    attack = Attack(BasicIterativeMethod, 0.3, 0, 1)
+    target_attack = attack.Attack(BasicIterativeMethod, 0.3, 0, 1)
 
     net = CNNModel()
     net.train_on_mnist()
     net.test_on_mnist()
     # model = load_model("models/conv_nn.h5")
 
-    pert = attack.generate_perturbations(np.array(x_train), net.model, 6)
+    pert = target_attack.generate_perturbations(np.array(x_train), net.model, 6)
     print("adv data")
     print(net.model.evaluate(pert.reshape(-1, 28, 28, 1), to_categorical(y_train)))
 
@@ -105,14 +105,15 @@ def main4():
                 suffix=".h5")
 
 def main5():
-    network = CNNModel()
-    network.train_on_cifar10(epochs=10, batch_size=64)
-    print(network.test_on_cifar10())
+    # network = CNNModel()
+    # network.train_on_cifar10(epochs=10, batch_size=64)
+    # print(network.test_on_cifar10())
 
-    attack = Attack(BasicIterativeMethod, 0.3, 0, 1)
-    pert = attack.generate_perturbations(np.array(x_train), network.model, 6)
+    model = load_model("models/conv_nn_cifar.h5")
+    target_attack = attack.Attack(BasicIterativeMethod, 0.3, 0, 1)
+    pert = target_attack.generate_perturbations(np.array(x_train), model, 6)
     print("adv data")
-    print(network.model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_train)))
+    print(model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_train)))
 
 if __name__ == '__main__':
     main5()
