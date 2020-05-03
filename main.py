@@ -108,6 +108,7 @@ def main5():
     # network = CNNModel()
     # network.train_on_cifar10(epochs=10, batch_size=64)
     # print(network.test_on_cifar10())
+    x_train, y_train, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=(-1,32,32,3))
 
     model = load_model("models/conv_nn_cifar.h5")
     target_attack = attack.Attack(BasicIterativeMethod, 0.3, 0, 1)
