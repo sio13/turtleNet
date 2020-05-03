@@ -112,7 +112,7 @@ def main5():
     attack = Attack(BasicIterativeMethod, 0.3, 0, 1)
     pert = attack.generate_perturbations(np.array(x_train), network.model, 6)
     print("adv data")
-    print(network.model.evaluate(pert.reshape(-1, 32, 32, 1), to_categorical(y_train)))
+    print(network.model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_train)))
 
 if __name__ == '__main__':
     main5()
