@@ -18,6 +18,8 @@ from utils import get_keras_dataset
 from evaluation import eval_models
 
 
+from target_model_cifar import CNNModel
+
 def main1():
     x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
 
@@ -102,6 +104,15 @@ def main4():
                 prefix="conv_nn_",
                 suffix=".h5")
 
+def main5():
+    network = CNNModel()
+    network.train_on_cifar10()
+    print(network.test_on_cifar10())
+
+    attack = Attack(BasicIterativeMethod, 0.3, 0, 1)
+    pert = attack.generate_perturbations(np.array(x_train), network.model, 6)
+    print("adv data")
+    print(network.model.evaluate(pert.reshape(-1, 32, 32, 1), to_categorical(y_train)))
 
 if __name__ == '__main__':
-    main4()
+    main5()
