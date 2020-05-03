@@ -14,11 +14,11 @@ from cleverhans.attacks import *
 import cleverhans
 import numpy as np
 
-from utils import get_keras_dataset
+from utils import get_keras_dataset, save_collage
 from evaluation import eval_models
 
-
 from target_model_cifar import CNNModel
+
 
 def main1():
     x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
@@ -104,20 +104,22 @@ def main4():
                 prefix="conv_nn_",
                 suffix=".h5")
 
+
 def main5():
     # network = CNNModel()
     # network.train_on_cifar10(epochs=10, batch_size=64)
     # print(network.test_on_cifar10())
-    x_train, y_train, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=(-1,32,32,3))
+    x_train, y_train, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3))
 
     model = load_model("models/conv_nn_cifar.h5")
     print(model.evaluate(x_test, to_categorical(y_test)))
 
-
-    target_attack = attack.Attack(BasicIterativeMethod, 0.3, 0, 1)
+    target_attack = attack.Attack(FastGradientMethod, 0.3, 0, 1)
     pert = target_attack.generate_perturbations(np.array(x_train), model, 6)
+    save_collage("cifar_samples.png", pert[:9], 3, 3, 32, 32)
     print("adv data")
     print(model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_train)))
+
 
 if __name__ == '__main__':
     main5()
