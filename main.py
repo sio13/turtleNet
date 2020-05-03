@@ -111,6 +111,9 @@ def main5():
     x_train, y_train, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=(-1,32,32,3))
 
     model = load_model("models/conv_nn_cifar.h5")
+    print(model.evaluate(x_test, to_categorical(y_test)))
+
+
     target_attack = attack.Attack(BasicIterativeMethod, 0.3, 0, 1)
     pert = target_attack.generate_perturbations(np.array(x_train), model, 6)
     print("adv data")
