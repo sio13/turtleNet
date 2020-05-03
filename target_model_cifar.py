@@ -17,6 +17,7 @@ from utils import get_keras_dataset
 
 class CNNModel:
     def __init__(self, custom_optimizer=None, input_shape=(32, 32, 3)):
+        self.model = Sequential()
         self.model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same',
                               input_shape=input_shape))
         self.model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
