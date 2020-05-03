@@ -1,7 +1,7 @@
 import numpy as np
 
 from itertools import islice
-from keras.datasets import mnist
+from keras.datasets import mnist, cifar10
 
 
 
@@ -31,8 +31,8 @@ def save_collage(filepath: str,
     plt.close()
 
 
-def get_mnist_data() -> tuple:
-    (x_train, y_train), (x_test, y_test) = mnist.load_data()
+def get_keras_dataset(data: tuple) -> tuple:
+    (x_train, y_train), (x_test, y_test) = data
     x_train = (x_train / 255).reshape((len(x_train), 28, 28, 1))
     x_test = (x_test / 255).reshape((len(x_test), 28, 28, 1))
 

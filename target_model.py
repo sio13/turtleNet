@@ -12,7 +12,7 @@ from keras.optimizers import RMSprop
 from keras.datasets import mnist
 from keras.utils import to_categorical
 
-from utils import get_mnist_data
+from utils import get_keras_dataset
 
 
 class CNNModel:
@@ -41,13 +41,13 @@ class CNNModel:
         self.model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
 
     def train_on_mnist(self, epochs=5, target_name="conv_nn.h5"):
-        x_train, y_train, _, _ = get_mnist_data()
+        x_train, y_train, _, _ = get_keras_dataset(mnist.load_data())
 
         self.model.fit(x_train, to_categorical(y_train, num_classes=10), epochs=epochs)
         self.model.save(f"models/{target_name}")
 
     def test_on_mnist(self):
-        _, _, x_test, y_test = get_mnist_data()
+        _, _, x_test, y_test = get_keras_dataset(mnist.load_data())
         return self.model.evaluate(x_test, to_categorical(y_test, num_classes=10))
 
     def save_model(self, model_path: str):

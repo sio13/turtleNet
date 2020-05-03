@@ -1,7 +1,8 @@
 from attack import Attack
-from utils import get_mnist_data
+from utils import get_keras_dataset
 from keras.models import load_model
 from keras.utils import to_categorical
+from keras.datasets import mnist
 
 import os
 import json
@@ -23,7 +24,7 @@ def eval_models(attack_types: list,
     model_names = filter(lambda x: x.startswith(prefix) and x.endswith(suffix),
                          os.listdir(folder_name)) if not folder_list else folder_list
 
-    _, _, x_test, y_test = get_mnist_data()
+    _, _, x_test, y_test = get_keras_dataset(mnist.load_data())
 
     json_test_results = []
 

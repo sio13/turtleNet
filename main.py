@@ -14,12 +14,12 @@ from cleverhans.attacks import *
 import cleverhans
 import numpy as np
 
-from utils import get_mnist_data
+from utils import get_keras_dataset
 from evaluation import eval_models
 
 
 def main1():
-    x_train, y_train, x_test, y_test = get_mnist_data()
+    x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
 
     attack = Attack(BasicIterativeMethod, 0.3, 0, 1)
 
@@ -34,7 +34,7 @@ def main1():
 
 
 def main2():
-    x_train, y_train, x_test, y_test = get_mnist_data()
+    x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
 
     network = CNNModel()
     # network.train_on_mnist()
