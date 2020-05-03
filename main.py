@@ -114,7 +114,7 @@ def main5():
     model = load_model("models/conv_nn_cifar.h5")
     print(model.evaluate(x_test, to_categorical(y_test)))
 
-    target_attack = attack.Attack(FastGradientMethod, 0.1, 0, 1)
+    target_attack = attack.Attack(FastGradientMethod, 0.01, 0, 1)
     pert = target_attack.generate_perturbations(np.array(x_test), model, 6)
     save_collage("cifar_samples", pert[:9], 3, 3, 32, 32, 3)
     save_collage("cifar_original", x_test[:9], 3, 3, 32, 32, 3)
