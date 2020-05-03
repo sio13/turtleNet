@@ -106,7 +106,7 @@ def main4():
 
 def main5():
     network = CNNModel()
-    network.train_on_cifar10()
+    network.train_on_cifar10(epochs=10, batch_size=64)
     print(network.test_on_cifar10())
 
     attack = Attack(BasicIterativeMethod, 0.3, 0, 1)
