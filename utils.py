@@ -17,9 +17,10 @@ def save_collage(filepath: str,
                  columns: int,
                  width: int = 28,
                  height: int = 28,
+                 color: int = 1,
                  interpolation: str = 'nearest',
                  cmap: str = 'grey'):
-    batch = batch.reshape(batch.shape[0], width, height)
+    batch = batch.reshape(batch.shape[0], width, height, color)
     fig, axs = plt.subplots(rows, columns)
     cnt = 0
     for i in range(rows):
