@@ -6,7 +6,7 @@ import attack
 from train import TurtleNet
 
 from target_model import CNNModel
-from keras.datasets import mnist, cifar10
+from keras.datasets import mnist, cifar10, cifar100
 from keras.models import load_model
 from keras.utils import to_categorical
 
@@ -17,7 +17,7 @@ import numpy as np
 from utils import get_keras_dataset, save_collage
 from evaluation import eval_models
 
-from target_model import CNNModel
+from target_model_cifar100 import CNNModel
 
 
 def main1():
@@ -130,11 +130,25 @@ def main6():
     model = load_model("models/conv_nn.h5")
     print(model.evaluate(x_test, to_categorical(y_test)))
 
-    target_attack = attack.Attack(FastGradientMethod, 0.3, 0, 1)
+    target_attack = attack.Attack(ProjectedGradientDescent, 0.3, 0, 1)
     pert = target_attack.generate_perturbations(np.array(x_test), model, 6)
     print("adv data")
     print(model.evaluate(pert.reshape(-1, 28, 28, 1), to_categorical(y_test)))
 
+def main7():
+    network = CNNModel()
+    network.train_on_mnist(epochs=10, batch_size=64)
+    print(network.test_on_mnist())
+    x_train, y_train, x_test, y_test = get_keras_dataset(cifar100.load_data(), input_shape=(-1, 32, 32, 3))
+
+    # model = load_model("models/conv_nn.h5")
+    print(model.evaluate(x_test, to_categorical(y_test, num_classes=100)))
+
+    target_attack = attack.Attack(ProjectedGradientDescent, 0.3, 0, 1)
+    pert = target_attack.generate_perturbations(np.array(x_test), model, 6)
+    print("adv data")
+    print(model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_test, num_classes=100)))
+
 
 if __name__ == '__main__':
-    main6()
+    main7()
