@@ -52,4 +52,4 @@ def eval_folder(dir_name: str,
 
 eval_folder(dir_name='np_debug2',
             model_path='../models/conv_nn.h5',
-            npy_files_list=['miss0_7200_9600.npy'])
+            npy_files_list=['miss10_0_1200.npy'])
