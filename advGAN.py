@@ -1,9 +1,10 @@
+import tensorflow as tf
 import os
 import sys
 import random
 import numpy as np
 import matplotlib.pyplot as plt
-import tensorflow as tf
+
 
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 
