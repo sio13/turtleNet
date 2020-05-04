@@ -22,6 +22,7 @@ from numpy.random import seed
 from tensorflow import set_random_seed
 import tensorflow as tf
 import sys
+
 sys.path.append('../')
 from utils import get_keras_dataset
 
@@ -208,21 +209,15 @@ class AdvGAN:
         else:
             self.target = load_model(f'{model_dir}/{model_name}',
                                      custom_objects={'InstanceNormalization': InstanceNormalization})
-        num_batches = len(x_train) // batch_size
 
-        for i in range(min(num_batches, max_num_batches)):
-            print(f"from {i * batch_size} to {(i + 1) * batch_size} index.")
-            self.generate_perturbations(x_train, y_train, x_test, y_test, i * batch_size, (i + 1) * batch_size) # change name
-
+        self.generate_perturbations(x_train, y_train, x_test, y_test, i * batch_size, (i + 1) * batch_size)  # change name
 
     def generate_perturbations(self,
                                x_train,
                                y_train,
                                x_test,
                                y_test,
-                               start,
-                               end,
-                               epochs=1,
+                               epochs=50,
                                batch_size=128,
                                dir_name="np_adversarial"
                                ):
@@ -254,9 +249,10 @@ class AdvGAN:
                 f"Generator -- Loss:{gan_loss} Hinge Loss: {hinge_loss}\n"
                 f"Target Loss: {adv_loss} Accuracy:{target_acc * 100.}\n"
                 f"Time per epoch: {end_time - start_time} seconds")
-
-            #np.save(f"{dir_name}/miss{epoch}_{start}_{end}", x_batch_perturbed)
-            # np.save(f"{dir_name}/orig{epoch}_{start}_{end}", x_batch)
+            if epoch % 10 == 0:
+                x_test_perturbed = self.G.predict_on_batch(x_test)
+                np.save(f"{dir_name}/miss{epoch}_test", x_test_perturbed)
+                self.G.save(f"{model_dir}/generator_{epoch}")
 
 
 if __name__ == '__main__':
