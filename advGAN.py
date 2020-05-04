@@ -258,5 +258,5 @@ def attack(X, y, batch_size=128, thresh=0.3, target=-1):
 (X, y), (X_test, y_test) = get_keras_dataset(mnist.load_data())
 
 y_test = to_categorical(y_test, num_classes=10)
-AdvGAN(X, to_categorical(y, num_classes=10), X_test, y_test, batch_size=128, epochs=50, target=-1)
+AdvGAN(X, to_categorical(y, num_classes=10), X_test, y_test, batch_size=128, epochs=10, target=-1)
 attack(X_test, y_test, target=-1)
