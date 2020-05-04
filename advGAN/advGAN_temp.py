@@ -257,7 +257,7 @@ class AdvGAN:
             if epoch % 10 == 0:
                 x_test_perturbed = self.G.predict_on_batch(x_test)
                 np.save(f"{dir_name}/miss{epoch}_test", x_test_perturbed)
-                self.G.save(f"{model_dir}/generator_{epoch}")
+                self.G.save(f"models/generator_{epoch}")
 
 
 if __name__ == '__main__':
