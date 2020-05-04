@@ -23,6 +23,7 @@ from tensorflow import set_random_seed
 import tensorflow as tf
 from utils import get_keras_dataset
 
+
 class AdvGAN:
     def __init__(self):
         self.img_width = 28
@@ -195,9 +196,9 @@ class AdvGAN:
                            model_name='keras-stolen-model.h5',
                            model_dir='models',
                            batch_size=2400,
-                           max_num_batches = 10
+                           max_num_batches=10
                            ):
-        x_train, y_train, _, _ = get_keras_dataset(mnist.load_data())
+        x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
 
         if train_network:
             self.target.fit(x_train, to_categorical(y_train), epochs=fit_epochs)
@@ -209,16 +210,18 @@ class AdvGAN:
 
         for i in range(min(num_batches, max_num_batches)):
             print(f"Generating pertubations from {i * batch_size} to {(i + 1) * batch_size} index.")
-            self.generate_perturbations(x_train, y_train, i * batch_size, (i + 1) * batch_size)
+            self.generate_perturbations(x_train, y_train, x_test, y_test, i * batch_size, (i + 1) * batch_size)
 
     def generate_perturbations(self,
                                x_train,
                                y_train,
+                               x_test,
+                               y_test,
                                start,
                                end,
-                               epochs=1,
+                               epochs=10,
                                batch_size=128,
-                               dir_name="np_debug2"
+                               dir_name="np_samples"
                                ):
 
         num_batches = len(x_train) // batch_size
@@ -232,7 +235,7 @@ class AdvGAN:
                 self.train_discriminator_on_batch(batches)
                 self.train_stacked_on_batch(batches)
 
-            x_batch, x_batch_perturbed, y_batch = self.get_batches(start, end, x_train, y_train)
+            x_batch, x_batch_perturbed, y_batch = self.get_batches(start, end, x_test, y_test)
 
             d_loss, d_acc = self.train_discriminator_on_batch((x_batch, x_batch_perturbed, y_batch))
             g_loss, hinge_loss, gan_loss, adv_loss = self.train_stacked_on_batch(
