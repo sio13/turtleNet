@@ -169,12 +169,8 @@ class AdvGAN:
 
     def train_generator_batch(self, batches):
         x_batch, _, y_batch = batches
-        flipped_y_batch = y_batch
+        flipped_y_batch = 9 - y_batch
 
-        # for each batch:
-        # train fake images on discriminator: D(G(z)) = update G params per D's classification for fake images
-
-        # Update only G params
         self.D.trainable = False
         self.target.trainable = False
         generator_loss = self.stacked.train_on_batch(x_batch, [x_batch, np.ones((len(x_batch), 1)),
@@ -249,7 +245,7 @@ class AdvGAN:
             if epoch % 10 == 0:
                 x_test_perturbed = self.G.predict_on_batch(x_test)
                 np.save(f"{dir_name}/miss{epoch}_test", x_test_perturbed)
-                self.G.save(f"models/test_generator_{epoch}")
+                self.G.save(f"models/test1_generator_{epoch}")
 
 
 if __name__ == '__main__':
