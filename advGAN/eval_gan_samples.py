@@ -1,5 +1,5 @@
 import os
-
+import sys
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 from keras import backend as K
 
@@ -17,6 +17,7 @@ import numpy as np
 from numpy.random import seed
 from tensorflow import set_random_seed
 import tensorflow as tf
+sys.path.append('../')
 from utils import get_keras_dataset
 
 
@@ -45,5 +46,5 @@ def eval_folder(dir_name: str,
 
 
 eval_folder(dir_name='np_debug2',
-            model_path='../models/keras-stolen-model.h5',
+            model_path='../models/conv_nn.h5',
             npy_files_list=['miss0_7200_9600.npy'])
