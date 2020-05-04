@@ -192,7 +192,8 @@ class AdvGAN:
                            train_network=True,
                            model_name='keras-stolen-model.h5',
                            model_dir='models',
-                           batch_size=1200
+                           batch_size=2400,
+                           max_num_batches = 10
                            ):
         (x_train, y_train), _ = mnist.load_data()
         x_train = (x_train / 255).reshape((len(x_train), 28, 28, 1))
@@ -206,7 +207,7 @@ class AdvGAN:
                                      custom_objects={'InstanceNormalization': InstanceNormalization})
         num_batches = len(x_train) // batch_size
 
-        for i in range(num_batches):
+        for i in range(min(num_batches, max_num_batches)):
             print(f"Generating pertubations from {i * batch_size} to {(i + 1) * batch_size} index.")
             self.generate_perturbations(x_train, y_train, i * batch_size, (i + 1) * batch_size)
 
