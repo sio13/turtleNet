@@ -197,9 +197,7 @@ class AdvGAN:
                            fit_epochs=5,
                            train_network=True,
                            model_name='keras-stolen-model.h5',
-                           model_dir='models',
-                           batch_size=2400,
-                           max_num_batches=10
+                           model_dir='models'
                            ):
         x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
 
@@ -210,7 +208,7 @@ class AdvGAN:
             self.target = load_model(f'{model_dir}/{model_name}',
                                      custom_objects={'InstanceNormalization': InstanceNormalization})
 
-        self.generate_perturbations(x_train, y_train, x_test, y_test, i * batch_size, (i + 1) * batch_size)  # change name
+        self.generate_perturbations(x_train, y_train, x_test, y_test)  # change name
 
     def generate_perturbations(self,
                                x_train,
