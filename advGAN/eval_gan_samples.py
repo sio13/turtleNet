@@ -45,9 +45,9 @@ def eval_folder(dir_name: str,
         x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())  # this needs to be parametrized
 
         print(f"Natural data... ")
-        print(f"{target_model.evaluate(x_test[start:end], to_categorical(y_test[start:end]))}")
+        print(f"{target_model.evaluate(x_test, to_categorical(y_test))}")
         print(f"Malignant data... ")
-        print(f"{target_model.evaluate(target_dataset_as_npy, to_categorical(y_test[start:end]))}")
+        print(f"{target_model.evaluate(target_dataset_as_npy, to_categorical(y_test))}")
 
 
 eval_folder(dir_name='np_adversarial',
