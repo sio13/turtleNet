@@ -67,7 +67,6 @@ class AdvGAN:
     @staticmethod
     def generator_loss(y_true, y_pred):
         return K.mean(K.maximum(K.sqrt(K.sum(K.square(y_pred - y_true), axis=-1)) - 0.3, 0), axis=-1)
-        # ||G(x) - x||_2 - c, where c is user-defined. Here it is set to 0.3
 
     @staticmethod
     def custom_acc(y_true, y_pred):
@@ -161,23 +160,16 @@ class AdvGAN:
     def train_discriminator_on_batch(self, batches):
         x_batch, x_batch_perturbed, _ = batches
 
-        # for each batch:
-        # predict noise on generator: G(z) = batch of fake images
-        # train fake images on discriminator: D(G(z)) = update D params per D's classification for fake images
-        # train real images on disciminator: D(x) = update D params per classification for real images
-
-        # Update D params
         self.D.trainable = True
-        d_loss_real = self.D.train_on_batch(x_batch, np.random.uniform(0.9, 1.0, size=(
-            len(x_batch), 1)))  # real=1, positive label smoothing
-        d_loss_fake = self.D.train_on_batch(x_batch_perturbed, np.zeros((len(x_batch_perturbed), 1)))  # fake=0
+        d_loss_real = self.D.train_on_batch(x_batch, np.random.uniform(0.9, 1.0, size=(len(x_batch), 1)))
+        d_loss_fake = self.D.train_on_batch(x_batch_perturbed, np.zeros((len(x_batch_perturbed), 1)))
         d_loss = 0.5 * np.add(d_loss_real, d_loss_fake)
 
         return d_loss  # (loss, accuracy) tuple
 
-    def train_stacked_on_batch(self, batches):
+    def train_generator_batch(self, batches):
         x_batch, _, y_batch = batches
-        flipped_y_batch = 9 - y_batch
+        flipped_y_batch = y_batch
 
         # for each batch:
         # train fake images on discriminator: D(G(z)) = update G params per D's classification for fake images
@@ -185,13 +177,13 @@ class AdvGAN:
         # Update only G params
         self.D.trainable = False
         self.target.trainable = False
-        stacked_loss = self.stacked.train_on_batch(x_batch, [x_batch, np.ones((len(x_batch), 1)),
+        generator_loss = self.stacked.train_on_batch(x_batch, [x_batch, np.ones((len(x_batch), 1)),
                                                              to_categorical(flipped_y_batch)])
         # input to full GAN is original image
         # output 1 label for generated image is original image
         # output 2 label for discriminator classification is real/fake; G wants D to mark these as real=1
         # output 3 label for target classification is 1/3; g wants to flip these so 1=1 and 3=0
-        return stacked_loss  # (total loss, hinge loss, gan loss, adv loss) tuple
+        return generator_loss  # (total loss, hinge loss, gan loss, adv loss) tuple
 
     def train_and_generate(self,
                            fit_epochs=5,
@@ -217,7 +209,7 @@ class AdvGAN:
                                y_test,
                                epochs=50,
                                batch_size=128,
-                               dir_name="np_adversarial"
+                               dir_name="np_adversarialx"
                                ):
 
         num_batches = len(x_train) // batch_size
@@ -233,7 +225,7 @@ class AdvGAN:
                                            y_train)
 
                 self.train_discriminator_on_batch(batches)
-                self.train_stacked_on_batch(batches)
+                self.train_generator_batch(batches)
 
             x_batch, x_batch_perturbed, y_batch = self.get_batches(batch_size * batch_index,
                                                                    batch_size * (batch_index + 1),
@@ -241,7 +233,7 @@ class AdvGAN:
                                                                    y_train)
 
             d_loss, d_acc = self.train_discriminator_on_batch((x_batch, x_batch_perturbed, y_batch))
-            g_loss, hinge_loss, gan_loss, adv_loss = self.train_stacked_on_batch(
+            g_loss, hinge_loss, gan_loss, adv_loss = self.train_generator_batch(
                 (x_batch, x_batch_perturbed, y_batch))
 
             target_acc = self.target.test_on_batch(x_batch_perturbed, to_categorical(y_batch))[1]
@@ -257,7 +249,7 @@ class AdvGAN:
             if epoch % 10 == 0:
                 x_test_perturbed = self.G.predict_on_batch(x_test)
                 np.save(f"{dir_name}/miss{epoch}_test", x_test_perturbed)
-                self.G.save(f"models/generator_{epoch}")
+                self.G.save(f"models/test_generator_{epoch}")
 
 
 if __name__ == '__main__':
