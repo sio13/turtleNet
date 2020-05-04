@@ -1,5 +1,6 @@
 import os
 import sys
+
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 from keras import backend as K
 
@@ -18,6 +19,7 @@ import re
 from numpy.random import seed
 from tensorflow import set_random_seed
 import tensorflow as tf
+
 sys.path.append('../')
 from utils import get_keras_dataset
 
@@ -42,8 +44,10 @@ def eval_folder(dir_name: str,
 
         x_train, y_train, _, _ = get_keras_dataset(mnist.load_data())  # this needs to be parametrized
 
-        print(f"Natural data... {target_model.evaluate(x_train[start:end], y_train[start:end])}")
-        print(f"Malignant data... {target_model.evaluate(target_dataset_as_npy[start: end], y_train[start, end])}")
+        print(f"Natural data... ")
+        print(f"{target_model.evaluate(x_train[start:end], to_categorical(y_train[start:end]))}")
+        print(f"Malignant data... ")
+        print(f"{target_model.evaluate(target_dataset_as_npy[start: end], to_categorical(y_train[start:end]))}")
 
 
 eval_folder(dir_name='np_debug2',
