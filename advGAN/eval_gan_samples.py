@@ -47,7 +47,7 @@ def eval_folder(dir_name: str,
         print(f"Natural data... ")
         print(f"{target_model.evaluate(x_train[start:end], to_categorical(y_train[start:end]))}")
         print(f"Malignant data... ")
-        print(f"{target_model.evaluate(target_dataset_as_npy[start: end], to_categorical(y_train[start:end]))}")
+        print(f"{target_model.evaluate(target_dataset_as_npy, to_categorical(y_train[start:end]))}")
 
 
 eval_folder(dir_name='np_debug2',
