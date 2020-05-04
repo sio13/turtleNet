@@ -21,6 +21,8 @@ import numpy as np
 from numpy.random import seed
 from tensorflow import set_random_seed
 import tensorflow as tf
+import sys
+sys.path.append('../')
 from utils import get_keras_dataset
 
 
