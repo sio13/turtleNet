@@ -215,7 +215,7 @@ class AdvGAN:
                                y_train,
                                start,
                                end,
-                               epochs=15,
+                               epochs=1,
                                batch_size=128,
                                dir_name="np_debug2"
                                ):
@@ -253,4 +253,4 @@ if __name__ == '__main__':
     seed(5)
     set_random_seed(1)
     gan = AdvGAN()
-    gan.train_and_generate()
+    gan.train_and_generate(train_network=False)
