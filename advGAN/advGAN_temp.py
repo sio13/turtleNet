@@ -227,11 +227,18 @@ class AdvGAN:
             start_time = time.time()
 
             for batch_index in range(num_batches - 1):
-                batches = self.get_batches(batch_size * batch_index, batch_size * (batch_index + 1), x_train, y_train)
+                batches = self.get_batches(batch_size * batch_index,
+                                           batch_size * (batch_index + 1),
+                                           x_train,
+                                           y_train)
+
                 self.train_discriminator_on_batch(batches)
                 self.train_stacked_on_batch(batches)
 
-            x_batch, x_batch_perturbed, y_batch = self.get_batches(start, end, x_train, y_train)
+            x_batch, x_batch_perturbed, y_batch = self.get_batches(batch_size * batch_index,
+                                                                   batch_size * (batch_index + 1),
+                                                                   x_train,
+                                                                   y_train)
 
             d_loss, d_acc = self.train_discriminator_on_batch((x_batch, x_batch_perturbed, y_batch))
             g_loss, hinge_loss, gan_loss, adv_loss = self.train_stacked_on_batch(
