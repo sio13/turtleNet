@@ -5,6 +5,8 @@ from keras import backend as K
 
 K.tensorflow_backend._get_available_gpus()
 
+import time
+
 import keras
 from keras.datasets import mnist
 from keras.utils import to_categorical
@@ -19,7 +21,7 @@ import numpy as np
 from numpy.random import seed
 from tensorflow import set_random_seed
 import tensorflow as tf
-
+from utils import get_keras_dataset
 
 class AdvGAN:
     def __init__(self):
@@ -195,10 +197,8 @@ class AdvGAN:
                            batch_size=2400,
                            max_num_batches = 10
                            ):
-        (x_train, y_train), _ = mnist.load_data()
-        x_train = (x_train / 255).reshape((len(x_train), 28, 28, 1))
-        x_train = np.array(x_train)
-        y_train = np.array(y_train)
+        x_train, y_train, _, _ = get_keras_dataset(mnist.load_data())
+
         if train_network:
             self.target.fit(x_train, to_categorical(y_train), epochs=fit_epochs)
             self.target.save(f"{model_dir}/{model_name}")
@@ -225,6 +225,8 @@ class AdvGAN:
 
         for epoch in range(epochs):
             print("Epoch " + str(epoch))
+            start_time = time.time()
+
             for batch_index in range(num_batches - 1):
                 batches = self.get_batches(batch_size * batch_index, batch_size * (batch_index + 1), x_train, y_train)
                 self.train_discriminator_on_batch(batches)
@@ -240,11 +242,12 @@ class AdvGAN:
             # target_predictions = self.target.predict_on_batch(x_batch_perturbed)
 
             # misclassified = np.where(y_batch.reshape((end - start,)) != np.argmax(target_predictions, axis=1))[0]
-
+            end_time = time.time()
             print(
                 f"Discriminator -- Loss:{d_loss} Accuracy:{d_acc * 100}\n"
                 f"Generator -- Loss:{gan_loss} Hinge Loss: {hinge_loss}\n"
-                f"Target Loss: {adv_loss} Accuracy:{target_acc * 100.}\n")
+                f"Target Loss: {adv_loss} Accuracy:{target_acc * 100.}\n"
+                f"Time per epoch: {end_time - start_time} seconds")
 
             np.save(f"{dir_name}/miss{epoch}_{start}_{end}", x_batch_perturbed)
             # np.save(f"{dir_name}/orig{epoch}_{start}_{end}", x_batch)
