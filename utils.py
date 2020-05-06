@@ -23,7 +23,7 @@ def save_collage(filepath: str,
     cnt = 0
     for i in range(rows):
         for j in range(columns):
-            axs[i, j].imshow((batch[cnt] + 1) / 2.)
+            axs[i, j].imshow((batch[cnt]))
             axs[i, j].axis('off')
             cnt += 1
     fig.savefig(f"{filepath}.png")

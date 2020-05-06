@@ -17,7 +17,7 @@ import numpy as np
 from utils import get_keras_dataset, save_collage
 from evaluation import eval_models
 
-from target_model_cifar100 import CNNModel
+from target_model_cifar10 import CNNModel
 
 
 def main1():
@@ -121,6 +121,7 @@ def main5():
     print("adv data")
     print(model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_test)))
 
+
 def main6():
     # network = CNNModel()
     # network.train_on_mnist(epochs=10, batch_size=64)
@@ -134,6 +135,7 @@ def main6():
     pert = target_attack.generate_perturbations(np.array(x_test), model, 6)
     print("adv data")
     print(model.evaluate(pert.reshape(-1, 28, 28, 1), to_categorical(y_test)))
+
 
 def main7():
     # network = CNNModel()
@@ -150,5 +152,30 @@ def main7():
     print(model.evaluate(pert.reshape(-1, 32, 32, 3), to_categorical(y_test, num_classes=100)))
 
 
+def train_cifar10_robust():
+    network = CNNModel()
+
+    x_train, y_train, x_test, y_test = get_keras_dataset(
+        cifar10.load_data(),
+        input_shape=(-1, 32, 32, 1))
+
+    net = TurtleNet(network.model,
+                    ProjectedGradientDescent,
+                    0.3,
+                    0,
+                    1)
+
+    net.adversarial_training(iterations=5000,
+                             x_train=x_train,
+                             y_train=y_train,
+                             chunk_size=50,
+                             batch_size=50,
+                             epochs_per_iteration=3,
+                             checkpoint_dir='models_cifar10',
+                             make_checkpoints=True,
+                             checkpoint_frequency=50,
+                             checkpoint_filename="checkpoint")
+
+
 if __name__ == '__main__':
-    main7()
+    train_cifar10_robust()
