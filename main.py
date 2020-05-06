@@ -157,7 +157,7 @@ def train_cifar10_robust():
     network.train_on_cifar10(epochs=1, batch_size=64)
 
     x_train, y_train, x_test, y_test = get_keras_dataset(
-        cifar10.load_data())
+        cifar10.load_data(), input_shape=(-1, 32, 32, 3))
 
     net = TurtleNet(network.model,
                     ProjectedGradientDescent,
