@@ -32,6 +32,19 @@ class TurtleNet:
                              make_checkpoints: bool = False,
                              checkpoint_frequency: int = 50,
                              checkpoint_filename: str = "checkpoint"):
+        """
+        :param iterations: total number of iterations
+        :param x_train: training dataset
+        :param y_train: training labels
+        :param chunk_size: size of chunk for generating adversarial examples -- affects memory power
+        :param batch_size: training batch size
+        :param epochs_per_iteration: number of training epochs per iteration
+        :param checkpoint_dir: directory for models
+        :param make_checkpoints: True for saving models, otherwise False
+        :param checkpoint_frequency: number of iteration followed by checkpoint
+        :param checkpoint_filename: filename of checkpoint -- automatically contains iteration number
+        :return:
+        """
         for iteration in range(iterations):
             batch_index_start = (batch_size * iteration) % len(x_train)
             batch_index_end = min(batch_index_start + batch_size, len(x_train))
