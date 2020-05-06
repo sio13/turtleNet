@@ -46,8 +46,9 @@ class TurtleNet:
         :return:
         """
         for iteration in range(iterations):
-            batch_index_start = (batch_size * iteration) % len(x_train)
-            batch_index_end = min(batch_index_start + batch_size, len(x_train))
+            adv_size = batch_size * 10
+            batch_index_start = (adv_size * iteration) % len(x_train)
+            batch_index_end = min(batch_index_start + adv_size, len(x_train))
 
             print(f"Generating samples for slice from {batch_index_start} to {batch_index_end}.")
 
@@ -60,7 +61,8 @@ class TurtleNet:
                 len(batch) // chunk_size)
             self.model.fit(self.perturbed_data,
                            to_categorical(labels, num_classes=10),
-                           epochs=epochs_per_iteration)
+                           epochs=epochs_per_iteration,
+                           batch_size=batch_size)
             print(f"Iteration number {iteration}")
             if make_checkpoints and iteration % checkpoint_frequency == 0:
                 checkpoint_full_path = f"{checkpoint_dir}/{checkpoint_filename}_{iteration}.h5"
