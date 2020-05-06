@@ -6,7 +6,7 @@ import attack
 from train import TurtleNet
 
 from target_model import CNNModel
-from keras.datasets import mnist
+from keras.datasets import cifar10
 from keras.models import load_model
 from keras.utils import to_categorical
 
@@ -17,7 +17,7 @@ import numpy as np
 from utils import get_keras_dataset, save_collage
 from evaluation import eval_models
 
-from target_model import CNNModel
+from target_model_cifar import CNNModel
 
 
 def main1():
@@ -154,10 +154,10 @@ def main7():
 
 def train_cifar10_robust():
     network = CNNModel()
-    network.train_on_mnist(epochs=1, batch_size=64)
+    network.train_on_cifar10(epochs=1, batch_size=64)
 
     x_train, y_train, x_test, y_test = get_keras_dataset(
-        mnist.load_data())
+        cifar10.load_data())
 
     net = TurtleNet(network.model,
                     ProjectedGradientDescent,
