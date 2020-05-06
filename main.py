@@ -161,7 +161,7 @@ def train_cifar10_robust():
 
     net = TurtleNet(network.model,
                     ProjectedGradientDescent,
-                    0.3,
+                    0.09,
                     0,
                     1)
 
