@@ -171,7 +171,7 @@ def train_cifar10_robust():
                              chunk_size=50,
                              batch_size=50,
                              epochs_per_iteration=3,
-                             checkpoint_dir='models_mnist',
+                             checkpoint_dir='models_cifar',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
                              checkpoint_filename="checkpoint")
