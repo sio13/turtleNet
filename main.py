@@ -154,6 +154,7 @@ def main7():
 
 def train_cifar10_robust():
     network = CNNModel()
+    network.train_on_cifar100(epochs=10, batch_size=64)
 
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(),
