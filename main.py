@@ -166,13 +166,13 @@ def train_cifar10_robust():
                     0,
                     1)
 
-    net.adversarial_training(iterations=5000,
+    net.adversarial_training(iterations=8000,
                              x_train=x_train,
                              y_train=y_train,
                              chunk_size=50,
-                             batch_size=100,
-                             epochs_per_iteration=6,
-                             checkpoint_dir='models_cifar10_test',
+                             batch_size=50,
+                             epochs_per_iteration=3,
+                             checkpoint_dir='models_mnist',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
                              checkpoint_filename="checkpoint")
