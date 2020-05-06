@@ -2,4 +2,5 @@
 .idea/
 .idea/*
 nohup.out
+file.out
 __pycache__
