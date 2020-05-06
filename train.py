@@ -58,7 +58,7 @@ class TurtleNet:
             self.perturbed_data = self.attack.generate_perturbations(
                 batch,
                 self.model,
-                len(batch) // chunk_size)
+                max(len(batch) // chunk_size, 1))
             self.model.fit(self.perturbed_data,
                            to_categorical(labels, num_classes=10),
                            epochs=epochs_per_iteration,
