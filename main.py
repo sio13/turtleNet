@@ -155,27 +155,30 @@ def main7():
 def train_cifar10_robust():
     network = CNNModel()
     network.train_on_cifar10(epochs=10, batch_size=64)
+    sess = backend.get_session()
 
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(), input_shape=(-1, 32, 32, 3))
 
     net = TurtleNet(network.model,
                     ProjectedGradientDescent,
-                    0.09,
+                    0.1,
                     0,
                     1)
 
-    net.adversarial_training(iterations=8000,
+    net.adversarial_training(iterations=15000,
+                             sess=sess,
                              x_train=x_train,
                              y_train=y_train,
-                             chunk_size=64,
-                             batch_size=64,
-                             epochs_per_iteration=3,
-                             checkpoint_dir='models_cifar10',
+                             chunk_size=128,
+                             batch_size=128,
+                             epochs_per_iteration=1,
+                             checkpoint_dir='models_cifar10x',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
-                             checkpoint_filename="checkpoint")
+                             checkpoint_filename="checkpoint",)
 
 
 if __name__ == '__main__':
     train_cifar10_robust()
+

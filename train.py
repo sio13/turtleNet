@@ -23,6 +23,7 @@ class TurtleNet:
 
     def adversarial_training(self,
                              iterations: int,
+                             sess,
                              x_train: np.array,
                              y_train: np.array,
                              chunk_size: int,
@@ -34,6 +35,7 @@ class TurtleNet:
                              checkpoint_filename: str = "checkpoint"):
         """
         :param iterations: total number of iterations
+        :param sess: session
         :param x_train: training dataset
         :param y_train: training labels
         :param chunk_size: size of chunk for generating adversarial examples -- affects memory power
@@ -46,7 +48,7 @@ class TurtleNet:
         :return:
         """
         for iteration in range(iterations):
-            adv_size = batch_size * 10
+            adv_size = batch_size
             batch_index_start = (adv_size * iteration) % len(x_train)
             batch_index_end = min(batch_index_start + adv_size, len(x_train))
 
@@ -58,7 +60,7 @@ class TurtleNet:
             self.perturbed_data = self.attack.generate_perturbations(
                 batch,
                 self.model,
-                max(len(batch) // chunk_size, 1))
+                max(len(batch) // chunk_size, 1), sess=sess)
             self.model.fit(self.perturbed_data,
                            to_categorical(labels, num_classes=10),
                            epochs=epochs_per_iteration,
