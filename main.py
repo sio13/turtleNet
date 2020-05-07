@@ -18,7 +18,7 @@ from utils import get_keras_dataset, save_collage
 from evaluation import eval_models
 
 from target_model_cifar import CNNModel
-
+from keras import backend
 
 def main1():
     x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
