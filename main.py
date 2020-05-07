@@ -154,7 +154,7 @@ def main7():
 
 def train_cifar10_robust():
     network = CNNModel()
-    network.train_on_cifar10(epochs=1, batch_size=64)
+    network.train_on_cifar10(epochs=10, batch_size=64)
 
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(), input_shape=(-1, 32, 32, 3))
@@ -171,7 +171,7 @@ def train_cifar10_robust():
                              chunk_size=64,
                              batch_size=64,
                              epochs_per_iteration=3,
-                             checkpoint_dir='models_cifar10_temp',
+                             checkpoint_dir='models_cifar10',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
                              checkpoint_filename="checkpoint")
