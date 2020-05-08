@@ -6,7 +6,7 @@ import attack
 from train import TurtleNet
 
 from target_model import CNNModel
-from keras.datasets import mnist
+from keras.datasets import cifar10
 from keras.models import load_model
 from keras.utils import to_categorical
 
@@ -155,14 +155,14 @@ def main7():
 
 
 def train_cifar10_robust():
-    network = CNNModel()
-    #network.train_on_cifar10(epochs=1, batch_size=64)
+
+    model = load_model("models/resnet_raw.h5")
     sess = backend.get_session()
 
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(), input_shape=(-1,32,32,3))
 
-    net = TurtleNet(network.model,
+    net = TurtleNet(model,
                     ProjectedGradientDescent,
                     0.1,
                     0,
@@ -174,7 +174,7 @@ def train_cifar10_robust():
                              y_train=y_train,
                              chunk_size=128,
                              batch_size=128,
-                             checkpoint_dir='models_mnist_inf',
+                             checkpoint_dir='models_mnist_resnet',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
                              checkpoint_filename="checkpoint",
