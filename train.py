@@ -19,7 +19,6 @@ class TurtleNet:
 
     def adversarial_training(self,
                              iterations: int,
-                             sess,
                              x_train: np.array,
                              y_train: np.array,
                              chunk_size: int,
@@ -31,7 +30,6 @@ class TurtleNet:
                              ord=np.inf):
         """
         :param iterations: total number of iterations
-        :param sess: session
         :param x_train: training dataset
         :param y_train: training labels
         :param chunk_size: size of chunk for generating adversarial examples -- affects memory power
@@ -58,7 +56,6 @@ class TurtleNet:
                 batch,
                 self.model,
                 max(len(batch) // chunk_size, 1),
-                sess=sess,
                 ord=ord)
             self.model.train_on_batch(self.perturbed_data,
                            to_categorical(labels, num_classes=10))

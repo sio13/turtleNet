@@ -21,6 +21,8 @@ from cleverhans.utils_keras import KerasModelWrapper
 
 from utils import chunk
 
+sess = backend.get_session()
+
 
 class Attack:
     def __init__(self, attack_type: cleverhans.attacks, epsilon: float, clip_min: float, clip_max: float):
@@ -29,7 +31,7 @@ class Attack:
         self.clip_min = clip_min
         self.clip_max = clip_max
 
-    def generate_perturbations(self, original_samples, model, num_chunks: int, sess, ord):
+    def generate_perturbations(self, original_samples, model, num_chunks: int, ord):
         attack_params = {
             'eps': self.epsilon,
             'clip_min': self.clip_min,
