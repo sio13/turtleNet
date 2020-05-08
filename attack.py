@@ -2,11 +2,12 @@ import os
 import pandas as pd
 import numpy as np
 import itertools
-import keras
+
 
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 from keras import backend as K
 
+import keras
 from keras import backend
 from keras.datasets import mnist
 from keras.utils import to_categorical
