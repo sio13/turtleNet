@@ -69,7 +69,7 @@ class TurtleNet:
                        y_train: np.array,
                        chunk_size: int):
 
-        evaluation_attack = Attack(attack_type, epsilon, clip_min, clip_max)
+        evaluation_attack = Attack(attack_type, epsilon)
         self.perturbed_data = evaluation_attack.generate_perturbations(np.array(x_train), self.model,
                                                                        len(x_train) // chunk_size)
         results = self.model.evaluate(self.perturbed_data, to_categorical(y_train))
