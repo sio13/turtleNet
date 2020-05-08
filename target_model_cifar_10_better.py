@@ -56,7 +56,7 @@ class CNNModel:
         self.model.add(Dropout(0.4))
 
         self.model.add(Flatten())
-        self.model.add(Dense(num_classes, activation='softmax'))
+        self.model.add(Dense(10, activation='softmax'))
 
         optimizer = custom_optimizer or SGD(lr=0.001, momentum=0.9)
         self.model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
