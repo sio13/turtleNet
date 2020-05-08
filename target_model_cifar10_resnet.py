@@ -23,7 +23,7 @@ import os
 # Training parameters
 batch_size = 32  # orig paper trained all networks with batch_size=128
 epochs = 200
-data_augmentation = True
+data_augmentation = False # changed from True
 num_classes = 10
 
 # Subtracting pixel mean improves accuracy
@@ -360,6 +360,8 @@ callbacks = [checkpoint, lr_reducer, lr_scheduler]
 # Run training, with or without data augmentation.
 if not data_augmentation:
     print('Not using data augmentation.')
+    model.save("models/resnet_raw.h5")
+    print("saving to models/resnet_raw.h5")
     model.fit(x_train, y_train,
               batch_size=batch_size,
               epochs=epochs,
