@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 def chunk(it, size: int):
     iter_list = iter(it)
-    return iter(lambda: tuple(islice(iter_list, size)), ())
+    return list(iter(lambda: tuple(islice(iter_list, size)), ()))
 
 
 def save_collage(filepath: str,
