@@ -30,6 +30,7 @@ class CNNModel:
         self.model.add(MaxPool2D((2, 2)))
         self.model.add(Flatten())
         self.model.add(Dense(128, activation='relu', kernel_initializer='he_uniform'))
+        self.model.add(Dense(128, activation='relu', kernel_initializer='he_uniform'))
         self.model.add(Dense(10, activation='softmax'))
 
         optimizer = custom_optimizer or SGD(lr=0.001, momentum=0.9)

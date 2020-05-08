@@ -24,7 +24,6 @@ class TurtleNet:
                              y_train: np.array,
                              chunk_size: int,
                              batch_size: int,
-                             epochs_per_iteration: int,
                              checkpoint_dir: str = 'models',
                              make_checkpoints: bool = False,
                              checkpoint_frequency: int = 50,
