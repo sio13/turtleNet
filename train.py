@@ -6,10 +6,6 @@ from attack import Attack
 from utils import save_collage
 
 
-
-
-
-
 class TurtleNet:
     def __init__(self,
                  model,
@@ -32,7 +28,8 @@ class TurtleNet:
                              checkpoint_dir: str = 'models',
                              make_checkpoints: bool = False,
                              checkpoint_frequency: int = 50,
-                             checkpoint_filename: str = "checkpoint"):
+                             checkpoint_filename: str = "checkpoint",
+                             ord=np.inf):
         """
         :param iterations: total number of iterations
         :param sess: session
@@ -45,6 +42,7 @@ class TurtleNet:
         :param make_checkpoints: True for saving models, otherwise False
         :param checkpoint_frequency: number of iteration followed by checkpoint
         :param checkpoint_filename: filename of checkpoint -- automatically contains iteration number
+        :param ord: order of reference attack
         :return:
         """
         for iteration in range(iterations):
@@ -60,7 +58,9 @@ class TurtleNet:
             self.perturbed_data = self.attack.generate_perturbations(
                 batch,
                 self.model,
-                max(len(batch) // chunk_size, 1), sess=sess)
+                max(len(batch) // chunk_size, 1),
+                sess=sess,
+                ord=ord)
             self.model.fit(self.perturbed_data,
                            to_categorical(labels, num_classes=10),
                            epochs=epochs_per_iteration,
@@ -102,6 +102,3 @@ class TurtleNet:
     def save_model(self, model_path: str):
         print(f"Saving model into {model_path}")
         self.model.save(model_path)
-
-
-
