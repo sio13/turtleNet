@@ -17,7 +17,7 @@ import numpy as np
 from utils import get_keras_dataset, save_collage
 from evaluation import eval_models
 
-from target_model_cifar_10_better import CNNModel
+from target_model_cifar import CNNModel
 from keras import backend
 
 from attacks.none import NoneAttack
