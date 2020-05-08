@@ -10,11 +10,9 @@ class TurtleNet:
     def __init__(self,
                  model,
                  attack_type: cleverhans.attacks,
-                 epsilon: float,
-                 clip_min: float,
-                 clip_max: float):
+                 epsilon: float):
         self.model = model
-        self.attack = Attack(attack_type, epsilon, clip_min, clip_max)
+        self.attack = Attack(attack_type, epsilon)
         self.perturbed_data = None
 
     def adversarial_training(self,
@@ -26,15 +24,13 @@ class TurtleNet:
                              checkpoint_dir: str = 'models',
                              make_checkpoints: bool = False,
                              checkpoint_frequency: int = 50,
-                             checkpoint_filename: str = "checkpoint",
-                             ord=np.inf):
+                             checkpoint_filename: str = "checkpoint"):
         """
         :param iterations: total number of iterations
         :param x_train: training dataset
         :param y_train: training labels
         :param chunk_size: size of chunk for generating adversarial examples -- affects memory power
         :param batch_size: training batch size
-        :param epochs_per_iteration: number of training epochs per iteration
         :param checkpoint_dir: directory for models
         :param make_checkpoints: True for saving models, otherwise False
         :param checkpoint_frequency: number of iteration followed by checkpoint
