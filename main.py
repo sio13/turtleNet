@@ -155,12 +155,15 @@ def main7():
 
 
 def train_cifar10_robust():
+    x_train, y_train, x_test, y_test = get_keras_dataset(
+        cifar10.load_data(), input_shape=(-1, 32, 32, 3))
 
     model = load_model("models/resnet_raw.h5")
+    model.train_on_batch(x_train[:128], to_categorical(y_test[:128]))
+
     sess = backend.get_session()
 
-    x_train, y_train, x_test, y_test = get_keras_dataset(
-        cifar10.load_data(), input_shape=(-1,32,32,3))
+
 
     net = TurtleNet(model,
                     ProjectedGradientDescent,
