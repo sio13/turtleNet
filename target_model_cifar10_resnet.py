@@ -1,3 +1,12 @@
+import os
+import pandas as pd
+import numpy as np
+import itertools
+import keras
+
+os.environ['KERAS_BACKEND'] = 'tensorflow'
+from keras import backend as K
+
 import keras
 from keras.layers import Dense, Conv2D, BatchNormalization, Activation
 from keras.layers import AveragePooling2D, Input, Flatten
