@@ -20,6 +20,8 @@ from evaluation import eval_models
 from target_model_cifar import CNNModel
 from keras import backend
 
+from attacks.none import NoneAttack
+
 def main1():
     x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
 
@@ -154,14 +156,14 @@ def main7():
 
 def train_cifar10_robust():
     network = CNNModel()
-    network.train_on_cifar10(epochs=1, batch_size=64)
+    network.train_on_cifar10(epochs=10, batch_size=64)
     sess = backend.get_session()
 
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(), input_shape=(-1, 32, 32, 3))
 
     net = TurtleNet(network.model,
-                    ProjectedGradientDescent,
+                    NoneAttack,
                     0.1,
                     0,
                     1)
@@ -173,7 +175,7 @@ def train_cifar10_robust():
                              chunk_size=128,
                              batch_size=128,
                              epochs_per_iteration=1,
-                             checkpoint_dir='models_cifar10x',
+                             checkpoint_dir='models_cifar10None',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
                              checkpoint_filename="checkpoint",
