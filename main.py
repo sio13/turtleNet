@@ -156,14 +156,14 @@ def main7():
 
 def train_cifar10_robust():
     network = CNNModel()
-    network.train_on_cifar10(epochs=10, batch_size=64)
+    #network.train_on_cifar10(epochs=1, batch_size=64)
     sess = backend.get_session()
 
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(), input_shape=(-1, 32, 32, 3))
 
     net = TurtleNet(network.model,
-                    NoneAttack,
+                    ProjectedGradientDescent,
                     0.1,
                     0,
                     1)
@@ -175,11 +175,11 @@ def train_cifar10_robust():
                              chunk_size=128,
                              batch_size=128,
                              epochs_per_iteration=1,
-                             checkpoint_dir='models_cifar10None',
+                             checkpoint_dir='models_cifar10x',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
                              checkpoint_filename="checkpoint",
-                             ord=2)
+                             ord=np.inf)
 
 
 if __name__ == '__main__':
