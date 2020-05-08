@@ -5,5 +5,5 @@ class NoneAttack:
     def __init__(self, *args):
         pass
 
-    def generate_np(self, x: np_attay, **attack_params):
+    def generate_np(self, x: np.array, **attack_params):
         return x
