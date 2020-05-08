@@ -179,8 +179,7 @@ def train_cifar10_robust():
                              checkpoint_dir='models_cifar_better',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
-                             checkpoint_filename="checkpoint",
-                             ord=np.inf)
+                             checkpoint_filename="checkpoint")
 
 
 if __name__ == '__main__':

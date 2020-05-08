@@ -31,12 +31,11 @@ class Attack:
         self.clip_min = clip_min
         self.clip_max = clip_max
 
-    def generate_perturbations(self, original_samples, model, num_chunks: int, ord):
+    def generate_perturbations(self, original_samples, model, num_chunks: int):
         attack_params = {
             'eps': self.epsilon,
             'clip_min': self.clip_min,
             'clip_max': self.clip_max,
-            'ord': ord
         }
         wrapped_model = KerasModelWrapper(model)
         attack = self.attack_type(model=wrapped_model, sess=sess)

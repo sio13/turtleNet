@@ -55,8 +55,7 @@ class TurtleNet:
             self.perturbed_data = self.attack.generate_perturbations(
                 batch,
                 self.model,
-                max(len(batch) // chunk_size, 1),
-                ord=ord)
+                max(len(batch) // chunk_size, 1))
             self.model.train_on_batch(self.perturbed_data,
                            to_categorical(labels, num_classes=10))
             print(f"Iteration number {iteration}")
