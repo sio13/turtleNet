@@ -159,7 +159,6 @@ def main7():
 def train_cifar10_robust():
 
     network = CNNModel()
-    network.train_on_cifar10(1)
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(), input_shape=(-1, 32, 32, 3))
 
@@ -168,7 +167,7 @@ def train_cifar10_robust():
 
     net = TurtleNet(network.model,
                     ProjectedGradientDescent,
-                    0.1,
+                    0.3,
                     0,
                     1)
 
