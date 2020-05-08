@@ -61,10 +61,8 @@ class TurtleNet:
                 max(len(batch) // chunk_size, 1),
                 sess=sess,
                 ord=ord)
-            self.model.fit(self.perturbed_data,
-                           to_categorical(labels, num_classes=10),
-                           epochs=epochs_per_iteration,
-                           batch_size=batch_size)
+            self.model.train_on_batch(self.perturbed_data,
+                           to_categorical(labels, num_classes=10))
             print(f"Iteration number {iteration}")
             if make_checkpoints and iteration % checkpoint_frequency == 0:
                 checkpoint_full_path = f"{checkpoint_dir}/{checkpoint_filename}_{iteration}.h5"
