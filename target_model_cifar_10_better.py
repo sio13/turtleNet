@@ -25,6 +25,7 @@ from utils import get_keras_dataset
 
 class CNNModel:
     def __init__(self, custom_optimizer=None, input_shape=(32, 32, 3)):
+        weight_decay = 1e-4
         self.model = Sequential()
         self.model.add(Conv2D(32, (3, 3), padding='same', kernel_regularizer=regularizers.l2(weight_decay),
                               input_shape=input_shape))
