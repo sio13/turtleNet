@@ -23,12 +23,13 @@ from utils import chunk
 sess = backend.get_session()
 
 
-class Attackx:
+class Attack:
     def __init__(self, attack_type: cleverhans.attacks, epsilon: float, clip_min: float, clip_max: float):
         self.attack_type = attack_type
         self.epsilon = epsilon
         self.clip_min = clip_min
         self.clip_max = clip_max
+
     def generate_perturbations(self, original_samples, model, num_chunks: int):
         attack_params = {'eps': self.epsilon, 'clip_min': self.clip_min, 'clip_max': self.clip_max}
         wrapped_model = KerasModelWrapper(model)
