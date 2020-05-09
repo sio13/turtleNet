@@ -11,22 +11,28 @@ def chunk(it, size: int):
 
 
 def save_collage(filepath: str,
-                 batch: np.array,
+                 array: np.array,
                  rows: int,
                  columns: int,
                  width: int = 28,
                  height: int = 28,
                  color: int = 1):
-    batch = batch.reshape(batch.shape[0], width, height, color)
+    array = array.reshape(array.shape[0], width, height, color)
     fig, axs = plt.subplots(rows, columns)
     cnt = 0
     for i in range(rows):
         for j in range(columns):
-            axs[i, j].imshow((batch[cnt]))
+            axs[i, j].imshow((array[cnt]))
             axs[i, j].axis('off')
             cnt += 1
     fig.savefig(f"{filepath}.png")
     plt.close()
+
+
+def save_image(filepath: str,
+               array: np.array):
+    plt.imshow(array)
+    plt.savefig(f"{filepath}.png")
 
 
 def get_keras_dataset(data: tuple, input_shape=(-1, 28, 28, 1)) -> tuple:
@@ -35,9 +41,3 @@ def get_keras_dataset(data: tuple, input_shape=(-1, 28, 28, 1)) -> tuple:
     x_test = (x_test / 255).reshape(input_shape)
 
     return x_train, y_train, x_test, y_test
-
-
-def threshold_data(dataset: np.array, threshold: float):
-    dataset[dataset < threshold] = 0
-    dataset[dataset >= threshold] = 1
-    return dataset

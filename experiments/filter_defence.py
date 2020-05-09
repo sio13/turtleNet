@@ -19,7 +19,8 @@ import cleverhans
 import numpy as np
 import time
 
-from utils import get_keras_dataset, save_collage
+from utils import get_keras_dataset, save_collage, save_image
+from defences.filters import threshold_data
 from evaluation import eval_models
 
 from architectures.target_model_mnist import CNNModel as MnistNetwork
@@ -37,7 +38,9 @@ def filters_experiment(dataset_name: str,
                        clip_min: float,
                        clip_max: float,
                        attack_type: cleverhans.attacks,
-                       need_train: bool = False):
+                       need_train: bool = False,
+                       result_picture_image_dir: str = 'results',
+                       sample_image_index: int = 0):
     x_train, y_train, x_test, y_test = dataset
     network = compiled_model
 
@@ -64,13 +67,26 @@ def filters_experiment(dataset_name: str,
     print(f"Loss on {dataset_name} adversarial data: {results_adv[0]}, accuracy: {results_adv[1]}")
     print(f"{dataset_name} attack time: {end_time_attack - start_time_attack}")
 
+    filtered_adv_samples = threshold_data(adv_samples, threshold=0.5)
+    results_adv_filtered = model.evaluate(filtered_adv_samples, to_categorical(y_test))
+
+    print(f"Loss on {dataset_name} filtered adversarial data: {results_adv_filtered[0]}")
+    print(f"accuracy on {dataset_name} filtered adversarial data: {results_adv_filtered[1]}")
+
+    save_image(f"{result_picture_image_dir}/{dataset_name}_natural", x_test[sample_image_index])
+    save_image(f"{result_picture_image_dir}/{dataset_name}_adversarial", adv_samples[sample_image_index])
+    save_image(f"{result_picture_image_dir}/{dataset_name}_adversarial_filtered",
+               results_adv_filtered[sample_image_index])
+
+
+
 
 if __name__ == '__main__':
     cifar_model = CifarNetwork()
     mnist_model = MnistNetwork()
     target_attack = ProjectedGradientDescent
 
-    dataset_experiment(dataset_name='mnist',
+    filters_experiment(dataset_name='mnist',
                        dataset=get_keras_dataset(mnist.load_data()),
                        compiled_model=mnist_model,
                        epsilon=0.3,
@@ -79,7 +95,7 @@ if __name__ == '__main__':
                        attack_type=target_attack,
                        need_train=False)
 
-    dataset_experiment(dataset_name='cifar',
+    filters_experiment(dataset_name='cifar',
                        dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                        compiled_model=cifar_model,
                        epsilon=0.1,
