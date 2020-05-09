@@ -49,7 +49,7 @@ def dataset_experiment(dataset_name: str,
         end_time = time.time()
         print(f"{dataset_name.capitalize()} training took {end_time - start_time} seconds")
 
-    model = network.model if need_train else load_model(f"{dataset_name}_basic.h5")
+    model = network.model if need_train else load_model(f"models/{dataset_name}_basic.h5")
 
     results = model.evaluate(x_test, to_categorical(y_test))
     print(f"Loss on {dataset_name} natural data: {results[0]} and accuracy: {results[1]}")
