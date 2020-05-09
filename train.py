@@ -62,7 +62,7 @@ class TurtleNet:
 
     def eval_on_attack(self,
                        attack_type: cleverhans.attacks,
-                       epsilon: float,
+                       epsilon: float, # fix clipes ords strides
                        clip_min: float,
                        clip_max: float,
                        x_train: np.array,
