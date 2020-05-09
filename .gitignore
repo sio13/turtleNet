@@ -4,3 +4,6 @@
 nohup.out
 file.out
 __pycache__
+*.out
+models*
+experiments/models/
