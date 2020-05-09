@@ -61,7 +61,7 @@ def dataset_experiment(dataset_name: str,
     end_time_attack = time.time()
 
     results_adv = model.evaluate(adv_samples, to_categorical(y_test))
-    print(f"Loss on {dataset_name} adversarial data: {results_adv[0]}, accuracy: {mnist_resultsresults_adv[1]}")
+    print(f"Loss on {dataset_name} adversarial data: {results_adv[0]}, accuracy: {results_adv[1]}")
     print(f"{dataset_name} attack time: {end_time_attack - start_time_attack}")
 
 
