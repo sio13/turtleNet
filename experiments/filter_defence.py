@@ -29,40 +29,61 @@ from keras import backend
 
 sess = backend.get_session()
 
+
+def dataset_experiment(dataset_name: str,
+                       dataset: tuple,
+                       compiled_model,
+                       epsilon: float,
+                       clip_min: float,
+                       clip_max: float,
+                       attack_type: cleverhans.attacks,
+                       need_train: bool = False):
+    x_train, y_train, x_test, y_test = dataset
+    network = compiled_model
+
+    print(f"Experiment with {str(attack_type)} attack.")
+
+    if need_train:
+        start_time = time.time()
+        network.train(5, save_model=True, target_name=f"{dataset_name}_basic.h5")
+        end_time = time.time()
+        print(f"{dataset_name.capitalize()} training took {end_time - start_time} seconds")
+
+    model = network.model if need_train else load_model(f"{dataset_name}_basic.h5")
+
+    results = model.evaluate(x_test, to_categorical(y_test))
+    print(f"Loss on {dataset_name} natural data: {results[0]} and accuracy: {results[1]}")
+
+    adv_attack = attack.Attack(attack_type, epsilon, clip_min, clip_max)
+
+    start_time_attack = time.time()
+    adv_samples = adv_attack.generate_perturbations(x_test, model, 60)
+    end_time_attack = time.time()
+
+    results_adv = model.evaluate(adv_samples, to_categorical(y_test))
+    print(f"Loss on {dataset_name} adversarial data: {results_adv[0]}, accuracy: {mnist_resultsresults_adv[1]}")
+    print(f"{dataset_name} attack time: {end_time_attack - start_time_attack}")
+
+
 if __name__ == '__main__':
-    x_train_cifar, y_train_cifar, x_test_cifar, y_test_cifar = get_keras_dataset(
-        cifar10.load_data(), input_shape=(-1, 32, 32, 3))
-
-    x_train_mnist, y_train_mnist, x_test_mnist, y_test_mnist = get_keras_dataset(
-        mnist.load_data())
-
-    mnist_model = MnistNetwork()
     cifar_model = CifarNetwork()
+    mnist_model = MnistNetwork()
+    target_attack = ProjectedGradientDescent
 
-    start_time_mnist = time.time()
-    mnist_model.train_on_mnist(5, save_model=True, target_name="mnist_basic.h5")
-    end_time_mnist = time.time()
-    print(f"Mnist training took {end_time_mnist - start_time_mnist} seconds")
+    dataset_experiment(dataset_name='mnist',
+                       dataset=get_keras_dataset(mnist.load_data()),
+                       compiled_model=mnist_model,
+                       epsilon=0.3,
+                       clip_min=0,
+                       clip_max=1,
+                       attack_type=target_attack,
+                       need_train=False)
 
-    start_time_cifar = time.time()
-    cifar_model.train_on_cifar10(10, save_model=True, target_name="cifar_basic.h5")
-    end_time_cifar = time.time()
-    print(f"Cifar training took {end_time_cifar - start_time_cifar} seconds")
-
-    mnist_results = mnist_model.model.evaluate(x_test_mnist, to_categorical(y_test_mnist))
-    cifar_results = cifar_model.model.evaluate(x_test_cifar, to_categorical(y_test_cifar))
-
-    print(f"Loss on mnist natural data: {mnist_results[0]} and accuracy: {mnist_results[1]}")
-    print(f"Loss on cifar natural data: {cifar_results[0]} and accuracy: {cifar_results[1]}")
-
-    mnist_attack = attack.Attack(ProjectedGradientDescent, 0.3, 0, 1)
-    cifar_attack = attack.Attack(ProjectedGradientDescent, 0.1, 0, 1)
-
-    mnist_adv = mnist_attack.generate_perturbations(x_test_mnist, mnist_model.model, 60)
-    cifar_adv = cifar_attack.generate_perturbations(x_test_cifar, cifar_model.model, 60)
-
-    mnist_results_adv = print(mnist_model.model.evaluate(mnist_adv, to_categorical(y_test_mnist)))
-    cifar_results_adv = print(cifar_model.model.evaluate(cifar_adv, to_categorical(y_test_cifar)))
-
-    print(f"Loss on mnist PGD data: {mnist_results[0]} and accuracy: {mnist_results[1]}")
-    print(f"Loss on cifar PGD data: {cifar_results[0]} and accuracy: {cifar_results[1]}")
+    dataset_experiment(dataset_name='cifar',
+                       dataset=get_keras_dataset(get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3))),
+                       compiled_model=cifar_model,
+                       epsilon=0.1,
+                       clip_min=0,
+                       clip_max=1,
+                       attack_type=target_attack,
+                       need_train=False)

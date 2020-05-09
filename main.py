@@ -29,8 +29,8 @@ def main1():
     target_attack = attack.Attack(BasicIterativeMethod, 0.3, 0, 1)
 
     net = CNNModel()
-    net.train_on_mnist()
-    net.test_on_mnist()
+    net.train()
+    net.test()
     # model = load_model("models/conv_nn.h5")
 
     pert = target_attack.generate_perturbations(np.array(x_train), net.model, 6)
@@ -43,7 +43,7 @@ def main2():
 
     network = CNNModel()
     # network.train_on_mnist()
-    print(network.test_on_mnist())
+    print(network.test())
 
     net = TurtleNet(network.model, FastGradientMethod, 0.3, 0, 1)
 
@@ -87,7 +87,7 @@ def main4():
     """
 
     network = CNNModel()
-    network.train_on_mnist()
+    network.train()
     network.save_model("models_natural/conv_nn.h5")
 
     eval_models(attack_types=[MomentumIterativeMethod,
@@ -157,7 +157,7 @@ def main7():
 
 def train_cifar10_robust():
     network_better = CNNModel()
-    network_better.train_on_cifar10(1)
+    network_better.train(1)
     # model_resnet = load_model("models/resnet_raw.h5")
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(), input_shape=(-1, 32, 32, 3))
