@@ -165,7 +165,7 @@ def train_cifar10_robust():
 
     net = TurtleNet(model,
                     ProjectedGradientDescent,
-                    0.3)
+                    0.1)
 
     net.adversarial_training(iterations=15000,
                              x_train=x_train,
