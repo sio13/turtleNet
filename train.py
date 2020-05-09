@@ -8,12 +8,19 @@ from utils import save_collage
 
 class TurtleNet:
     def __init__(self,
-                 model,
+                 train_model,
                  attack_type: cleverhans.attacks,
                  epsilon: float,
                  clip_min: float,
-                 clip_max: float):
-        self.model = model
+                 clip_max: float,
+                 target_model=None,
+                 use_different_target=False):
+        self.train_model = train_model
+        if use_different_target:
+            self.target_model = target_model
+        else:
+            self.target_model = train_model
+
         self.clip_min = clip_min
         self.clip_max = clip_max
         self.attack = Attack(attack_type, epsilon, self.clip_min, self.clip_max)
@@ -54,10 +61,12 @@ class TurtleNet:
 
             self.perturbed_data = self.attack.generate_perturbations(
                 batch,
-                self.model,
+                self.target_model,
                 max(len(batch) // chunk_size, 1))
-            self.model.train_on_batch(self.perturbed_data,
-                                      to_categorical(labels, num_classes=10))
+            self.train_model.train_on_batch(self.perturbed_data,
+                                            to_categorical(labels, num_classes=10))
+            self.target_model.train_on_batch(self.perturbed_data,
+                                             to_categorical(labels, num_classes=10))
             print(f"Iteration number {iteration}")
             if make_checkpoints and iteration % checkpoint_frequency == 0:
                 checkpoint_full_path = f"{checkpoint_dir}/{checkpoint_filename}_{iteration}.h5"
@@ -66,17 +75,17 @@ class TurtleNet:
 
     def eval_on_attack(self,
                        attack_type: cleverhans.attacks,
-                       epsilon: float,  # fix clipes ords strides
+                       epsilon: float,
                        clip_min: float,
                        clip_max: float,
                        x_train: np.array,
                        y_train: np.array,
                        chunk_size: int):
 
-        evaluation_attack = Attack(attack_type, epsilon)
-        self.perturbed_data = evaluation_attack.generate_perturbations(np.array(x_train), self.model,
+        evaluation_attack = Attack(attack_type, epsilon, clip_min, clip_max)
+        self.perturbed_data = evaluation_attack.generate_perturbations(np.array(x_train), self.target_model,
                                                                        len(x_train) // chunk_size)
-        results = self.model.evaluate(self.perturbed_data, to_categorical(y_train))
+        results = self.train_model.evaluate(self.perturbed_data, to_categorical(y_train))
 
         print(f"Total loss of target model is {results[0]} and its accuracy is {results[1]}")
 
@@ -94,4 +103,4 @@ class TurtleNet:
 
     def save_model(self, model_path: str):
         print(f"Saving model into {model_path}")
-        self.model.save(model_path)
+        self.train_model.save(model_path)

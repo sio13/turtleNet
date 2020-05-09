@@ -158,22 +158,22 @@ def main7():
 
 
 def train_cifar10_robust():
-    network = CNNModel()
-    network.train_on_cifar10(1)
-    # model = load_model("models/resnet_raw.h5")
+    network_better = CNNModel()
+    network_better.train_on_cifar10(1)
+    model_resnet = load_model("models/resnet_raw.h5")
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(), input_shape=(-1, 32, 32, 3))
 
-    net = TurtleNet(network.model,
-                    ProjectedGradientDescent,
-                    0.1, 0, 1)
+    net = TurtleNet(train_model=model_resnet,
+                    attack_type=ProjectedGradientDescent,
+                    epsilon=0.1, clip_min=0, clip_max=1, use_different_target=True, target_model=network_better.model)
 
     net.adversarial_training(iterations=15000,
                              x_train=x_train,
                              y_train=y_train,
                              chunk_size=128,
                              batch_size=128,
-                             checkpoint_dir='models_cifar_better',
+                             checkpoint_dir='models_cifar_advbetter_trainresnet',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
                              checkpoint_filename="checkpoint")
