@@ -80,7 +80,7 @@ if __name__ == '__main__':
                        need_train=False)
 
     dataset_experiment(dataset_name='cifar',
-                       dataset=get_keras_dataset(get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3))),
+                       dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                        compiled_model=cifar_model,
                        epsilon=0.1,
                        clip_min=0,
