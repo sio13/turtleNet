@@ -3,7 +3,7 @@ import os
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 
 import attack
-from train import TurtleNet
+from defences.train import TurtleNet
 
 from architectures.target_model_mnist import CNNModel
 from keras.datasets import cifar10

@@ -7,7 +7,7 @@ import sys
 sys.path.append('../')
 
 import attack
-from train import TurtleNet
+from defences.train import TurtleNet
 
 from architectures.target_model_mnist import CNNModel
 from keras.datasets import mnist, cifar10
@@ -30,7 +30,7 @@ from keras import backend
 sess = backend.get_session()
 
 
-def dataset_experiment(dataset_name: str,
+def filters_experiment(dataset_name: str,
                        dataset: tuple,
                        compiled_model,
                        epsilon: float,

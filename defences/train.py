@@ -1,3 +1,7 @@
+import sys
+
+sys.path.append('../')
+
 import cleverhans
 import numpy as np
 
