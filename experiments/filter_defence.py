@@ -17,6 +17,7 @@ from keras.utils import to_categorical
 from cleverhans.attacks import *
 import cleverhans
 import numpy as np
+import time
 
 from utils import get_keras_dataset, save_collage
 from evaluation import eval_models
