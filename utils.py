@@ -5,7 +5,6 @@ from keras.datasets import mnist, cifar10
 import matplotlib.pyplot as plt
 
 
-
 def chunk(it, size: int):
     iter_list = iter(it)
     return iter(lambda: tuple(islice(iter_list, size)), ())
@@ -30,7 +29,7 @@ def save_collage(filepath: str,
     plt.close()
 
 
-def get_keras_dataset(data: tuple, input_shape = (-1, 28, 28, 1)) -> tuple:
+def get_keras_dataset(data: tuple, input_shape=(-1, 28, 28, 1)) -> tuple:
     (x_train, y_train), (x_test, y_test) = data
     x_train = (x_train / 255).reshape(input_shape)
     x_test = (x_test / 255).reshape(input_shape)
@@ -38,3 +37,7 @@ def get_keras_dataset(data: tuple, input_shape = (-1, 28, 28, 1)) -> tuple:
     return x_train, y_train, x_test, y_test
 
 
+def threshold_data(dataset: np.array, threshold: float):
+    dataset[dataset < threshold] = 0
+    dataset[dataset >= threshold] = 1
+    return dataset

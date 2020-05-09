@@ -5,7 +5,7 @@ os.environ['KERAS_BACKEND'] = 'tensorflow'
 import attack
 from train import TurtleNet
 
-from architectures.target_model import CNNModel
+from architectures.target_model_mnist import CNNModel
 from keras.datasets import cifar10
 from keras.models import load_model
 from keras.utils import to_categorical
@@ -14,13 +14,11 @@ from cleverhans.attacks import *
 import cleverhans
 import numpy as np
 
-from utils import get_keras_dataset, save_collage
+from utils import get_keras_dataset, save_collage, threshold_data
 from evaluation import eval_models
 
 from architectures.target_model_cifar_10_better import CNNModel
 from keras import backend
-
-from attacks.none import NoneAttack
 
 sess = backend.get_session()
 
@@ -50,7 +48,7 @@ def main2():
     net = TurtleNet(network.model, FastGradientMethod, 0.3, 0, 1)
 
     net.adversarial_training(iterations=3000, x_train=x_train, y_train=y_train, chunk_size=50,
-                             epochs_per_iteration=3, batch_size=50, make_checkpoints=True,
+                             batch_size=50, make_checkpoints=True,
                              checkpoint_dir='models_fgsm/')
 
     net.eval_on_attack(ProjectedGradientDescent, 0.3, 0, 1, x_test, y_test, chunk_size=50)
@@ -160,7 +158,7 @@ def main7():
 def train_cifar10_robust():
     network_better = CNNModel()
     network_better.train_on_cifar10(1)
-    #model_resnet = load_model("models/resnet_raw.h5")
+    # model_resnet = load_model("models/resnet_raw.h5")
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(), input_shape=(-1, 32, 32, 3))
 
