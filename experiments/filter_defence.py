@@ -74,11 +74,14 @@ def filters_experiment(dataset_name: str,
     print(f"accuracy on {dataset_name} filtered adversarial data: {results_adv_filtered[1]}")
 
     save_image(f"{result_picture_image_dir}/{dataset_name}_natural", x_test[sample_image_index])
+    print(f"saved natural image to {result_picture_image_dir}/{dataset_name}_natural")
+
     save_image(f"{result_picture_image_dir}/{dataset_name}_adversarial", adv_samples[sample_image_index])
+    print(f"adversarial natural image to {result_picture_image_dir}/{dataset_name}_adversarial")
+
     save_image(f"{result_picture_image_dir}/{dataset_name}_adversarial_filtered",
-               results_adv_filtered[sample_image_index])
-
-
+               filtered_adv_samples[sample_image_index])
+    print(f"adversarial filtered natural image to {result_picture_image_dir}/{dataset_name}_adversarial_filtered")
 
 
 if __name__ == '__main__':
