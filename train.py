@@ -56,8 +56,8 @@ class TurtleNet:
 
             print(f"Generating samples for slice from {batch_index_start} to {batch_index_end}.")
 
-            batch = np.array(x_train)[batch_index_start:batch_index_end]
-            labels = np.array(y_train)[batch_index_start:batch_index_end]
+            batch = np.array(x_train[batch_index_start:batch_index_end])
+            labels = np.array(y_train[batch_index_start:batch_index_end])
 
             self.perturbed_data = self.attack.generate_perturbations(
                 batch,
