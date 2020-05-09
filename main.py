@@ -159,6 +159,7 @@ def main7():
 
 def train_cifar10_robust():
     network = CNNModel()
+    network.train_on_cifar10(1)
     # model = load_model("models/resnet_raw.h5")
     x_train, y_train, x_test, y_test = get_keras_dataset(
         cifar10.load_data(), input_shape=(-1, 32, 32, 3))
