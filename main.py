@@ -6,7 +6,7 @@ import attack
 from defences.train import TurtleNet
 
 from architectures.target_model_mnist import CNNModel
-from keras.datasets import cifar10
+from keras.datasets import cifar10,mnist
 from keras.models import load_model
 from keras.utils import to_categorical
 

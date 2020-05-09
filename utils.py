@@ -17,12 +17,13 @@ def save_collage(filepath: str,
                  width: int = 28,
                  height: int = 28,
                  color: int = 1):
+
     array = array.reshape(array.shape[0], width, height, color)
     fig, axs = plt.subplots(rows, columns)
     cnt = 0
     for i in range(rows):
         for j in range(columns):
-            axs[i, j].imshow((array[cnt]))
+            axs[i, j].imshow(np.squeeze(array[cnt]))
             axs[i, j].axis('off')
             cnt += 1
     fig.savefig(f"{filepath}.png")
@@ -31,7 +32,7 @@ def save_collage(filepath: str,
 
 def save_image(filepath: str,
                array: np.array):
-    plt.imshow(array)
+    plt.imshow(np.squeeze(array))
     plt.savefig(f"{filepath}.png")
 
 
