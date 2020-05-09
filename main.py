@@ -5,7 +5,7 @@ os.environ['KERAS_BACKEND'] = 'tensorflow'
 import attack
 from train import TurtleNet
 
-from target_model import CNNModel
+from architectures.target_model import CNNModel
 from keras.datasets import cifar10
 from keras.models import load_model
 from keras.utils import to_categorical
@@ -17,7 +17,7 @@ import numpy as np
 from utils import get_keras_dataset, save_collage
 from evaluation import eval_models
 
-from target_model_cifar_10_better import CNNModel
+from architectures.target_model_cifar_10_better import CNNModel
 from keras import backend
 
 from attacks.none import NoneAttack
@@ -77,7 +77,7 @@ def main3():
                 clip_max=1,
                 num_chunks=1,
                 save_to_file=True,
-                results_file_path="results/models_fgsm.json",
+                results_file_path="results/json/models_fgsm.json",
                 folder_name="models_fgsm",
                 prefix="checkpoint_",
                 suffix=".h5")
@@ -103,7 +103,7 @@ def main4():
                 clip_max=1,
                 num_chunks=1,
                 save_to_file=True,
-                results_file_path="results/model_natural.json",
+                results_file_path="results/json/model_natural.json",
                 folder_name="models_natural",
                 folder_list=["conv_nn_0.h5"],
                 prefix="conv_nn_",

@@ -5,7 +5,7 @@ def main():
 
     pictures = '../result_pictures_fgsm'
 
-    df_all_models = pd.read_json(open("../results//models_fgsm.json"))
+    df_all_models = pd.read_json(open("../results/json/models_fgsm.json"))
     print(df_all_models)
     attacks = list(df_all_models.attack.unique())
     for attack in attacks:
