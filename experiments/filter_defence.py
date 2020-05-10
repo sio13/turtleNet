@@ -92,13 +92,13 @@ def filters_experiment(dataset_name: str,
                            columns=columns,
                            sample_image_index=sample_image_index)
 
-    save_image_and_collage(result_picture_image_dir,
-                           dataset_name,
-                           filtered_adv_samples[:9],
-                           'adversarial_filtered',
-                           rows,
-                           columns,
-                           sample_image_index)
+    save_image_and_collage(dir_path=result_picture_image_dir,
+                           image_name=dataset_name,
+                           array=filtered_adv_samples[:9],
+                           image_type='adversarial_filtered',
+                           rows=rows,
+                           columns=columns,
+                           sample_image_index=sample_image_index)
 
 
 if __name__ == '__main__':
