@@ -20,6 +20,7 @@ class CNNModelMnist(CNNModel):
     def __init__(self, num_classes: int = 10, custom_optimizer=None, input_shape=(28, 28, 1)):
         super().__init__(num_classes)
 
+        self.input_shape = input_shape
         x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
         self.x_train = x_train
         self.y_train = y_train

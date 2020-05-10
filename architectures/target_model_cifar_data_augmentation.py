@@ -32,6 +32,8 @@ class CNNMCifarModelAugmentation(CNNModel):
                  learning_rate: float = 0.001, num_classes: int = 10):
         super().__init__(num_classes)
 
+        self.input_shape = input_shape
+
         x_train, y_train, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=self.input_shape)
         self.x_train = x_train
         self.x_test = x_test
@@ -40,7 +42,7 @@ class CNNMCifarModelAugmentation(CNNModel):
 
         self.learning_rate = learning_rate
         self.weight_decay = weight_decay
-        self.input_shape = input_shape
+
 
         self.custom_optimizer = custom_optimizer
 

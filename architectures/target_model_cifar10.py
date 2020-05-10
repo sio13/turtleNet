@@ -20,6 +20,7 @@ class SCNNCifar10Model(CNNModel):
     def __init__(self, num_classes: int = 10, custom_optimizer=None, input_shape=(32, 32, 3)):
         super().__init__(num_classes)
 
+        self.input_shape = input_shape
         x_train, y_train, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=self.input_shape)
         self.x_train = x_train
         self.x_test = x_test
