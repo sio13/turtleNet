@@ -12,11 +12,20 @@ from keras.optimizers import RMSprop
 from keras.datasets import mnist
 from keras.utils import to_categorical
 
+from architectures.target_model import CNNModel
 from utils import get_keras_dataset
 
 
-class CNNModelMnist:
-    def __init__(self, custom_optimizer=None, input_shape=(28, 28, 1)):
+class CNNModelMnist(CNNModel):
+    def __init__(self, num_classes: int = 10, custom_optimizer=None, input_shape=(28, 28, 1)):
+        super().__init__(num_classes)
+
+        x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
+        self.x_train = x_train
+        self.y_train = y_train
+        self.x_test = x_test
+        self.y_test = y_test
+
         self.model = Sequential()
 
         self.model.add(Conv2D(filters=32, kernel_size=(5, 5), padding='Same',
@@ -43,13 +52,10 @@ class CNNModelMnist:
     def train(self, epochs=5, target_name="conv_nn.h5", batch_size=64, save_model=False):
         x_train, y_train, _, _ = get_keras_dataset(mnist.load_data())
 
-        self.model.fit(x_train, to_categorical(y_train, num_classes=10), epochs=epochs, batch_size=batch_size)
+        self.model.fit(x_train, to_categorical(y_train, num_classes=self.num_classes), epochs=epochs,
+                       batch_size=batch_size)
         if save_model:
             self.model.save(f"models/{target_name}")
-
-    def test(self):
-        _, _, x_test, y_test = get_keras_dataset(mnist.load_data())
-        return self.model.evaluate(x_test, to_categorical(y_test, num_classes=10))
 
     def save_model(self, model_path: str):
         print(f"Saving model into {model_path}")

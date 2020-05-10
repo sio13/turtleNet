@@ -1,3 +1,10 @@
+import os
+
+os.environ['KERAS_BACKEND'] = 'tensorflow'
+from keras import backend as K
+
+K.tensorflow_backend._get_available_gpus()
+
 import keras
 from keras.models import Sequential
 from keras.utils import np_utils
@@ -9,13 +16,7 @@ from keras import regularizers
 from keras.callbacks import LearningRateScheduler
 import numpy as np
 
-import os
-import numpy as np
-
-os.environ['KERAS_BACKEND'] = 'tensorflow'
-from keras import backend as K
-
-K.tensorflow_backend._get_available_gpus()
+from architectures.target_model import CNNModel
 
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D
@@ -26,12 +27,11 @@ from keras.utils import to_categorical
 from utils import get_keras_dataset
 
 
-class CNNMCifarModelAugmentation:
-    def __init__(self,
-                 custom_optimizer=None,
-                 input_shape=(-1, 32, 32, 3),
-                 weight_decay: float = 1e-4,
-                 learning_rate: float = 0.001):
+class CNNMCifarModelAugmentation(CNNModel):
+    def __init__(self, custom_optimizer=None, input_shape=(-1, 32, 32, 3), weight_decay: float = 1e-4,
+                 learning_rate: float = 0.001, num_classes: int = 10):
+        super().__init__(num_classes)
+
         x_train, y_train, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=self.input_shape)
         self.x_train = x_train
         self.x_test = x_test
@@ -93,7 +93,10 @@ class CNNMCifarModelAugmentation:
               target_name="conv_nn_cifar.h5",
               save_model=False):
 
-        self.model.fit(self.x_train, to_categorical(self.y_train, num_classes=10), epochs=epochs, batch_size=batch_size)
+        self.model.fit(self.x_train,
+                       to_categorical(self.y_train, num_classes=self.num_classes),
+                       epochs=epochs,
+                       batch_size=batch_size)
         if save_model:
             self.model.save(f"models/{target_name}")
 
@@ -118,9 +121,6 @@ class CNNMCifarModelAugmentation:
 
         if save_model:
             self.model.save(f"models/{target_name}")
-
-    def test(self):
-        return self.model.evaluate(self.x_test, to_categorical(self.y_test, num_classes=10))
 
     def save_model(self, model_path: str):
         print(f"Saving model into {model_path}")

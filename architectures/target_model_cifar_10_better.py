@@ -20,11 +20,20 @@ from keras.optimizers import RMSprop, SGD
 from keras.datasets import cifar10
 from keras.utils import to_categorical
 
+from architectures.target_model import CNNModel
 from utils import get_keras_dataset
 
 
-class CNNCifar10Model:
-    def __init__(self, custom_optimizer=None, input_shape=(32, 32, 3)):
+class CNNCifar10Model(CNNModel):
+    def __init__(self, num_classes: int = 10, custom_optimizer=None, input_shape=(32, 32, 3)):
+        super().__init__(num_classes)
+
+        x_train, y_train, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=self.input_shape)
+        self.x_train = x_train
+        self.x_test = x_test
+        self.y_train = y_train
+        self.y_test = y_test
+
         weight_decay = 1e-4
         self.model = Sequential()
         self.model.add(Conv2D(32, (3, 3), padding='same', kernel_regularizer=regularizers.l2(weight_decay),
@@ -67,10 +76,6 @@ class CNNCifar10Model:
         self.model.fit(x_train, to_categorical(y_train, num_classes=10), epochs=epochs, batch_size=batch_size)
         if save_model:
             self.model.save(f"models/{target_name}")
-
-    def test(self):
-        _, _, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3))
-        return self.model.evaluate(x_test, to_categorical(y_test, num_classes=10))
 
     def save_model(self, model_path: str):
         print(f"Saving model into {model_path}")
