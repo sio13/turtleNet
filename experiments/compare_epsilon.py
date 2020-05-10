@@ -56,7 +56,7 @@ def compare_epsilon(dataset_name: str,
 
     save_image_and_collage(dir_path=result_picture_image_dir,
                            image_name=dataset_name,
-                           array=x_test[:9],
+                           array=x_test[:rows*columns],
                            image_type='natural',
                            rows=rows,
                            columns=columns,
@@ -65,12 +65,12 @@ def compare_epsilon(dataset_name: str,
     for epsilon in epsilons:
         adv_attack = attack.Attack(attack_type, epsilon, clip_min, clip_max)
         start_time_attack = time.time()
-        adv_samples = adv_attack.generate_perturbations(np.array(x_test), model, 60)
+        adv_samples = adv_attack.generate_perturbations(np.array(x_test[:rows*columns]), model, 60)
         end_time_attack = time.time()
 
         save_image_and_collage(dir_path=result_picture_image_dir,
                                image_name=dataset_name,
-                               array=adv_samples[:9],
+                               array=adv_samples,
                                image_type=f'adversarial_epsilon{epsilon}',
                                rows=rows,
                                columns=columns,
@@ -92,7 +92,7 @@ if __name__ == '__main__':
                     clip_max=1,
                     epochs=5,
                     attack_type=ProjectedGradientDescent,
-                    need_train=True)
+                    need_train=False)
 
     compare_epsilon(dataset_name='cifar10',
                     dataset=get_keras_dataset(cifar10.load_data()),
@@ -102,4 +102,4 @@ if __name__ == '__main__':
                     clip_max=1,
                     epochs=10,
                     attack_type=ProjectedGradientDescent,
-                    need_train=True)
+                    need_train=False)
