@@ -17,7 +17,6 @@ def save_collage(filepath: str,
                  width: int = 28,
                  height: int = 28,
                  color: int = 1):
-
     array = array.reshape(array.shape[0], width, height, color)
     fig, axs = plt.subplots(rows, columns)
     cnt = 0
@@ -35,6 +34,28 @@ def save_image(filepath: str,
     plt.imshow(np.squeeze(array))
     plt.axis('off')
     plt.savefig(f"{filepath}.png")
+
+
+def save_image_and_collage(dir_path: str,
+                           image_name: str,
+                           array: np.array,
+                           image_type: str,
+                           rows: int,
+                           columns: int,
+                           sample_image_index: int = 0
+                           ):
+    save_image(f"{dir_path}/{image_name}_{image_type}_image",
+               adv_samples[sample_image_index])
+
+    save_collage(f"{dir_path}/{image_name}_{image_type}_collage",
+                 adv_samples[:9],
+                 rows,
+                 columns,
+                 array.shape[1],
+                 array.shape[2],
+                 array.shape[3])
+    print(f"Saving image {dir_path}/{image_name}_{image_type}_image")
+    print(f"Saving collage {dir_path}/{image_name}_{image_type}_collage")
 
 
 def get_keras_dataset(data: tuple, input_shape=(-1, 28, 28, 1)) -> tuple:

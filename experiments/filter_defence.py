@@ -18,7 +18,7 @@ import cleverhans
 import numpy as np
 import time
 
-from utils import get_keras_dataset, save_collage, save_image
+from utils import get_keras_dataset, save_image_and_collage
 from defences.filters import threshold_data
 from evaluation import eval_models
 
@@ -39,7 +39,7 @@ def filters_experiment(dataset_name: str,
                        attack_type: cleverhans.attacks,
                        need_train: bool = False,
                        result_picture_image_dir: str = 'results',
-                       sample_image_index: int = 1):
+                       sample_image_index: int = 2):
     x_train, y_train, x_test, y_test = dataset
     network = compiled_model
 
@@ -67,20 +67,38 @@ def filters_experiment(dataset_name: str,
     print(f"Loss on {dataset_name} adversarial data: {results_adv[0]}, accuracy: {results_adv[1]}")
     print(f"{dataset_name} attack time: {end_time_attack - start_time_attack}")
 
-    filtered_adv_samples = threshold_data(adv_samples, threshold=0.5) # pozot vazna chyba
+    filtered_adv_samples = threshold_data(adv_samples, threshold=0.5)  # pozot vazna chyba
     results_adv_filtered = model.evaluate(filtered_adv_samples, to_categorical(y_test))
 
     print(f"Loss on {dataset_name} filtered adversarial data: {results_adv_filtered[0]}")
     print(f"accuracy on {dataset_name} filtered adversarial data: {results_adv_filtered[1]}")
 
-    save_image(f"{result_picture_image_dir}/{dataset_name}_natural", x_test[sample_image_index])
-    print(f"saved natural image to {result_picture_image_dir}/{dataset_name}_natural")
+    rows = 3
+    columns = 3
 
-    save_image(f"{result_picture_image_dir}/{dataset_name}_adversarial", adv_samples[sample_image_index])
-    print(f"adversarial natural image to {result_picture_image_dir}/{dataset_name}_adversarial")
+    save_image_and_collage(result_picture_image_dir,
+                           dataset_name,
+                           x_test[:9],
+                           'natural',
+                           rows,
+                           columns,
+                           sample_image_index)
 
-    save_image(f"{result_picture_image_dir}/{dataset_name}_adversarial_filtered", filtered_adv_samples[sample_image_index])
-    print(f"adversarial filtered natural image to {result_picture_image_dir}/{dataset_name}_adversarial_filtered")
+    save_image_and_collage(result_picture_image_dir,
+                           dataset_name,
+                           adv_samples[:9],
+                           'adversarial',
+                           rows,
+                           columns,
+                           sample_image_index)
+
+    save_image_and_collage(result_picture_image_dir,
+                           dataset_name,
+                           filtered_adv_samples[:9],
+                           'adversarial_filtered',
+                           rows,
+                           columns,
+                           sample_image_index)
 
 
 if __name__ == '__main__':
