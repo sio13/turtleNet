@@ -47,7 +47,11 @@ def filters_experiment(dataset_name: str,
 
     model = load_or_train_model(compiled_model=compiled_model,
                                 dataset_name=dataset_name,
-                                need_train=False)
+                                epochs=epochs,
+                                models_dir_name='models',
+                                model_type='basic',
+                                need_train=need_train
+                                )
 
     results = model.evaluate(x_test, to_categorical(y_test))
     print_evaluation(dataset_name=dataset_name,

@@ -4,6 +4,8 @@ from itertools import islice
 from keras.datasets import mnist, cifar10
 import matplotlib.pyplot as plt
 
+from kerar.models import load_model
+
 
 def chunk(it, size: int):
     iter_list = iter(it)
