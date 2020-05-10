@@ -9,7 +9,6 @@ sys.path.append('../')
 import attack
 from defences.train import TurtleNet
 
-from architectures.target_model_mnist import CNNModel
 from keras.datasets import mnist, cifar10
 from keras.models import load_model
 from keras.utils import to_categorical
@@ -64,10 +63,11 @@ def filters_experiment(dataset_name: str,
     end_time_attack = time.time()
 
     results_adv = model.evaluate(adv_samples, to_categorical(y_test))
+
     print(f"Loss on {dataset_name} adversarial data: {results_adv[0]}, accuracy: {results_adv[1]}")
     print(f"{dataset_name} attack time: {end_time_attack - start_time_attack}")
 
-    filtered_adv_samples = threshold_data(adv_samples, threshold=0.5)
+    filtered_adv_samples = threshold_data(np.array(adv_samples), threshold=0.5)
     results_adv_filtered = model.evaluate(filtered_adv_samples, to_categorical(y_test))
 
     print(f"Loss on {dataset_name} filtered adversarial data: {results_adv_filtered[0]}")
@@ -86,7 +86,6 @@ def filters_experiment(dataset_name: str,
 if __name__ == '__main__':
     cifar_model = CifarNetwork()
     mnist_model = MnistNetwork()
-    target_attack = ProjectedGradientDescent
 
     filters_experiment(dataset_name='mnist',
                        dataset=get_keras_dataset(mnist.load_data()),
@@ -94,7 +93,7 @@ if __name__ == '__main__':
                        epsilon=0.3,
                        clip_min=0,
                        clip_max=1,
-                       attack_type=target_attack,
+                       attack_type=ProjectedGradientDescent,
                        need_train=False)
 
     filters_experiment(dataset_name='cifar',
@@ -103,5 +102,5 @@ if __name__ == '__main__':
                        epsilon=0.1,
                        clip_min=0,
                        clip_max=1,
-                       attack_type=target_attack,
+                       attack_type=ProjectedGradientDescent,
                        need_train=False)

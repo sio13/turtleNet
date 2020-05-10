@@ -14,7 +14,7 @@ from cleverhans.attacks import *
 import cleverhans
 import numpy as np
 
-from utils import get_keras_dataset, save_collage, threshold_data
+from utils import get_keras_dataset, save_collage, save_image
 from evaluation import eval_models
 
 from architectures.target_model_cifar_10_better import CNNModel
