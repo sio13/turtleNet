@@ -39,7 +39,7 @@ def compare_damage(dataset_name: str,
                    clip_max: float = None,
                    epochs: int = 5,
                    need_train: bool = False,
-                   result_dir: str = 'results/compare_damage',
+                   result_dir: str = 'results/json/compare_damage',
                    result_filename='natural_trained'):
     model = load_or_train_model(compiled_model=compiled_model,
                                 dataset_name=dataset_name,
