@@ -28,3 +28,25 @@ from architectures.target_model_cifar_10_better import CNNModel as CifarNetwork
 from keras import backend
 
 sess = backend.get_session()
+
+
+def compare_epsilon(dataset_name: str,
+                    dataset: tuple,
+                    compiled_model,
+                    epsilons: list,
+                    clip_min: float,
+                    clip_max: float,
+                    attack_type: cleverhans.attacks,
+                    epochs: int = 5,
+                    need_train: bool = False,
+                    result_picture_image_dir: str = 'results',
+                    sample_image_index: int = 2):
+    x_train, y_train, x_test, y_test = dataset
+
+    model = load_or_train_model(compiled_model=compiled_model,
+                                dataset_name=dataset_name,
+                                epochs=epochs,
+                                models_dir_name='models',
+                                model_type='compare_epsilon',
+                                need_train=need_train
+                                )
