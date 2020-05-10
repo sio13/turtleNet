@@ -18,7 +18,7 @@ import cleverhans
 import numpy as np
 import time
 
-from utils import get_keras_dataset, save_image_and_collage, print_evaluation
+from utils import get_keras_dataset, save_image_and_collage, print_evaluation, load_or_train_model
 from defences.filters import threshold_data
 from evaluation import eval_models
 
@@ -37,21 +37,17 @@ def filters_experiment(dataset_name: str,
                        clip_min: float,
                        clip_max: float,
                        attack_type: cleverhans.attacks,
+                       epochs: int = 5,
                        need_train: bool = False,
                        result_picture_image_dir: str = 'results',
                        sample_image_index: int = 2):
     x_train, y_train, x_test, y_test = dataset
-    network = compiled_model
 
     print(f"Experiment with {str(attack_type)} attack on {dataset_name} dataset.")
 
-    if need_train:
-        start_time = time.time()
-        network.train(5, save_model=True, target_name=f"{dataset_name}_basic.h5")
-        end_time = time.time()
-        print(f"{dataset_name.capitalize()} training took {end_time - start_time} seconds")
-
-    model = network.model if need_train else load_model(f"models/{dataset_name}_basic.h5")
+    model = load_or_train_model(compiled_model=compiled_model,
+                                dataset_name=dataset_name,
+                                need_train=False)
 
     results = model.evaluate(x_test, to_categorical(y_test))
     print_evaluation(dataset_name=dataset_name,

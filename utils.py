@@ -68,3 +68,19 @@ def get_keras_dataset(data: tuple, input_shape=(-1, 28, 28, 1)) -> tuple:
 
 def print_evaluation(dataset_name: str, dataset_type: str, eval_tuple: tuple):
     print(f"Loss on {dataset_name} {dataset_type} data: {eval_tuple[0]}, accuracy: {eval_tuple[1]}")
+
+
+def load_or_train_model(compiled_model,
+                        dataset_name: str,
+                        epochs: int = 5,
+                        models_dir_name: str = 'models',
+                        model_type: str = 'basic',
+                        need_train=False):
+    network = compiled_model
+    if need_train:
+        start_time = time.time()
+        network.train(epochs, save_model=True, target_name=f"{dataset_name}_{model_type}.h5")
+        end_time = time.time()
+        print(f"{dataset_name.capitalize()} training took {end_time - start_time} seconds")
+
+    return network.model if need_train else load_model(f"{models_dir_name}/{dataset_name}_{model_type}.h5")
