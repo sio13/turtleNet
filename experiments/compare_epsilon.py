@@ -39,7 +39,7 @@ def compare_epsilon(dataset_name: str,
                     attack_type: cleverhans.attacks,
                     epochs: int = 5,
                     need_train: bool = False,
-                    result_picture_image_dir: str = 'results',
+                    result_picture_image_dir: str = 'results/compare_epsilon',
                     sample_image_index: int = 2):
     x_train, y_train, x_test, y_test = dataset
 
@@ -50,3 +50,31 @@ def compare_epsilon(dataset_name: str,
                                 model_type='compare_epsilon',
                                 need_train=need_train
                                 )
+
+    rows = 3
+    columns = 3
+
+    save_image_and_collage(dir_path=result_picture_image_dir,
+                           image_name=dataset_name,
+                           array=x_test[:9],
+                           image_type='natural',
+                           rows=rows,
+                           columns=columns,
+                           sample_image_index=sample_image_index)
+
+    for epsilon in epsilons:
+        adv_attack = attack.Attack(attack_type, epsilon, clip_min, clip_max)
+        start_time_attack = time.time()
+        adv_samples = adv_attack.generate_perturbations(np.array(x_test), model, 60)
+        end_time_attack = time.time()
+
+        save_image_and_collage(dir_path=result_picture_image_dir,
+                               image_name=dataset_name,
+                               array=adv_samples[:9],
+                               image_type=f'adversarial_epsilon{epsilon}',
+                               rows=rows,
+                               columns=columns,
+                               sample_image_index=sample_image_index)
+
+        print(f"Attacks on {dataset_name} with epsilon {epsilon} lasted {end_time_attack - start_time_attack}")
+        print(f"Using {attack_type}")
