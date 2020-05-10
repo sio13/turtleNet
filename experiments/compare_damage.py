@@ -93,6 +93,6 @@ if __name__ == '__main__':
                                  BasicIterativeMethod,
                                  ProjectedGradientDescent,
                                  FastGradientMethod],
-                   need_train=True,
+                   need_train=False,
                    epochs=10,
                    )
