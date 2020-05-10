@@ -15,7 +15,7 @@ from keras.utils import to_categorical
 from utils import get_keras_dataset
 
 
-class CNNModel:
+class SCNNCifar10Model:
     def __init__(self, custom_optimizer=None, input_shape=(32, 32, 3)):
         self.model = Sequential()
         self.model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same',

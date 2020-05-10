@@ -15,7 +15,7 @@ from keras.utils import to_categorical
 from utils import get_keras_dataset
 
 
-class CNNModel:
+class CNNModelMnist:
     def __init__(self, custom_optimizer=None, input_shape=(28, 28, 1)):
         self.model = Sequential()
 

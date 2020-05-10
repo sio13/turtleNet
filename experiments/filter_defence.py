@@ -22,8 +22,8 @@ from utils import get_keras_dataset, save_image_and_collage, print_evaluation, l
 from defences.filters import threshold_data
 from evaluation import eval_models
 
-from architectures.target_model_mnist import CNNModel as MnistNetwork
-from architectures.target_model_cifar_10_better import CNNModel as CifarNetwork
+from architectures.target_model_mnist import CNNModelMnist as MnistNetwork
+from architectures.target_model_cifar_10_better import CNNCifar10Model as CifarNetwork
 
 from keras import backend
 

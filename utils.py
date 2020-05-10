@@ -85,6 +85,16 @@ def load_or_train_model(compiled_model,
                         models_dir_name: str = 'models',
                         model_type: str = 'basic',
                         need_train=False):
+    """
+    loads model or trains model
+    :param compiled_model: model for training
+    :param dataset_name: name of target dataset
+    :param epochs: number of epochs for training
+    :param models_dir_name: str - directory for models
+    :param model_type: custom specification for model (basic, advanced, etc)
+    :param need_train: True for training False for just loading
+    :return: keras model
+    """
     network = compiled_model
     if need_train:
         start_time = time.time()

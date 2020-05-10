@@ -23,7 +23,7 @@ from keras.utils import to_categorical
 from utils import get_keras_dataset
 
 
-class CNNModel:
+class CNNCifar10Model:
     def __init__(self, custom_optimizer=None, input_shape=(32, 32, 3)):
         weight_decay = 1e-4
         self.model = Sequential()

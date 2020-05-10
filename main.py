@@ -5,7 +5,7 @@ os.environ['KERAS_BACKEND'] = 'tensorflow'
 from attacks import attack
 from defences.train import TurtleNet
 
-from architectures.target_model_mnist import CNNModel
+from architectures.target_model_mnist import CNNModelMnist
 from keras.datasets import cifar10,mnist
 from keras.models import load_model
 from keras.utils import to_categorical
@@ -17,7 +17,7 @@ import numpy as np
 from utils import get_keras_dataset, save_collage, save_image
 from evaluation import eval_models
 
-from architectures.target_model_cifar_10_better import CNNModel
+from architectures.target_model_cifar_10_better import CNNCifar10Model
 from keras import backend
 
 sess = backend.get_session()
@@ -28,7 +28,7 @@ def main1():
 
     target_attack = attack.Attack(BasicIterativeMethod, 0.3, 0, 1)
 
-    net = CNNModel()
+    net = CNNCifar10Model()
     net.train()
     net.test()
     # model = load_model("models/conv_nn.h5")
@@ -41,7 +41,7 @@ def main1():
 def main2():
     x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data())
 
-    network = CNNModel()
+    network = CNNCifar10Model()
     # network.train_on_mnist()
     print(network.test())
 
@@ -86,7 +86,7 @@ def main4():
     train natural model
     """
 
-    network = CNNModel()
+    network = CNNCifar10Model()
     network.train()
     network.save_model("models_natural/conv_nn.h5")
 
@@ -156,7 +156,7 @@ def main7():
 
 
 def train_cifar10_robust():
-    network_better = CNNModel()
+    network_better = CNNCifar10Model()
     network_better.train(1)
     # model_resnet = load_model("models/resnet_raw.h5")
     x_train, y_train, x_test, y_test = get_keras_dataset(
