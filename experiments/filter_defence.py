@@ -76,15 +76,15 @@ def filters_experiment(dataset_name: str,
     rows = 3
     columns = 3
 
-    save_image_and_collage(result_picture_image_dir,
-                           dataset_name,
-                           x_test[:9],
-                           'natural',
-                           rows,
-                           columns,
-                           sample_image_index)
+    save_image_and_collage(dir_path=result_picture_image_dir,
+                           image_name=dataset_name,
+                           array=x_test[:9],
+                           image_type='natural',
+                           rows=rows,
+                           columns=columns,
+                           sample_image_index=sample_image_index)
 
-    save_image_and_collage(result_picture_image_dir,
+    save_image_and_collage(dir_path=result_picture_image_dir,
                            dataset_name,
                            adv_samples[:9],
                            'adversarial',

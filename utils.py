@@ -45,10 +45,10 @@ def save_image_and_collage(dir_path: str,
                            sample_image_index: int = 0
                            ):
     save_image(f"{dir_path}/{image_name}_{image_type}_image",
-               adv_samples[sample_image_index])
+               array[sample_image_index])
 
     save_collage(f"{dir_path}/{image_name}_{image_type}_collage",
-                 adv_samples[:9],
+                 array[:9],
                  rows,
                  columns,
                  array.shape[1],
