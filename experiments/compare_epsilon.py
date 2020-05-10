@@ -78,3 +78,28 @@ def compare_epsilon(dataset_name: str,
 
         print(f"Attacks on {dataset_name} with epsilon {epsilon} lasted {end_time_attack - start_time_attack}")
         print(f"Using {attack_type}")
+
+
+if __name__ == '__main__':
+    cifar_model = CifarNetwork()
+    mnist_model = MnistNetwork()
+
+    compare_epsilon(dataset_name='mnist',
+                    dataset=get_keras_dataset(mnist.load_data()),
+                    compiled_model=mnist_model,
+                    epsilons=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1, 1.2, 1.5, 2, 3],
+                    clip_min=0,
+                    clip_max=1,
+                    epochs=5,
+                    attack_type=ProjectedGradientDescent,
+                    need_train=True)
+
+    compare_epsilon(dataset_name='cifar10',
+                    dataset=get_keras_dataset(cifar10.load_data()),
+                    compiled_model=cifar_model,
+                    epsilons=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1, 1.2, 1.5, 2, 3],
+                    clip_min=0,
+                    clip_max=1,
+                    epochs=10,
+                    attack_type=ProjectedGradientDescent,
+                    need_train=True)
