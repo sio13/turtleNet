@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 from itertools import islice
 from keras.datasets import mnist, cifar10
