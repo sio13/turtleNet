@@ -18,7 +18,7 @@ import cleverhans
 import numpy as np
 import time
 
-from utils import get_keras_dataset, save_image_and_collage, print_evaluation
+from utils import get_keras_dataset, save_image_and_collage, print_evaluation, load_or_train_model
 from defences.filters import threshold_data
 from evaluation import eval_models
 
