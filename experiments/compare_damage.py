@@ -82,7 +82,7 @@ if __name__ == '__main__':
                    epochs=5,
                    )
 
-    compare_damage(dataset_name='mnist',
+    compare_damage(dataset_name='cifar',
                    dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                    compiled_model=cifar_model,
                    epsilon=0.1,

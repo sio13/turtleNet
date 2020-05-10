@@ -62,6 +62,12 @@ def save_image_and_collage(dir_path: str,
 
 
 def get_keras_dataset(data: tuple, input_shape=(-1, 28, 28, 1)) -> tuple:
+    """
+    mean = np.mean(x_train,axis=(0,1,2,3))
+    std = np.std(x_train,axis=(0,1,2,3))
+    x_train = (x_train-mean)/(std+1e-7)
+    x_test = (x_test-mean)/(std+1e-7)
+    """
     (x_train, y_train), (x_test, y_test) = data
     x_train = (x_train / 255).reshape(input_shape)
     x_test = (x_test / 255).reshape(input_shape)
