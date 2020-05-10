@@ -40,11 +40,11 @@ def filters_experiment(dataset_name: str,
                        attack_type: cleverhans.attacks,
                        need_train: bool = False,
                        result_picture_image_dir: str = 'results',
-                       sample_image_index: int = 0):
+                       sample_image_index: int = 1):
     x_train, y_train, x_test, y_test = dataset
     network = compiled_model
 
-    print(f"Experiment with {str(attack_type)} attack.")
+    print(f"Experiment with {str(attack_type)} attack on {dataset_name} dataset.")
 
     if need_train:
         start_time = time.time()
@@ -60,7 +60,7 @@ def filters_experiment(dataset_name: str,
     adv_attack = attack.Attack(attack_type, epsilon, clip_min, clip_max)
 
     start_time_attack = time.time()
-    adv_samples = adv_attack.generate_perturbations(x_test, model, 60)
+    adv_samples = adv_attack.generate_perturbations(np.array(x_test), model, 60)
     end_time_attack = time.time()
 
     results_adv = model.evaluate(adv_samples, to_categorical(y_test))
@@ -79,8 +79,7 @@ def filters_experiment(dataset_name: str,
     save_image(f"{result_picture_image_dir}/{dataset_name}_adversarial", adv_samples[sample_image_index])
     print(f"adversarial natural image to {result_picture_image_dir}/{dataset_name}_adversarial")
 
-    save_image(f"{result_picture_image_dir}/{dataset_name}_adversarial_filtered",
-               filtered_adv_samples[sample_image_index])
+    save_image(f"{result_picture_image_dir}/{dataset_name}_adversarial_filtered", filtered_adv_samples[sample_image_index])
     print(f"adversarial filtered natural image to {result_picture_image_dir}/{dataset_name}_adversarial_filtered")
 
 
