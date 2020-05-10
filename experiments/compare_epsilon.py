@@ -102,4 +102,4 @@ if __name__ == '__main__':
                     clip_max=None,
                     epochs=10,
                     attack_type=ProjectedGradientDescent,
-                    need_train=False)
+                    need_train=True)
