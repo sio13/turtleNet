@@ -69,6 +69,6 @@ def eval_models(attack_types: list,
     print(json_test_results)
 
     if save_to_file:
-        json.dump(json_test_results, open(f"{results_dir}/{dataset_name}_{result_filename}", "w"))
+        json.dump(json_test_results, open(f"{results_dir}/{dataset_name}_{result_filename}.json", "w"))
 
     return json_test_results
