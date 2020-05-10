@@ -33,6 +33,7 @@ def save_collage(filepath: str,
 def save_image(filepath: str,
                array: np.array):
     plt.imshow(np.squeeze(array))
+    plt.axis('off')
     plt.savefig(f"{filepath}.png")
 
 
