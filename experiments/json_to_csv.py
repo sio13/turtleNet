@@ -4,7 +4,7 @@ import pandas as pd
 def json_to_csv(json_path: str, csv_path: str):
     df_pandas = pd.read_json(open(json_path))
 
-    df_pandas.to_csv(csv_path)
+    df_pandas.to_csv(f"{csv_path}.csv")
 
 
 if __name__ == '__main__':
