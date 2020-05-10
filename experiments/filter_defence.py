@@ -18,7 +18,7 @@ import cleverhans
 import numpy as np
 import time
 
-from utils import get_keras_dataset, save_image_and_collage
+from utils import get_keras_dataset, save_image_and_collage, print_evaluation
 from defences.filters import threshold_data
 from evaluation import eval_models
 
@@ -54,7 +54,9 @@ def filters_experiment(dataset_name: str,
     model = network.model if need_train else load_model(f"models/{dataset_name}_basic.h5")
 
     results = model.evaluate(x_test, to_categorical(y_test))
-    print(f"Loss on {dataset_name} natural data: {results[0]} and accuracy: {results[1]}")
+    print_evaluation(dataset_name=dataset_name,
+                     dataset_type='adversarial',
+                     eval_tuple=results)
 
     adv_attack = attack.Attack(attack_type, epsilon, clip_min, clip_max)
 
@@ -64,14 +66,18 @@ def filters_experiment(dataset_name: str,
 
     results_adv = model.evaluate(adv_samples, to_categorical(y_test))
 
-    print(f"Loss on {dataset_name} adversarial data: {results_adv[0]}, accuracy: {results_adv[1]}")
+    print_evaluation(dataset_name=dataset_name,
+                     dataset_type='adversarial',
+                     eval_tuple=results_adv)
+
     print(f"{dataset_name} attack time: {end_time_attack - start_time_attack}")
 
     filtered_adv_samples = threshold_data(adv_samples, threshold=0.5)  # pozot vazna chyba
     results_adv_filtered = model.evaluate(filtered_adv_samples, to_categorical(y_test))
 
-    print(f"Loss on {dataset_name} filtered adversarial data: {results_adv_filtered[0]}")
-    print(f"accuracy on {dataset_name} filtered adversarial data: {results_adv_filtered[1]}")
+    print_evaluation(dataset_name=dataset_name,
+                     dataset_type='filtered_adversarial',
+                     eval_tuple=results_adv_filtered)
 
     rows = 3
     columns = 3

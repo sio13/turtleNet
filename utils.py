@@ -64,3 +64,7 @@ def get_keras_dataset(data: tuple, input_shape=(-1, 28, 28, 1)) -> tuple:
     x_test = (x_test / 255).reshape(input_shape)
 
     return x_train, y_train, x_test, y_test
+
+
+def print_evaluation(dataset_name: str, dataset_type: str, eval_tuple: tuple):
+    print(f"Loss on {dataset_name} {dataset_type} data: {eval_tuple[0]}, accuracy: {eval_tuple[1]}")
