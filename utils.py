@@ -61,7 +61,7 @@ def save_image_and_collage(dir_path: str,
     print(f"Saving collage {dir_path}/{image_name}_{image_type}_collage")
 
 
-def get_keras_dataset(data: tuple, input_shape=(-1, 28, 28, 1)) -> tuple:
+def get_keras_dataset(data: tuple, input_shape=(28, 28, 1)) -> tuple:
     """
     mean = np.mean(x_train,axis=(0,1,2,3))
     std = np.std(x_train,axis=(0,1,2,3))
