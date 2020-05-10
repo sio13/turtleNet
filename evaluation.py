@@ -11,12 +11,17 @@ import time
 
 
 def eval_models(attack_types: list,
+                dataset: tuple,
+                dataset_name: str,
                 epsilon: float,
                 clip_min: float,
                 clip_max: float,
                 num_chunks: int,
-                results_file_path: str = "",
+                result_filename: str = '',
+                track_iteration: bool = False,
+                results_dir: str = "results/json",
                 save_to_file: bool = False,
+                models_list: list = [],
                 folder_list: list = [],
                 folder_name: str = "",
                 prefix: str = "",
@@ -24,18 +29,15 @@ def eval_models(attack_types: list,
     model_names = filter(lambda x: x.startswith(prefix) and x.endswith(suffix),
                          os.listdir(folder_name)) if not folder_list else folder_list
 
-    _, _, x_test, y_test = get_keras_dataset(mnist.load_data())
+    models = models_list if len(models_list) > 0 else map(
+        lambda model_name: load_model(f"{folder_name}/{model_name}", model_names))
+
+    _, _, x_test, y_test = dataset
 
     json_test_results = []
 
-    for model_name in model_names:
-        try:
-            iteration_number = int(re.search(f"{prefix}(.*){suffix}", model_name).group(1))
-        except Exception as e:
-            print(f"An exception {e} occurred! with model {model_name}")
-            return
-
-        model = load_model(f"{folder_name}/{model_name}")
+    for model in models:
+        iteration_number = int(re.search(f"{prefix}(.*){suffix}", model_name).group(1)) if track_iteration else "None"
 
         for attack_type in attack_types:
             attack_str = str(attack_type).split("'")[1]
@@ -46,6 +48,7 @@ def eval_models(attack_types: list,
             start_attack = time.time()
             perturbations = attack.generate_perturbations(x_test, model, num_chunks)
             end_attack = time.time()
+
             total_attack_time = end_attack - start_attack
             print(f"Attack took {total_attack_time} seconds.")
 
@@ -65,6 +68,6 @@ def eval_models(attack_types: list,
     print(json_test_results)
 
     if save_to_file:
-        json.dump(json_test_results, open(results_file_path, "w"))
+        json.dump(json_test_results, open(f"{results_dir}/{dataset_name}_{result_filename}", "w"))
 
     return json_test_results
