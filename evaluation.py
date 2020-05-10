@@ -26,8 +26,9 @@ def eval_models(attack_types: list,
                 folder_name: str = "",
                 prefix: str = "",
                 suffix: str = "") -> dict:
-    model_names = filter(lambda x: x.startswith(prefix) and x.endswith(suffix),
-                         os.listdir(folder_name)) if not folder_list else folder_list
+    if len(models_list) == 0:
+        model_names = filter(lambda x: x.startswith(prefix) and x.endswith(suffix),
+                             os.listdir(folder_name)) if not folder_list else folder_list
 
     models = models_list if len(models_list) > 0 else map(
         lambda model_name: load_model(f"{folder_name}/{model_name}", model_names))
