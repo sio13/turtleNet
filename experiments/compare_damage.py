@@ -78,7 +78,7 @@ if __name__ == '__main__':
                                  BasicIterativeMethod,
                                  ProjectedGradientDescent,
                                  FastGradientMethod],
-                   need_train=False,
+                   need_train=True,
                    epochs=5,
                    )
 
@@ -93,6 +93,6 @@ if __name__ == '__main__':
                                  BasicIterativeMethod,
                                  ProjectedGradientDescent,
                                  FastGradientMethod],
-                   need_train=False,
+                   need_train=True,
                    epochs=10,
                    )
