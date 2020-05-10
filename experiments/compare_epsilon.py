@@ -56,16 +56,16 @@ def compare_epsilon(dataset_name: str,
 
     save_image_and_collage(dir_path=result_picture_image_dir,
                            image_name=dataset_name,
-                           array=x_test[:rows*columns],
+                           array=x_test[:rows * columns],
                            image_type='natural',
                            rows=rows,
                            columns=columns,
                            sample_image_index=sample_image_index)
 
     for epsilon in epsilons:
-        adv_attack = attack.Attack(attack_type, epsilon, clip_min, clip_max + epsilon)
+        adv_attack = attack.Attack(attack_type, epsilon, clip_min, clip_max)
         start_time_attack = time.time()
-        adv_samples = adv_attack.generate_perturbations(np.array(x_test[:rows*columns]), model, 1)
+        adv_samples = adv_attack.generate_perturbations(np.array(x_test[:rows * columns]), model, 1)
         end_time_attack = time.time()
 
         save_image_and_collage(dir_path=result_picture_image_dir,
@@ -88,18 +88,18 @@ if __name__ == '__main__':
                     dataset=get_keras_dataset(mnist.load_data()),
                     compiled_model=mnist_model,
                     epsilons=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1, 1.2, 1.5, 2, 3],
-                    clip_min=0,
-                    clip_max=1,
+                    clip_min=None,
+                    clip_max=None,
                     epochs=5,
                     attack_type=ProjectedGradientDescent,
                     need_train=False)
 
     compare_epsilon(dataset_name='cifar10',
-                    dataset=get_keras_dataset(cifar10.load_data()),
+                    dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                     compiled_model=cifar_model,
                     epsilons=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1, 1.2, 1.5, 2, 3],
-                    clip_min=0,
-                    clip_max=1,
+                    clip_min=None,
+                    clip_max=None,
                     epochs=10,
                     attack_type=ProjectedGradientDescent,
                     need_train=False)
