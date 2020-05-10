@@ -6,7 +6,7 @@ import sys
 
 sys.path.append('../')
 
-import attack
+from attacks import attack
 from defences.train import TurtleNet
 
 from keras.datasets import mnist, cifar10

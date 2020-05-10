@@ -1,4 +1,4 @@
-from attack import Attack
+from attacks.attack import Attack
 from utils import get_keras_dataset
 from keras.models import load_model
 from keras.utils import to_categorical

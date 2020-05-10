@@ -6,7 +6,7 @@ import cleverhans
 import numpy as np
 
 from keras.utils import to_categorical
-from attack import Attack
+from attacks.attack import Attack
 from utils import save_collage
 
 

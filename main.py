@@ -2,7 +2,7 @@ import os
 
 os.environ['KERAS_BACKEND'] = 'tensorflow'
 
-import attack
+from attacks import attack
 from defences.train import TurtleNet
 
 from architectures.target_model_mnist import CNNModel
