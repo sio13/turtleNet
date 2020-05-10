@@ -70,7 +70,7 @@ class CNNCifar10Model(CNNModel):
         optimizer = custom_optimizer or SGD(lr=0.001, momentum=0.9)
         self.model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
 
-    def train(self, epochs=5, batch_size=64, target_name="conv_nn_cifar.h5", save_model=False):
+    def train(self, epochs=5, batch_size=64, target_name="conv_nn_cifar.h5", save_model=False, with_augmentation=False):
         x_train, y_train, _, _ = get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3))
 
         self.model.fit(x_train, to_categorical(y_train, num_classes=10), epochs=epochs, batch_size=batch_size)

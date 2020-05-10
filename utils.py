@@ -84,7 +84,8 @@ def load_or_train_model(compiled_model,
                         epochs: int = 5,
                         models_dir_name: str = 'models',
                         model_type: str = 'basic',
-                        need_train=False):
+                        need_train: bool = False,
+                        with_augmentation: bool = False):
     """
     loads model or trains model
     :param compiled_model: model for training
@@ -93,12 +94,17 @@ def load_or_train_model(compiled_model,
     :param models_dir_name: str - directory for models
     :param model_type: custom specification for model (basic, advanced, etc)
     :param need_train: True for training False for just loading
+    :param with_augmentation: True for training with augmentation
     :return: keras model
     """
+
     network = compiled_model
     if need_train:
         start_time = time.time()
-        network.train(epochs, save_model=True, target_name=f"{dataset_name}_{model_type}.h5")
+        network.train(epochs,
+                      save_model=True,
+                      target_name=f"{dataset_name}_{model_type}.h5",
+                      with_augmentation=with_augmentation)
         end_time = time.time()
         print(f"{dataset_name.capitalize()} training took {end_time - start_time} seconds")
 

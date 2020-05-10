@@ -91,34 +91,30 @@ class CNNMCifarModelAugmentation(CNNModel):
               epochs=20,
               batch_size=64,
               target_name="conv_nn_cifar.h5",
-              save_model=False):
+              save_model=False,
+              with_augmentation=False):
 
-        self.model.fit(self.x_train,
-                       to_categorical(self.y_train, num_classes=self.num_classes),
-                       epochs=epochs,
-                       batch_size=batch_size)
-        if save_model:
-            self.model.save(f"models/{target_name}")
+        if with_augmentation:
+            data_gen = ImageDataGenerator(
+                rotation_range=15,
+                width_shift_range=0.1,
+                height_shift_range=0.1,
+                horizontal_flip=True)
+            data_gen.fit(x_train)
 
-    def train_with_augmentation(self,
-                                epochs=125,
-                                batch_size=64,
-                                target_name="conv_nn_cifar_augmented.h5",
-                                save_model=False):
-        data_gen = ImageDataGenerator(
-            rotation_range=15,
-            width_shift_range=0.1,
-            height_shift_range=0.1,
-            horizontal_flip=True)
-        data_gen.fit(x_train)
-
-        model.fit_generator(data_gen.flow(x_train, y_train, batch_size=batch_size),
-                            steps_per_epoch=len(x_train) // batch_size,
-                            epochs=epochs,
-                            verbose=1,
-                            validation_data=(x_test, y_test),
-                            callbacks=[LearningRateScheduler(self.schedule)])
-
+            model.fit_generator(data_gen.flow(x_train, y_train, batch_size=batch_size),
+                                steps_per_epoch=len(x_train) // batch_size,
+                                epochs=epochs,
+                                verbose=1,
+                                validation_data=(x_test, y_test),
+                                callbacks=[LearningRateScheduler(self.schedule)])
+        else:
+            self.model.fit(self.x_train,
+                           to_categorical(
+                               self.y_train,
+                               num_classes=self.num_classes),
+                           epochs=epochs,
+                           batch_size=batch_size)
         if save_model:
             self.model.save(f"models/{target_name}")
 
