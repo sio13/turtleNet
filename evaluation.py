@@ -38,11 +38,11 @@ def eval_models(attack_types: list,
     json_test_results = []
 
     for model in models:
-        iteration_number = int(re.search(f"{prefix}(.*){suffix}", model_name).group(1)) if track_iteration else "None"
+        iteration_number = "None" # TODO
 
         for attack_type in attack_types:
             attack_str = str(attack_type).split("'")[1]
-            print(f"Evaluating model '{model_name}' for attack '{attack_str}' ...")
+            print(f"Evaluating {dataset_name} model for attack '{attack_str}' ...")
 
             attack = Attack(attack_type, epsilon, clip_min, clip_max)
 
@@ -61,7 +61,7 @@ def eval_models(attack_types: list,
                                   "loss": loss,
                                   "accuracy": accuracy,
                                   "attack_time": total_attack_time}
-            print(f"Model {model_name} was successfully evaluated on attack '{attack_str}'.")
+            print(f"{dataset_name} model was successfully evaluated on attack '{attack_str}'.")
             print(f"Loss: {loss} - - Accuracy: {accuracy}")
 
             json_test_results.append(model_results_json)
