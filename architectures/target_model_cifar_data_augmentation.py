@@ -28,7 +28,7 @@ from utils import get_keras_dataset
 
 
 class CNNMCifarModelAugmentation(CNNModel):
-    def __init__(self, custom_optimizer=None, input_shape=(-1, 32, 32, 3), weight_decay: float = 1e-4,
+    def __init__(self, custom_optimizer=None, input_shape=(32, 32, 3), weight_decay: float = 1e-4,
                  learning_rate: float = 0.001, num_classes: int = 10):
         super().__init__(num_classes)
 
