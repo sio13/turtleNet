@@ -10,6 +10,19 @@ import re
 import time
 
 
+# attack_str.split('.')[-1]
+def eval_and_get_results(model, x_test, y_test, attack_type, iteration_number):
+    results = model.evaluate(x_test, to_categorical(y_test, num_classes=10))
+    loss, accuracy = results[0], results[1]
+
+    model_results_json = {"iteration": iteration_number,
+                          "attack": attack_type,
+                          "loss": loss,
+                          "accuracy": accuracy,
+                          "attack_time": total_attack_time}
+    return model_results_json
+
+
 def eval_models(attack_types: list,
                 dataset: tuple,
                 dataset_name: str,
@@ -38,7 +51,8 @@ def eval_models(attack_types: list,
     json_test_results = []
 
     for model in models:
-        iteration_number = "None" # TODO
+        json_test_results.append(eval_and_get_results(model, x_test, y_test, 'no attack', 'None'))
+        iteration_number = "None"  # TODO
 
         for attack_type in attack_types:
             attack_str = str(attack_type).split("'")[1]
@@ -52,15 +66,15 @@ def eval_models(attack_types: list,
 
             total_attack_time = end_attack - start_attack
             print(f"Attack took {total_attack_time} seconds.")
+            json_test_results.append(
+                eval_and_get_results(model,
+                                     perturbations,
+                                     y_test,
+                                     attack_str.split('.')[-1],
+                                     iteration_number
+                                     )
+            )
 
-            results = model.evaluate(perturbations, to_categorical(y_test, num_classes=10))
-            loss, accuracy = results[0], results[1]
-
-            model_results_json = {"iteration": iteration_number,
-                                  "attack": attack_str.split('.')[-1],
-                                  "loss": loss,
-                                  "accuracy": accuracy,
-                                  "attack_time": total_attack_time}
             print(f"{dataset_name} model was successfully evaluated on attack '{attack_str}'.")
             print(f"Loss: {loss} - - Accuracy: {accuracy}")
 

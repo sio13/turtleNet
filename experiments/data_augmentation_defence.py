@@ -81,6 +81,8 @@ def evaluate_data_augmentation(dataset: tuple,
                 models_list=[model_augmented])
 
 
+
+
 if __name__ == '__main__':
     evaluate_data_augmentation(
         dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
