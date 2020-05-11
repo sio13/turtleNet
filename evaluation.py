@@ -96,8 +96,6 @@ def eval_models(attack_types: list,
                                      )
             )
 
-            json_test_results.append(model_results_json)
-
     print(json_test_results)
 
     if save_to_file:
