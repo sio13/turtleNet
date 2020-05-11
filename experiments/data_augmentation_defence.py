@@ -44,15 +44,15 @@ def evaluate_data_augmentation(dataset: tuple,
                                               dataset_name='cifar',
                                               epochs=20,
                                               models_dir_name='models',
-                                              model_type='data_augmentation',
+                                              model_type='data_not_augmentation',
                                               need_train=False)
 
     model_augmented = load_or_train_model(compiled_model=model_with_augmentation,
                                           dataset_name='cifar',
                                           epochs=125,
                                           models_dir_name='models',
-                                          model_type='data_not_augmentation',
-                                          need_train=True)
+                                          model_type='data_augmentation',
+                                          need_train=False)
 
     eval_models(attack_types=[attack_type],
                 dataset=dataset,

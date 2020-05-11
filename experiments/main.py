@@ -75,7 +75,7 @@ def main3():
                 clip_max=1,
                 num_chunks=1,
                 save_to_file=True,
-                results_file_path="results/json/models_fgsm.json",
+                results_file_path="../results/json/models_fgsm.json",
                 folder_name="models_fgsm",
                 prefix="checkpoint_",
                 suffix=".h5")
@@ -101,7 +101,7 @@ def main4():
                 clip_max=1,
                 num_chunks=1,
                 save_to_file=True,
-                results_file_path="results/json/model_natural.json",
+                results_file_path="../results/json/model_natural.json",
                 folder_name="models_natural",
                 folder_list=["conv_nn_0.h5"],
                 prefix="conv_nn_",
