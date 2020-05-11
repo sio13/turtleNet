@@ -51,7 +51,16 @@ def eval_models(attack_types: list,
     json_test_results = []
 
     for model in models:
-        json_test_results.append(eval_and_get_results(model, x_test, y_test, 'no attack', 'None'))
+        json_test_results.append(
+            eval_and_get_results(
+                model,
+                x_test,
+                y_test,
+                attack_type='no attack',
+                iteration_number='None',
+                total_attack_time=0
+            )
+        )
         iteration_number = "None"  # TODO
 
         for attack_type in attack_types:
