@@ -20,6 +20,9 @@ def eval_and_get_results(model, x_test, y_test, attack_type, iteration_number, t
                           "loss": loss,
                           "accuracy": accuracy,
                           "attack_time": total_attack_time}
+
+    print(f"{dataset_name} model was successfully evaluated on attack '{attack_str}'.")
+    print(f"Loss: {loss} - - Accuracy: {accuracy}")
     return model_results_json
 
 
@@ -85,8 +88,8 @@ def eval_models(attack_types: list,
                                      )
             )
 
-            print(f"{dataset_name} model was successfully evaluated on attack '{attack_str}'.")
-            print(f"Loss: {loss} - - Accuracy: {accuracy}")
+
+
 
             json_test_results.append(model_results_json)
 
