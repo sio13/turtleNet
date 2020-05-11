@@ -25,6 +25,7 @@ class TurtleNet:
         else:
             self.target_model = train_model
 
+        self.use_different_target = use_different_target
         self.clip_min = clip_min
         self.clip_max = clip_max
         self.attack = Attack(attack_type, epsilon, self.clip_min, self.clip_max)
@@ -67,12 +68,13 @@ class TurtleNet:
 
             self.perturbed_data = self.attack.generate_perturbations(
                 batch,
-                self.target_model,
+                self.train_model if self.use_different_target else self.train_model,
                 max(len(batch) // chunk_size, 1))
             self.train_model.train_on_batch(self.perturbed_data,
                                             to_categorical(labels, num_classes=10))
-            self.target_model.train_on_batch(self.perturbed_data,
-                                             to_categorical(labels, num_classes=10))
+            if self.use_different_target:
+                self.target_model.train_on_batch(self.perturbed_data,
+                                                 to_categorical(labels, num_classes=10))
             print(f"Iteration number {iteration}")
             if make_checkpoints and iteration % checkpoint_frequency == 0:
                 checkpoint_full_path = f"{checkpoint_dir}/{checkpoint_filename}_{iteration}.h5"
