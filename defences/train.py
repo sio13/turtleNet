@@ -39,7 +39,8 @@ class TurtleNet:
                              checkpoint_dir: str = 'models',
                              make_checkpoints: bool = False,
                              checkpoint_frequency: int = 50,
-                             checkpoint_filename: str = "checkpoint"):
+                             checkpoint_filename: str = "checkpoint",
+                             iteration_start: int = 0):
         """
         :param iterations: total number of iterations
         :param x_train: training dataset
@@ -51,9 +52,10 @@ class TurtleNet:
         :param checkpoint_frequency: number of iteration followed by checkpoint
         :param checkpoint_filename: filename of checkpoint -- automatically contains iteration number
         :param ord: order of reference attack
+        :param iteration_start: name for the first iteration file
         :return:
         """
-        for iteration in range(iterations):
+        for iteration in range(iteration_start, iterations):
             adv_size = batch_size
             batch_index_start = (adv_size * iteration) % len(x_train)
             batch_index_end = min(batch_index_start + adv_size, len(x_train))
