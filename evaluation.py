@@ -27,7 +27,7 @@ def eval_and_get_results(model,
                           "accuracy": accuracy,
                           "attack_time": total_attack_time}
 
-    print(f"{dataset_name} model was successfully evaluated on attack '{attack_str}'.")
+    print(f"{dataset_name} model was successfully evaluated on attack '{attack_type}'.")
     print(f"Loss: {loss} - - Accuracy: {accuracy}")
     return model_results_json
 
