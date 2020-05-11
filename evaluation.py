@@ -11,7 +11,13 @@ import time
 
 
 # attack_str.split('.')[-1]
-def eval_and_get_results(model, x_test, y_test, attack_type, iteration_number, total_attack_time: float):
+def eval_and_get_results(model,
+                         dataset_name: str,
+                         x_test,
+                         y_test,
+                         attack_type,
+                         iteration_number,
+                         total_attack_time: float):
     results = model.evaluate(x_test, to_categorical(y_test, num_classes=10))
     loss, accuracy = results[0], results[1]
 
@@ -56,9 +62,10 @@ def eval_models(attack_types: list,
     for model in models:
         json_test_results.append(
             eval_and_get_results(
-                model,
-                x_test,
-                y_test,
+                model=model,
+                dataset_name=dataset_name,
+                x_test=x_test,
+                y_test=y_test,
                 attack_type='no attack',
                 iteration_number='None',
                 total_attack_time=0
@@ -80,6 +87,7 @@ def eval_models(attack_types: list,
             print(f"Attack took {total_attack_time} seconds.")
             json_test_results.append(
                 eval_and_get_results(model=model,
+                                     dataset_name=dataset_name,
                                      x_test=perturbations,
                                      y_test=y_test,
                                      attack_type=attack_str.split('.')[-1],
@@ -87,9 +95,6 @@ def eval_models(attack_types: list,
                                      total_attack_time=total_attack_time
                                      )
             )
-
-
-
 
             json_test_results.append(model_results_json)
 
