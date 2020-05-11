@@ -66,5 +66,5 @@ if __name__ == '__main__':
                 checkpoint_dir='../models_cifar_better',
                 epsilon=0.1,
                 iteration_so_far=1650,
-                attack_type=ProjecteedGradientDescent
+                attack_type=ProjectedGradientDescent
                 )
