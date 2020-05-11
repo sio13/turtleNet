@@ -55,9 +55,9 @@ def train_model(model,
 
 
 if __name__ == '__main__':
-    model = load_model('../models_cifar_better/checkpoint_1650.h5')
+    target_model = load_model('../models_cifar_better/checkpoint_1650.h5')
 
-    train_model(model=model,
+    train_model(model=target_model,
                 dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                 iteration_total=15000,
                 checkpoint_dir='../models_cifar_better',
