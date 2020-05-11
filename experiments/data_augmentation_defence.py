@@ -30,6 +30,7 @@ sess = backend.get_session()
 
 
 def evaluate_data_augmentation(dataset: tuple,
+                               dataset_name: str,
                                attack_type: cleverhans.attacks,
                                epsilon: float,
                                num_chunks: int,
@@ -44,7 +45,7 @@ def evaluate_data_augmentation(dataset: tuple,
                                               epochs=20,
                                               models_dir_name='models',
                                               model_type='data_augmentation',
-                                              need_train=True)
+                                              need_train=False)
 
     model_augmented = load_or_train_model(compiled_model=model_with_augmentation,
                                           dataset_name='cifar',
@@ -83,6 +84,7 @@ def evaluate_data_augmentation(dataset: tuple,
 if __name__ == '__main__':
     evaluate_data_augmentation(
         dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
+        dataset_name='cifar',
         attack_type=ProjectedGradientDescent,
         epsilon=0.1,
         num_chunks=10,
