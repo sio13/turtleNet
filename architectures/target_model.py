@@ -27,6 +27,8 @@ class CNNModel:
     def __init__(self, num_classes: int = 10, learning_rate: flaot = 0.001):
         self.x_test = None
         self.y_test = None
+        self.x_train = None
+        self.y_train = None
         self.num_classes = num_classes
         self.learning_rate = learning_rate
 
@@ -40,3 +42,42 @@ class CNNModel:
 
     def test(self):
         return self.model.evaluate(self.x_test, to_categorical(self.y_test, num_classes=self.num_classes))
+
+    def train(self,
+              epochs=20,
+              batch_size=64,
+              target_name="conv_nn_mnist.h5",
+              save_model=False,
+              with_augmentation=False,
+              rotation_range: int = 15,
+              width_shift_range: float = 0.1,
+              height_shift_range: float = 0.1,
+              horizontal_flip: bool = True):
+
+        if with_augmentation:
+            data_gen = ImageDataGenerator(
+                rotation_range=rotation_range,
+                width_shift_range=width_shift_range,
+                height_shift_range=height_shift_range,
+                horizontal_flip=horizontal_flip)
+            data_gen.fit(x_train)
+
+            model.fit_generator(data_gen.flow(self.x_train, self.y_train, batch_size=batch_size),
+                                steps_per_epoch=len(self.x_train) // batch_size,
+                                epochs=epochs,
+                                verbose=1,
+                                validation_data=(self.x_test, self.y_test),
+                                callbacks=[LearningRateScheduler(self.schedule)])
+        else:
+            self.model.fit(self.x_train,
+                           to_categorical(
+                               self.y_train,
+                               num_classes=self.num_classes),
+                           epochs=epochs,
+                           batch_size=batch_size)
+        if save_model:
+            self.model.save(f"models/{target_name}")
+
+    def save_model(self, model_path: str):
+        print(f"Saving model into {model_path}")
+        self.model.save(model_path)

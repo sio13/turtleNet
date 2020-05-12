@@ -43,7 +43,6 @@ class CNNMCifarModelAugmentation(CNNModel):
         self.learning_rate = learning_rate
         self.weight_decay = weight_decay
 
-
         self.custom_optimizer = custom_optimizer
 
         self.model = Sequential()
@@ -81,45 +80,3 @@ class CNNMCifarModelAugmentation(CNNModel):
         optimizer = custom_optimizer or keras.optimizers.rmsprop(lr=0.001, decay=1e-6)
         self.model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
 
-    def schedule(self, epoch):
-        self.learning_rate = 0.001
-        if epoch > 75:
-            self.learning_rate = 0.0005
-        if epoch > 100:
-            self.learning_rate = 0.0003
-        return self.learning_rate
-
-    def train(self,
-              epochs=20,
-              batch_size=64,
-              target_name="conv_nn_cifar.h5",
-              save_model=False,
-              with_augmentation=False):
-
-        if with_augmentation:
-            data_gen = ImageDataGenerator(
-                rotation_range=15,
-                width_shift_range=0.1,
-                height_shift_range=0.1,
-                horizontal_flip=True)
-            data_gen.fit(x_train)
-
-            model.fit_generator(data_gen.flow(x_train, y_train, batch_size=batch_size),
-                                steps_per_epoch=len(x_train) // batch_size,
-                                epochs=epochs,
-                                verbose=1,
-                                validation_data=(x_test, y_test),
-                                callbacks=[LearningRateScheduler(self.schedule)])
-        else:
-            self.model.fit(self.x_train,
-                           to_categorical(
-                               self.y_train,
-                               num_classes=self.num_classes),
-                           epochs=epochs,
-                           batch_size=batch_size)
-        if save_model:
-            self.model.save(f"models/{target_name}")
-
-    def save_model(self, model_path: str):
-        print(f"Saving model into {model_path}")
-        self.model.save(model_path)

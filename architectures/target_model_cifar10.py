@@ -46,14 +46,3 @@ class SCNNCifar10Model(CNNModel):
         optimizer = custom_optimizer or SGD(lr=0.001, momentum=0.9)
         self.model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
 
-    def train(self, epochs=5, batch_size=64, target_name="conv_nn_cifar.h5", save_model=False, with_augmentation=False):
-        x_train, y_train, _, _ = get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3))
-
-        self.model.fit(x_train, to_categorical(y_train, num_classes=self.num_classes), epochs=epochs,
-                       batch_size=batch_size)
-        if save_model:
-            self.model.save(f"models/{target_name}")
-
-    def save_model(self, model_path: str):
-        print(f"Saving model into {model_path}")
-        self.model.save(model_path)

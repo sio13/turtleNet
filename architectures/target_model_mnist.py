@@ -50,13 +50,6 @@ class CNNModelMnist(CNNModel):
 
         self.model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
 
-    def train(self, epochs=5, target_name="conv_nn.h5", batch_size=64, save_model=False, with_augmentation=False):
-        x_train, y_train, _, _ = get_keras_dataset(mnist.load_data())
-
-        self.model.fit(x_train, to_categorical(y_train, num_classes=self.num_classes), epochs=epochs,
-                       batch_size=batch_size)
-        if save_model:
-            self.model.save(f"models/{target_name}")
 
     def save_model(self, model_path: str):
         print(f"Saving model into {model_path}")
