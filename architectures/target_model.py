@@ -24,10 +24,19 @@ from keras.utils import to_categorical
 
 
 class CNNModel:
-    def __init__(self, num_classes):
+    def __init__(self, num_classes: int = 10, learning_rate: flaot = 0.001):
         self.x_test = None
         self.y_test = None
         self.num_classes = num_classes
+        self.learning_rate = learning_rate
+
+    def schedule(self, epoch):
+        self.learning_rate = 0.001
+        if epoch > 75:
+            self.learning_rate = 0.0005
+        if epoch > 100:
+            self.learning_rate = 0.0003
+        return self.learning_rate
 
     def test(self):
         return self.model.evaluate(self.x_test, to_categorical(self.y_test, num_classes=self.num_classes))

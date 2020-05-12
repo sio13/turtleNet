@@ -27,8 +27,8 @@ from keras.utils import to_categorical
 from utils import get_keras_dataset
 
 
-class CNNMCifarModelAugmentation(CNNModel):
-    def __init__(self, custom_optimizer=None, input_shape=(32, 32, 3), weight_decay: float = 1e-4,
+class CNNMnistModelAugmentation(CNNModel):
+    def __init__(self, custom_optimizer=None, input_shape=(28, 28, 1), weight_decay: float = 1e-4,
                  learning_rate: float = 0.001, num_classes: int = 10):
         super().__init__(num_classes=num_classes, learning_rate=learning_rate)
 
@@ -42,7 +42,6 @@ class CNNMCifarModelAugmentation(CNNModel):
 
         self.learning_rate = learning_rate
         self.weight_decay = weight_decay
-
 
         self.custom_optimizer = custom_optimizer
 
@@ -76,23 +75,17 @@ class CNNMCifarModelAugmentation(CNNModel):
         self.model.add(Dropout(0.4))
 
         self.model.add(Flatten())
-        self.model.add(Dense(10, activation='softmax'))
+        self.model.add(Dense(self.num_classes, activation='softmax'))
 
         optimizer = custom_optimizer or keras.optimizers.rmsprop(lr=0.001, decay=1e-6)
         self.model.compile(optimizer=optimizer, loss="categorical_crossentropy", metrics=["accuracy"])
 
-    def schedule(self, epoch):
-        self.learning_rate = 0.001
-        if epoch > 75:
-            self.learning_rate = 0.0005
-        if epoch > 100:
-            self.learning_rate = 0.0003
-        return self.learning_rate
+
 
     def train(self,
               epochs=20,
               batch_size=64,
-              target_name="conv_nn_cifar.h5",
+              target_name="conv_nn_mnist.h5",
               save_model=False,
               with_augmentation=False):
 
