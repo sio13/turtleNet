@@ -49,10 +49,10 @@ def evaluate_data_augmentation(dataset: tuple,
 
     model_augmented = load_or_train_model(compiled_model=model_with_augmentation,
                                           dataset_name='cifar',
-                                          epochs=125,
+                                          epochs=20,
                                           models_dir_name='models',
-                                          model_type='data_augmentation',
-                                          need_train=False)
+                                          model_type='data_augmentation_20_iter',
+                                          need_train=True)
 
     eval_models(attack_types=[attack_type],
                 dataset=dataset,
@@ -77,7 +77,7 @@ def evaluate_data_augmentation(dataset: tuple,
                 track_iteration=False,
                 save_to_file=True,
                 results_dir=result_dir,
-                result_filename='augmented',
+                result_filename='augmented_20_iter',
                 models_list=[model_augmented])
 
 
