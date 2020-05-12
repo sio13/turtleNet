@@ -24,7 +24,7 @@ from keras.utils import to_categorical
 
 
 class CNNModel:
-    def __init__(self, num_classes: int = 10, learning_rate: flaot = 0.001):
+    def __init__(self, num_classes: int = 10, learning_rate: float = 0.001):
         self.x_test = None
         self.y_test = None
         self.x_train = None
