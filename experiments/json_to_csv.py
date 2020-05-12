@@ -8,5 +8,7 @@ def json_to_csv(json_path: str, csv_path: str):
 
 
 if __name__ == '__main__':
-    json_to_csv("results/json/data_augmentation/cifar_augmented.json", "results/csv/data_augmentation/cifar_augmented.csv")
-    json_to_csv("results/json/data_augmentation/cifar_not_augmented.json", "results/csv/data_augmentation/cifar_not_augmented.csv")
+    json_to_csv("results/json/data_augmentation/cifar_augmented.json", "results/csv/data_augmentation/cifar_augmented")
+    json_to_csv("results/json/data_augmentation/cifar_not_augmented.json", "results/csv/data_augmentation/cifar_not_augmented")
+    json_to_csv("results/json/data_augmentation/cifar_augmented_20_iter.json", "results/csv/data_augmentation/cifar_augmented_20_iter")
+

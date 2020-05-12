@@ -58,13 +58,13 @@ def train_model(model,
 
 
 if __name__ == '__main__':
-    target_model = load_model('../models_cifar_better/checkpoint_1650.h5')
+    target_model = load_model('../models_cifar_better/checkpoint_2250.h5')
 
     train_model(model=target_model,
                 dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                 iteration_total=15000,
                 checkpoint_dir='../models_cifar_better',
                 epsilon=0.1,
-                iteration_so_far=1650,
+                iteration_so_far=2250,
                 attack_type=ProjectedGradientDescent
                 )
