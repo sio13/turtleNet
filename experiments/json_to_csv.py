@@ -12,3 +12,6 @@ if __name__ == '__main__':
     json_to_csv("results/json/data_augmentation/cifar_not_augmented.json", "results/csv/data_augmentation/cifar_not_augmented")
     json_to_csv("results/json/data_augmentation/cifar_augmented_20_iter.json", "results/csv/data_augmentation/cifar_augmented_20_iter")
 
+    json_to_csv("results/json/data_augmentation/mnist_not_augmented.json", "results/csv/data_augmentation/mnist_not_augmented")
+    json_to_csv("results/json/data_augmentation/mnist_augmented_20_iter.json", "results/csv/data_augmentation/mnist_augmented_20_iter")
+
