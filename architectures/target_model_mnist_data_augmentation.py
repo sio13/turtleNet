@@ -11,7 +11,7 @@ from keras.utils import np_utils
 from keras.preprocessing.image import ImageDataGenerator
 from keras.layers import Dense, Activation, Flatten, Dropout, BatchNormalization
 from keras.layers import Conv2D, MaxPooling2D
-from keras.datasets import cifar10
+from keras.datasets import cifar10, mnist
 from keras import regularizers
 from keras.callbacks import LearningRateScheduler
 import numpy as np
