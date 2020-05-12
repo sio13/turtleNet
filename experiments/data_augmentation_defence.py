@@ -86,16 +86,16 @@ def evaluate_data_augmentation(dataset: tuple,
 
 
 if __name__ == '__main__':
-    # evaluate_data_augmentation(
-    #     dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
-    #     dataset_name='cifar',
-    #     model_class=CNNMCifarModelAugmentation,
-    #     attack_type=ProjectedGradientDescent,
-    #     epsilon=0.1,
-    #     num_chunks=10,
-    #     clip_min=0,
-    #     clip_max=1
-    # )
+    evaluate_data_augmentation(
+        dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
+        dataset_name='cifar',
+        model_class=CNNMCifarModelAugmentation,
+        attack_type=ProjectedGradientDescent,
+        epsilon=0.1,
+        num_chunks=10,
+        clip_min=0,
+        clip_max=1
+    )
 
     evaluate_data_augmentation(
         dataset=get_keras_dataset(mnist.load_data()),
