@@ -34,7 +34,7 @@ class CNNMnistModelAugmentation(CNNModel):
 
         self.input_shape = input_shape
 
-        x_train, y_train, x_test, y_test = get_keras_dataset(cifar10.load_data(), input_shape=self.input_shape)
+        x_train, y_train, x_test, y_test = get_keras_dataset(mnist.load_data(), input_shape=self.input_shape)
         self.x_train = x_train
         self.x_test = x_test
         self.y_train = y_train
