@@ -5,7 +5,7 @@ from keras.utils import to_categorical
 from keras.datasets import mnist
 
 from defences.filters import threshold_data
-from utils import print_evaluation
+from utils import print_evaluation, save_image_and_collage
 
 import cleverhans
 from attacks import attack
@@ -169,14 +169,16 @@ def evaluate_filters(dataset_name: str,
                      clip_min: float,
                      clip_max: float,
                      attack_type: cleverhans.attacks,
-                     filter_function=threshold_data,
+                     filter_function,
                      epochs: int = 5,
+                     threshold: float = 0.5,
+                     filter_size: int = 4,
                      need_train: bool = False,
                      result_picture_image_dir: str = 'results/filter_defences',
                      sample_image_index: int = 2):
     x_train, y_train, x_test, y_test = dataset
 
-    print(f"[filter_defences.py] Experiment with {str(attack_type)} attack on {dataset_name} dataset.")
+    print(f"Experiment with {str(attack_type)} attack on {dataset_name} dataset.")
 
     model = load_or_train_model(compiled_model=compiled_model,
                                 dataset_name=dataset_name,
@@ -205,7 +207,9 @@ def evaluate_filters(dataset_name: str,
 
     print(f"{dataset_name} attack time: {end_time_attack - start_time_attack}")
 
-    filtered_adv_samples = filter_function(adv_samples, threshold=0.5)
+    filtered_adv_samples = filter_function(adv_samples,
+                                           threshold=threshold,
+                                           size_of_filter=filter_size)
     results_adv_filtered = model.evaluate(filtered_adv_samples, to_categorical(y_test))
 
     print_evaluation(dataset_name=dataset_name,
