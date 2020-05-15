@@ -45,7 +45,7 @@ def save_image_and_collage(dir_path: str,
                            image_type: str,
                            rows: int,
                            columns: int,
-                           sample_image_index: int = 0
+                           sample_image_index: int = 2
                            ):
     save_image(f"{dir_path}/{image_name}_{image_type}_image",
                array[sample_image_index])
