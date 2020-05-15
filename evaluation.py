@@ -10,6 +10,7 @@ from utils import print_evaluation
 import cleverhans
 from attacks import attack
 
+import numpy as np
 import os
 import json
 import re
