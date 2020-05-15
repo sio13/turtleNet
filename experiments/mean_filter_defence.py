@@ -35,7 +35,7 @@ if __name__ == '__main__':
                      attack_type=ProjectedGradientDescent,
                      result_picture_image_dir='results/json/mean_filter',
                      filter_function=mean_filter,
-                     sample_image_index=2,
+                     sample_image_index=1,
                      need_train=False)
 
     evaluate_filters(dataset_name='cifar',
@@ -47,5 +47,5 @@ if __name__ == '__main__':
                      attack_type=ProjectedGradientDescent,
                      result_picture_image_dir='results/json/mean_filter',
                      filter_function=mean_filter,
-                     sample_image_index=2,
+                     sample_image_index=1,
                      need_train=False)
