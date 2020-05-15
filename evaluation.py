@@ -10,7 +10,6 @@ import re
 import time
 
 
-# attack_str.split('.')[-1]
 def eval_and_get_results(model,
                          dataset_name: str,
                          x_test,
@@ -95,7 +94,8 @@ def eval_models(attack_types: list,
                                      y_test=y_test,
                                      attack_type=attack_str.split('.')[-1],
                                      iteration_number=iteration_number,
-                                     total_attack_time=total_attack_time
+                                     total_attack_time=total_attack_time,
+                                     epsilon=epsilon
                                      )
             )
 
