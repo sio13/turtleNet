@@ -153,3 +153,81 @@ def compare_damage(dataset_name: str,
                 results_dir=result_dir,
                 result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}",
                 models_list=[model])
+
+
+def evaluate_filters(dataset_name: str,
+                     dataset: tuple,
+                     compiled_model,
+                     epsilon: float,
+                     clip_min: float,
+                     clip_max: float,
+                     attack_type: cleverhans.attacks,
+                     filter_function=threshold_data,
+                     epochs: int = 5,
+                     need_train: bool = False,
+                     result_picture_image_dir: str = 'results/filter_defences',
+                     sample_image_index: int = 2):
+    x_train, y_train, x_test, y_test = dataset
+
+    print(f"[filter_defences.py] Experiment with {str(attack_type)} attack on {dataset_name} dataset.")
+
+    model = load_or_train_model(compiled_model=compiled_model,
+                                dataset_name=dataset_name,
+                                epochs=epochs,
+                                models_dir_name='models',
+                                model_type='basic',
+                                need_train=need_train
+                                )
+
+    results = model.evaluate(x_test, to_categorical(y_test))
+    print_evaluation(dataset_name=dataset_name,
+                     dataset_type='adversarial',
+                     eval_tuple=results)
+
+    adv_attack = attack.Attack(attack_type, epsilon, clip_min, clip_max)
+
+    start_time_attack = time.time()
+    adv_samples = adv_attack.generate_perturbations(np.array(x_test), model, 60)
+    end_time_attack = time.time()
+
+    results_adv = model.evaluate(adv_samples, to_categorical(y_test))
+
+    print_evaluation(dataset_name=dataset_name,
+                     dataset_type='adversarial',
+                     eval_tuple=results_adv)
+
+    print(f"{dataset_name} attack time: {end_time_attack - start_time_attack}")
+
+    filtered_adv_samples = filter_function(adv_samples, threshold=0.5)
+    results_adv_filtered = model.evaluate(filtered_adv_samples, to_categorical(y_test))
+
+    print_evaluation(dataset_name=dataset_name,
+                     dataset_type='filtered_adversarial',
+                     eval_tuple=results_adv_filtered)
+
+    rows = 3
+    columns = 3
+
+    save_image_and_collage(dir_path=result_picture_image_dir,
+                           image_name=dataset_name,
+                           array=x_test[:9],
+                           image_type='natural',
+                           rows=rows,
+                           columns=columns,
+                           sample_image_index=sample_image_index)
+
+    save_image_and_collage(dir_path=result_picture_image_dir,
+                           image_name=dataset_name,
+                           array=adv_samples[:9],
+                           image_type='adversarial',
+                           rows=rows,
+                           columns=columns,
+                           sample_image_index=sample_image_index)
+
+    save_image_and_collage(dir_path=result_picture_image_dir,
+                           image_name=dataset_name,
+                           array=filtered_adv_samples[:9],
+                           image_type='adversarial_filtered',
+                           rows=rows,
+                           columns=columns,
+                           sample_image_index=sample_image_index)

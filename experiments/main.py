@@ -61,49 +61,6 @@ def main2():
     # print(model_new.evaluate(x_train, to_categorical(y_train)))
 
 
-def main3():
-    eval_models(attack_types=[MomentumIterativeMethod,
-                              # MaxConfidence,
-                              MadryEtAl,
-                              BasicIterativeMethod,
-                              ProjectedGradientDescent,
-                              FastGradientMethod],
-                epsilon=0.3,
-                clip_min=0,
-                clip_max=1,
-                num_chunks=1,
-                save_to_file=True,
-                results_file_path="../results/json/models_fgsm.json",
-                folder_name="models_fgsm",
-                prefix="checkpoint_",
-                suffix=".h5")
-
-
-def main4():
-    """
-    train natural model
-    """
-
-    network = CNNCifar10Model()
-    network.train()
-    network.save_model("models_natural/conv_nn.h5")
-
-    eval_models(attack_types=[MomentumIterativeMethod,
-                              # MaxConfidence,
-                              MadryEtAl,
-                              BasicIterativeMethod,
-                              ProjectedGradientDescent,
-                              FastGradientMethod],
-                epsilon=0.3,
-                clip_min=0,
-                clip_max=1,
-                num_chunks=1,
-                save_to_file=True,
-                results_file_path="../results/json/model_natural.json",
-                folder_name="models_natural",
-                folder_list=["conv_nn_0.h5"],
-                prefix="conv_nn_",
-                suffix=".h5")
 
 
 def main5():

@@ -26,4 +26,4 @@ if __name__ == '__main__':
         "results/csv/compare_damage/mnist_natural_trained_0_2")
     json_to_csv(
         "results/json/compare_damage/mnist_natural_trained_0.3.json",
-        "results/csv/compare_damage/mnist_natural_trained_0_3.json")
+        "results/csv/compare_damage/mnist_natural_trained_0_3")
