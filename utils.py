@@ -57,7 +57,7 @@ def save_image_and_collage(dir_path: str,
                  array.shape[1],
                  array.shape[2],
                  array.shape[3])
-    print(f"Saving image {dir_path}/{image_name}_{image_type}_image")
+    print(f"Saving image on index {sample_image_index} {dir_path}/{image_name}_{image_type}_image")
     print(f"Saving collage {dir_path}/{image_name}_{image_type}_collage")
 
 
