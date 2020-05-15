@@ -8,7 +8,7 @@ from defences.filters import threshold_data
 from utils import print_evaluation
 
 import cleverhans
-
+from attacks import attack
 
 import os
 import json
