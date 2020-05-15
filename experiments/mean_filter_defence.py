@@ -33,6 +33,7 @@ if __name__ == '__main__':
                      clip_min=0,
                      clip_max=1,
                      attack_type=ProjectedGradientDescent,
+                     result_picture_image_dir='results/json/mean_filter',
                      filter_function=mean_filter,
                      need_train=False)
 
@@ -43,5 +44,6 @@ if __name__ == '__main__':
                      clip_min=0,
                      clip_max=1,
                      attack_type=ProjectedGradientDescent,
+                     result_picture_image_dir='results/json/mean_filter',
                      filter_function=mean_filter,
                      need_train=False)
