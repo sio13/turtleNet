@@ -1,10 +1,4 @@
-import os
-
-os.environ['KERAS_BACKEND'] = 'tensorflow'
-
-import sys
-
-sys.path.append('../')
+import config
 
 from attacks import attack
 from defences.train import TurtleNet
@@ -107,5 +101,5 @@ if __name__ == '__main__':
         clip_min=0,
         clip_max=1,
         epochs=10,
-        need_train=True
+        need_train=False
     )

@@ -17,7 +17,8 @@ def eval_and_get_results(model,
                          y_test,
                          attack_type,
                          iteration_number,
-                         total_attack_time: float):
+                         total_attack_time: float,
+                         epsilon: float):
     results = model.evaluate(x_test, to_categorical(y_test, num_classes=10))
     loss, accuracy = results[0], results[1]
 
@@ -25,7 +26,8 @@ def eval_and_get_results(model,
                           "attack": attack_type,
                           "loss": loss,
                           "accuracy": accuracy,
-                          "attack_time": total_attack_time}
+                          "attack_time": total_attack_time,
+                          "epsilon": epsilon}
 
     print(f"{dataset_name} model was successfully evaluated on attack '{attack_type}'.")
     print(f"Loss: {loss} - - Accuracy: {accuracy}")
@@ -68,7 +70,8 @@ def eval_models(attack_types: list,
                 y_test=y_test,
                 attack_type='no attack',
                 iteration_number='None',
-                total_attack_time=0
+                total_attack_time=0,
+                epsilon=epsilon
             )
         )
         iteration_number = "None"  # TODO
@@ -102,3 +105,51 @@ def eval_models(attack_types: list,
         json.dump(json_test_results, open(f"{results_dir}/{dataset_name}_{result_filename}.json", "w"))
 
     return json_test_results
+
+
+def compare_damage(dataset_name: str,
+                   dataset: tuple,
+                   compiled_model,
+                   epsilon: float,
+                   attack_types: list,
+                   clip_min: float = None,
+                   clip_max: float = None,
+                   epochs: int = 5,
+                   need_train: bool = False,
+                   result_dir: str = 'results/json/compare_damage',
+                   result_filename='natural_trained'):
+    """
+    :param dataset_name: name of target dataset
+    :param dataset: tuple of np arrays x_train, y_train, x_test and y_test of target dataset
+    :param compiled_model: model for evaluate using attacks
+    :param epsilon: epsilon for attack
+    :param attack_types: list of attack types for evaluate
+    :param clip_min: min for clip
+    :param clip_max: max for clip
+    :param epochs: number of epochs for training target model
+    :param need_train: boolean - True for training model, False for loading
+    :param result_dir: str - directory path for results in JSON
+    :param result_filename: name of file with results in JSON format
+    :return: None
+    Compare different attacks against one model and prints results.
+    """
+    model = load_or_train_model(compiled_model=compiled_model,
+                                dataset_name=dataset_name,
+                                epochs=epochs,
+                                models_dir_name='models',
+                                model_type='compare_damage',
+                                need_train=need_train
+                                )
+
+    eval_models(attack_types=attack_types,
+                dataset=dataset,
+                dataset_name=dataset_name,
+                epsilon=epsilon,
+                num_chunks=10,
+                clip_min=clip_min,
+                clip_max=clip_max,
+                track_iteration=False,
+                save_to_file=True,
+                results_dir=result_dir,
+                result_filename=result_filename,
+                models_list=[model])

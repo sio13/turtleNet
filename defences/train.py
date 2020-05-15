@@ -1,6 +1,4 @@
-import sys
-
-sys.path.append('../')
+import global_config
 
 import cleverhans
 import numpy as np

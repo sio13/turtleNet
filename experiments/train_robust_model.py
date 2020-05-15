@@ -1,10 +1,4 @@
-import os
-
-os.environ['KERAS_BACKEND'] = 'tensorflow'
-import sys
-
-sys.path.append('../')
-
+import config
 from attacks import attack
 from defences.train import TurtleNet
 

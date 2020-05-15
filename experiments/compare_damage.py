@@ -1,10 +1,4 @@
-import os
-
-os.environ['KERAS_BACKEND'] = 'tensorflow'
-
-import sys
-
-sys.path.append('../')
+import config
 
 from attacks import attack
 from defences.train import TurtleNet
@@ -20,7 +14,7 @@ import time
 
 from utils import get_keras_dataset, save_image_and_collage, print_evaluation, load_or_train_model
 from defences.filters import threshold_data
-from evaluation import eval_models
+from evaluation import eval_models, compare_damage
 
 from architectures.target_model_mnist import CNNModelMnist as MnistNetwork
 from architectures.target_model_cifar_10_better import CNNCifar10Model as CifarNetwork
@@ -28,55 +22,6 @@ from architectures.target_model_cifar_10_better import CNNCifar10Model as CifarN
 from keras import backend
 
 sess = backend.get_session()
-
-
-def compare_damage(dataset_name: str,
-                   dataset: tuple,
-                   compiled_model,
-                   epsilon: float,
-                   attack_types: list,
-                   clip_min: float = None,
-                   clip_max: float = None,
-                   epochs: int = 5,
-                   need_train: bool = False,
-                   result_dir: str = 'results/json/compare_damage',
-                   result_filename='natural_trained'):
-    """
-    :param dataset_name: name of target dataset
-    :param dataset: tuple of np arrays x_train, y_train, x_test and y_test of target dataset
-    :param compiled_model: model for evaluate using attacks
-    :param epsilon: epsilon for attack
-    :param attack_types: list of attack types for evaluate
-    :param clip_min: min for clip
-    :param clip_max: max for clip
-    :param epochs: number of epochs for training target model
-    :param need_train: boolean - True for training model, False for loading
-    :param result_dir: str - directory path for results in JSON
-    :param result_filename: name of file with results in JSON format
-    :return: None
-    Compare different attacks against one model and prints results.
-    """
-    model = load_or_train_model(compiled_model=compiled_model,
-                                dataset_name=dataset_name,
-                                epochs=epochs,
-                                models_dir_name='models',
-                                model_type='compare_damage',
-                                need_train=need_train
-                                )
-
-    eval_models(attack_types=attack_types,
-                dataset=dataset,
-                dataset_name=dataset_name,
-                epsilon=epsilon,
-                num_chunks=10,
-                clip_min=clip_min,
-                clip_max=clip_max,
-                track_iteration=False,
-                save_to_file=True,
-                results_dir=result_dir,
-                result_filename=result_filename,
-                models_list=[model])
-
 
 if __name__ == '__main__':
     cifar_model = CifarNetwork()
