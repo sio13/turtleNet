@@ -5,6 +5,8 @@ from keras.utils import to_categorical
 from keras.datasets import mnist
 from defences.filters import threshold_data
 
+import cleverhans
+
 import os
 import json
 import re
