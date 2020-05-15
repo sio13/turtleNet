@@ -175,7 +175,7 @@ def evaluate_filters(dataset_name: str,
                      filter_size: int = 4,
                      need_train: bool = False,
                      result_picture_image_dir: str = 'results/filter_defences',
-                     sample_image_index: int = 2):
+                     sample_image_index: int = 6):
     x_train, y_train, x_test, y_test = dataset
 
     print(f"Experiment with {str(attack_type)} attack on {dataset_name} dataset.")
