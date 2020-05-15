@@ -1,5 +1,5 @@
 import numpy as np
-
+import scipy
 
 def threshold_data(dataset_source: np.array,
                    threshold: float = None,
