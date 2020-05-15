@@ -1,4 +1,4 @@
-import global_config
+import config
 
 from attacks import attack
 from defences.train import TurtleNet
