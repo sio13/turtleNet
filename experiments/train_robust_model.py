@@ -26,6 +26,7 @@ def train_model(model,
                 checkpoint_dir: str,
                 epsilon: float,
                 attack_type: cleverhans.attacks,
+                eps_iter: float = 0.015,
                 clip_min: float = 0,
                 clip_max: float = 1,
                 batch_size: int = 128,
@@ -37,7 +38,10 @@ def train_model(model,
 
     net = TurtleNet(train_model=model,
                     attack_type=attack_type,
-                    epsilon=epsilon, clip_min=clip_min, clip_max=clip_max)
+                    epsilon=epsilon,
+                    clip_min=clip_min,
+                    clip_max=clip_max,
+                    eps_iter=eps_iter)
 
     net.adversarial_training(iterations=iteration_total,
                              x_train=x_train,
@@ -52,13 +56,14 @@ def train_model(model,
 
 
 if __name__ == '__main__':
-    target_model = load_model('../models_cifar_better/checkpoint_2250.h5')
+    target_model = CNNCifar10Model()
+    target_model.train(1)
 
     train_model(model=target_model,
                 dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                 iteration_total=15000,
                 checkpoint_dir='../models_cifar_better',
                 epsilon=0.1,
-                iteration_so_far=2250,
+                iteration_so_far=0,
                 attack_type=ProjectedGradientDescent
                 )

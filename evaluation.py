@@ -73,7 +73,7 @@ def eval_models(attack_types: list,
                 epsilon=epsilon
             )
         )
-        iteration_number = "None"  # TODO
+        iteration_number = "None"  # TODO this is not longer required
 
         for attack_type in attack_types:
             attack_str = str(attack_type).split("'")[1]

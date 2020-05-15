@@ -16,8 +16,10 @@ class TurtleNet:
                  clip_min: float,
                  clip_max: float,
                  target_model=None,
+                 eps_iter: float = 0.05,
                  use_different_target=False):
         self.train_model = train_model
+        self.eps_iter = eps_iter
         if use_different_target:
             self.target_model = target_model
         else:

@@ -24,14 +24,26 @@ sess = backend.get_session()
 
 
 class Attack:
-    def __init__(self, attack_type: cleverhans.attacks, epsilon: float, clip_min: float, clip_max: float):
+    def __init__(self,
+                 attack_type: cleverhans.attacks,
+                 epsilon: float,
+                 clip_min: float,
+                 clip_max: float,
+                 eps_iter: float = 0.05):
+        self.eps_iter = eps_iter
         self.attack_type = attack_type
         self.epsilon = epsilon
         self.clip_min = clip_min
         self.clip_max = clip_max
 
     def generate_perturbations(self, original_samples, model, num_chunks: int, ord=np.inf):
-        attack_params = {'eps': self.epsilon, 'clip_min': self.clip_min, 'clip_max': self.clip_max, 'ord': ord}
+        attack_params = {
+            'eps': self.epsilon,
+            'clip_min': self.clip_min,
+            'clip_max': self.clip_max,
+            'ord': ord,
+            'eps_iter': self.eps_iter
+        }
         wrapped_model = KerasModelWrapper(model)
         attack = self.attack_type(model=wrapped_model, sess=sess)
         chunks = chunk(original_samples, len(original_samples) // num_chunks)
