@@ -9,21 +9,21 @@ def json_to_csv(json_path: str, csv_path: str):
 
 if __name__ == '__main__':
     json_to_csv(
-        "results/json/data_augmentation/cifar_natural_trained_0.1.json",
-        "results/csv/data_augmentation/cifar_natural_trained_0_1")
+        "results/json/compare_damage/cifar_natural_trained_0.1.json",
+        "results/csv/compare_damage/cifar_natural_trained_0_1")
     json_to_csv(
-        "results/json/data_augmentation/cifar_natural_trained_0.2.json",
-        "results/csv/data_augmentation/cifar_natural_trained_0_2")
+        "results/json/compare_damage/cifar_natural_trained_0.2.json",
+        "results/csv/compare_damage/cifar_natural_trained_0_2")
     json_to_csv(
-        "results/json/data_augmentation/cifar_natural_trained_0.3.json",
-        "results/csv/data_augmentation/cifar_natural_trained_0_3")
+        "results/json/compare_damage/cifar_natural_trained_0.3.json",
+        "results/csv/compare_damage/cifar_natural_trained_0_3")
 
     json_to_csv(
-        "results/json/data_augmentation/mnist_natural_trained_0.1.json",
-        "results/csv/data_augmentation/mnist_natural_trained_0_1")
+        "results/json/compare_damage/mnist_natural_trained_0.1.json",
+        "results/csv/compare_damage/mnist_natural_trained_0_1")
     json_to_csv(
-        "results/json/data_augmentation/mnist_natural_trained_0.2.json",
-        "results/csv/data_augmentation/mnist_natural_trained_0_2")
+        "results/json/compare_damage/mnist_natural_trained_0.2.json",
+        "results/csv/compare_damage/mnist_natural_trained_0_2")
     json_to_csv(
-        "results/json/data_augmentation/mnist_natural_trained_0.3.json",
-        "results/csv/data_augmentation/mnist_natural_trained_0_3.json")
+        "results/json/compare_damage/mnist_natural_trained_0.3.json",
+        "results/csv/compare_damage/mnist_natural_trained_0_3.json")
