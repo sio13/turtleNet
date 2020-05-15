@@ -151,5 +151,5 @@ def compare_damage(dataset_name: str,
                 track_iteration=False,
                 save_to_file=True,
                 results_dir=result_dir,
-                result_filename=f"{result_filename}_{epsilon}",
+                result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}",
                 models_list=[model])
