@@ -59,7 +59,7 @@ if __name__ == '__main__':
     target_model = CNNCifar10Model()
     target_model.train(1)
 
-    train_model(model=target_model,
+    train_model(model=target_model.model,
                 dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                 iteration_total=15000,
                 checkpoint_dir='../models_cifar_better_new',
