@@ -44,11 +44,11 @@ class Attack:
             'clip_min': self.clip_min,
             'clip_max': self.clip_max,
             'ord': ord,
-            'rand_init': self.rand_init,
+
 
         }
         if self.attack_type != FastGradientMethod:
-            attack_params.update({'eps_iter': self.eps_iter})
+            attack_params.update({'rand_init': self.rand_init, 'eps_iter': self.eps_iter})
         wrapped_model = KerasModelWrapper(model)
         attack = self.attack_type(model=wrapped_model, sess=sess)
         chunks = chunk(original_samples, len(original_samples) // num_chunks)
