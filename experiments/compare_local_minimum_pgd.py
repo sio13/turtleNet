@@ -5,6 +5,7 @@ from attacks import attack
 from evaluation import eval_models
 from keras.datasets import mnist, cifar10
 from cleverhans.attacks import ProjectedGradientDescent
+from keras.utils import to_categorical
 
 from architectures.target_model_mnist import CNNModelMnist as MnistNetwork
 from architectures.target_model_cifar_10_better import CNNCifar10Model as CifarNetwork
@@ -61,7 +62,7 @@ if __name__ == '__main__':
                 compiled_model=mnist_model,
                 number_restarts=20,
                 epsilon=0.3,
-                need_train=True
+                need_train=False
                 )
 
     restart_pgd(dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
