@@ -150,7 +150,7 @@ def compare_damage(dataset_name: str,
                                 dataset_name=dataset_name,
                                 epochs=epochs,
                                 models_dir_name='models',
-                                model_type='compare_damage',
+                                model_type=f'compare_damage_{epochs}',
                                 need_train=need_train
                                 )
 
@@ -163,7 +163,7 @@ def compare_damage(dataset_name: str,
                 clip_max=clip_max,
                 save_to_file=True,
                 results_dir=result_dir,
-                result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}",
+                result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}_epochs_{epochs}",
                 models_list=[model])
 
 
