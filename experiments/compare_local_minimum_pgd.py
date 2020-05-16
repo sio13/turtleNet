@@ -46,7 +46,9 @@ def restart_pgd(dataset: tuple,
                                              model=model,
                                              num_chunks=num_chunks,
                                              ord=np.inf)
+        print(model.evaluate(samples, to_categorical(y_test)))
         accuracy = model.evaluate(samples, to_categorical(y_test))[1]
+
         print(f"Accuracy for {restart_number}-th restart of PGD is {accuracy * 100} percent")
         results.append(accuracy)
 
