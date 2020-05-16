@@ -37,7 +37,7 @@ def restart_pgd(dataset: tuple,
                         clip_min=0,
                         clip_max=1,
                         eps_iter=eps_iter,
-                        rand_init=True)
+                        rand_init=False)
 
     results = []
     for restart_number in range(number_restarts):
