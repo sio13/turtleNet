@@ -29,12 +29,14 @@ class Attack:
                  epsilon: float,
                  clip_min: float,
                  clip_max: float,
-                 eps_iter: float = 0.05):
+                 eps_iter: float = 0.05,
+                 rand_init: bool = False):
         self.eps_iter = eps_iter
         self.attack_type = attack_type
         self.epsilon = epsilon
         self.clip_min = clip_min
         self.clip_max = clip_max
+        self.rand_init = rand_init
 
     def generate_perturbations(self, original_samples, model, num_chunks: int, ord=np.inf):
         attack_params = {
@@ -42,7 +44,8 @@ class Attack:
             'clip_min': self.clip_min,
             'clip_max': self.clip_max,
             'ord': ord,
-            'eps_iter': self.eps_iter
+            'eps_iter': self.eps_iter,
+            'rand_init': self.rand_init,
         }
         wrapped_model = KerasModelWrapper(model)
         attack = self.attack_type(model=wrapped_model, sess=sess)

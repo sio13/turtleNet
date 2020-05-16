@@ -43,7 +43,11 @@ class TurtleNet:
         self.use_different_target = use_different_target
         self.clip_min = clip_min
         self.clip_max = clip_max
-        self.attack = Attack(attack_type, epsilon, self.clip_min, self.clip_max)
+        self.attack = Attack(attack_type=attack_type,
+                             epsilon=epsilon,
+                             clip_min=self.clip_min,
+                             clip_max=self.clip_max,
+                             eps_iter=self.eps_iter)
         self.perturbed_data = None
 
     def adversarial_training(self,

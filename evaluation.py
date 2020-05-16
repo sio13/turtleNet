@@ -48,9 +48,10 @@ def eval_models(attack_types: list,
                 clip_max: float,
                 num_chunks: int,
                 result_filename: str = '',
-                track_iteration: bool = False,
                 results_dir: str = "results/json",
                 save_to_file: bool = False,
+                eps_iter: float = 0.02,
+                rand_init: bool = False,
                 models_list: list = [],
                 folder_list: list = [],
                 folder_name: str = "",
@@ -86,10 +87,15 @@ def eval_models(attack_types: list,
             attack_str = str(attack_type).split("'")[1]
             print(f"Evaluating {dataset_name} model for attack '{attack_str}' ...")
 
-            attack = Attack(attack_type, epsilon, clip_min, clip_max)
+            att = Attack(attack_type=attack_type,
+                            epsilon=epsilon,
+                            clip_min=clip_min,
+                            clip_max=clip_max,
+                            rand_init=rand_init,
+                            eps_iter=eps_iter)
 
             start_attack = time.time()
-            perturbations = attack.generate_perturbations(x_test, model, num_chunks)
+            perturbations = att.generate_perturbations(x_test, model, num_chunks)
             end_attack = time.time()
 
             total_attack_time = end_attack - start_attack
@@ -155,7 +161,6 @@ def compare_damage(dataset_name: str,
                 num_chunks=10,
                 clip_min=clip_min,
                 clip_max=clip_max,
-                track_iteration=False,
                 save_to_file=True,
                 results_dir=result_dir,
                 result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}",
