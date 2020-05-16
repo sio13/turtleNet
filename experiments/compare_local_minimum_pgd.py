@@ -64,7 +64,7 @@ if __name__ == '__main__':
                 dataset_name='mnist',
                 compiled_model=mnist_model,
                 number_restarts=20,
-                epochs=5,
+                epochs=10,
                 epsilon=0.3,
                 need_train=True
                 )
