@@ -91,9 +91,10 @@ class TurtleNet:
                 ord=ord)
 
             self.train_model.train_on_batch(self.perturbed_data, to_categorical(labels, num_classes=10))
-            if self.use_different_target and iteration % frequency_natural == 0:
+            if self.use_different_target:
                 self.target_model.train_on_batch(self.perturbed_data, to_categorical(labels, num_classes=10))
-            if self.use_natural:
+            if self.use_natural and iteration % frequency_natural == 0:
+                print(f"Iteration {iteration}: training on natural data.")
                 self.target_model.train_on_batch(batch, to_categorical(labels, num_classes=10))
 
             print(f"Iteration number {iteration}")
