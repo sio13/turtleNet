@@ -32,12 +32,13 @@ def restart_pgd(dataset: tuple,
                                 model_type='compare_restarts_pgd',
                                 need_train=need_train
                                 )
+    model.evaluate(x_test, to_categorical(y_test))
     att = attack.Attack(attack_type=ProjectedGradientDescent,
                         epsilon=epsilon,
                         clip_min=0,
                         clip_max=1,
                         eps_iter=eps_iter,
-                        rand_init=False)
+                        rand_init=True)
 
     results = []
     for restart_number in range(number_restarts):
