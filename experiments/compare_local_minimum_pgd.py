@@ -64,8 +64,9 @@ if __name__ == '__main__':
                 dataset_name='mnist',
                 compiled_model=mnist_model,
                 number_restarts=20,
+                epochs=5,
                 epsilon=0.3,
-                need_train=False
+                need_train=True
                 )
 
     restart_pgd(dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
