@@ -4,7 +4,7 @@ import numpy as np
 from attacks import attack
 from evaluation import eval_models
 from keras.datasets import mnist, cifar10
-from cleverhans.attacks import ProjectedGradientDescent
+from cleverhans.attacks import FastGradientMethod
 from keras.utils import to_categorical
 
 from architectures.target_model_mnist import CNNModelMnist as MnistNetwork
@@ -33,7 +33,7 @@ def restart_pgd(dataset: tuple,
                                 need_train=need_train
                                 )
     print(model.evaluate(x_test, to_categorical(y_test)))
-    att = attack.Attack(attack_type=ProjectedGradientDescent,
+    att = attack.Attack(attack_type=FastGradientMethod,
                         epsilon=epsilon,
                         clip_min=0,
                         clip_max=1,
@@ -66,7 +66,7 @@ if __name__ == '__main__':
                 number_restarts=20,
                 epochs=10,
                 epsilon=0.3,
-                need_train=True
+                need_train=False
                 )
 
     restart_pgd(dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
@@ -74,5 +74,5 @@ if __name__ == '__main__':
                 compiled_model=cifar_model,
                 number_restarts=20,
                 epsilon=0.1,
-                need_train=True
+                need_train=False
                 )
