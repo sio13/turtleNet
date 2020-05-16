@@ -32,7 +32,7 @@ def restart_pgd(dataset: tuple,
                                 model_type='compare_restarts_pgd',
                                 need_train=need_train
                                 )
-    model.evaluate(x_test, to_categorical(y_test))
+    print(model.evaluate(x_test, to_categorical(y_test)))
     att = attack.Attack(attack_type=ProjectedGradientDescent,
                         epsilon=epsilon,
                         clip_min=0,
