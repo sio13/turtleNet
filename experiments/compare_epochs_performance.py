@@ -27,7 +27,7 @@ if __name__ == '__main__':
     cifar_model = CifarNetwork()
     mnist_model = MnistNetwork()
 
-    for epochs in range([3, 5, 10, 15]):
+    for epochs in [3, 5, 10, 15]:
         compare_damage(dataset_name='mnist',
                        dataset=get_keras_dataset(mnist.load_data()),
                        compiled_model=mnist_model,
