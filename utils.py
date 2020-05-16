@@ -45,7 +45,7 @@ def save_image_and_collage(dir_path: str,
                            image_type: str,
                            rows: int,
                            columns: int,
-                           sample_image_index: int = 2
+                           sample_image_index: int = 2 # toto over alebo bug na GH
                            ):
     save_image(f"{dir_path}/{image_name}_{image_type}_image",
                array[sample_image_index])

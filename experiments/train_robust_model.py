@@ -32,8 +32,10 @@ def train_model(model,
                 batch_size: int = 128,
                 chunk_size: int = 128,
                 checkpoint_frequency: int = 50,
+                frequency_natural: int = 5,
                 make_checkpoints: bool = True,
-                iteration_so_far: int = 0):
+                iteration_so_far: int = 0,
+                use_natural: bool = False):
     x_train, y_train, x_test, y_test = dataset
 
     net = TurtleNet(train_model=model,
@@ -41,7 +43,8 @@ def train_model(model,
                     epsilon=epsilon,
                     clip_min=clip_min,
                     clip_max=clip_max,
-                    eps_iter=eps_iter)
+                    eps_iter=eps_iter,
+                    use_natural=use_natural)
 
     net.adversarial_training(iterations=iteration_total,
                              x_train=x_train,
@@ -52,7 +55,8 @@ def train_model(model,
                              make_checkpoints=make_checkpoints,
                              checkpoint_frequency=checkpoint_frequency,
                              checkpoint_filename="checkpoint",
-                             iteration_start=iteration_so_far + 1)
+                             iteration_start=iteration_so_far + 1,
+                             frequency_natural=frequency_natural)
 
 
 if __name__ == '__main__':
@@ -65,5 +69,7 @@ if __name__ == '__main__':
                 checkpoint_dir='../models_cifar_better_new',
                 epsilon=0.1,
                 iteration_so_far=0,
-                attack_type=ProjectedGradientDescent
+                attack_type=ProjectedGradientDescent,
+                use_natural=True,
+                frequency_natural=5
                 )

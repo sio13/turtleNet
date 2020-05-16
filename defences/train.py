@@ -17,7 +17,22 @@ class TurtleNet:
                  clip_max: float,
                  target_model=None,
                  eps_iter: float = 0.05,
-                 use_different_target=False):
+                 use_different_target: bool = False,
+                 use_natural: bool = False):
+        """
+        Constructor for turtleNet
+        :param train_model: model to be adversarially trained
+        :param attack_type: type of attack method
+        :param epsilon: maximal distance from the original image
+        :param clip_min: minimum clip
+        :param clip_max: maximum clip
+        :param target_model: model for generating perturbations
+        :param eps_iter: size of the iteration step
+        :param use_different_target: boolean - true for generating samples using target model, false for use train model
+        :param use_natural: true for training both for natural data
+        """
+
+        self.use_natural = use_natural
         self.train_model = train_model
         self.eps_iter = eps_iter
         if use_different_target:
@@ -40,6 +55,8 @@ class TurtleNet:
                              checkpoint_dir: str = 'models',
                              make_checkpoints: bool = False,
                              checkpoint_frequency: int = 50,
+                             frequency_natural: int = 5,
+                             ord=np.inf,
                              checkpoint_filename: str = "checkpoint",
                              iteration_start: int = 0):
         """
@@ -51,6 +68,7 @@ class TurtleNet:
         :param checkpoint_dir: directory for models
         :param make_checkpoints: True for saving models, otherwise False
         :param checkpoint_frequency: number of iteration followed by checkpoint
+        :param frequency_natural: number of iteration followed by natural training
         :param checkpoint_filename: filename of checkpoint -- automatically contains iteration number
         :param ord: order of reference attack
         :param iteration_start: name for the first iteration file
@@ -67,18 +85,22 @@ class TurtleNet:
             labels = np.array(y_train[batch_index_start:batch_index_end])
 
             self.perturbed_data = self.attack.generate_perturbations(
-                batch,
-                self.train_model if self.use_different_target else self.train_model,
-                max(len(batch) // chunk_size, 1))
-            self.train_model.train_on_batch(self.perturbed_data,
-                                            to_categorical(labels, num_classes=10))
-            if self.use_different_target:
-                self.target_model.train_on_batch(self.perturbed_data,
-                                                 to_categorical(labels, num_classes=10))
+                original_samples=batch,
+                model=self.train_model if self.use_different_target else self.train_model,
+                num_chunks=max(len(batch) // chunk_size, 1),
+                ord=ord)
+
+            self.train_model.train_on_batch(self.perturbed_data, to_categorical(labels, num_classes=10))
+            if self.use_different_target and iteration % frequency_natural == 0:
+                self.target_model.train_on_batch(self.perturbed_data, to_categorical(labels, num_classes=10))
+            if self.use_natural:
+                self.target_model.train_on_batch(batch, to_categorical(labels, num_classes=10))
+
             print(f"Iteration number {iteration}")
             if make_checkpoints and iteration % checkpoint_frequency == 0:
                 checkpoint_full_path = f"{checkpoint_dir}/{checkpoint_filename}_{iteration}.h5"
                 self.save_model(checkpoint_full_path)
+
                 print(f"Saving checkpoint for iteration number {iteration} into {checkpoint_full_path}.")
 
     def eval_on_attack(self,
@@ -88,11 +110,14 @@ class TurtleNet:
                        clip_max: float,
                        x_train: np.array,
                        y_train: np.array,
-                       chunk_size: int):
+                       chunk_size: int,
+                       ord=np.inf):
 
         evaluation_attack = Attack(attack_type, epsilon, clip_min, clip_max)
-        self.perturbed_data = evaluation_attack.generate_perturbations(np.array(x_train), self.target_model,
-                                                                       len(x_train) // chunk_size)
+        self.perturbed_data = evaluation_attack.generate_perturbations(original_samples=np.array(x_train),
+                                                                       model=self.target_model,
+                                                                       num_chunks=len(x_train) // chunk_size,
+                                                                       ord=ord)
         results = self.train_model.evaluate(self.perturbed_data, to_categorical(y_train))
 
         print(f"Total loss of target model is {results[0]} and its accuracy is {results[1]}")
