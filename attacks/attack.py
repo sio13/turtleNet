@@ -75,7 +75,7 @@ class Attack:
         #TODO refactor to use truth labels
         perturbed_x_samples = itertools.chain.from_iterable(
             map(lambda x, y: attack.generate_np(
-                x=np.array(x),
+                x_val=np.array(x),
                 y=np.array(y),
                 **attack_params), chunks, chunks_truth))
         return np.array(list(perturbed_x_samples))
