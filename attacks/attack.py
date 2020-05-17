@@ -77,5 +77,5 @@ class Attack:
             map(lambda x, y: attack.generate_np(
                 x=np.array(x),
                 y=np.array(y),
-                **attack_params), zip(chunks, chunks_truth)))
+                **attack_params), chunks, chunks_truth))
         return np.array(list(perturbed_x_samples))
