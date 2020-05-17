@@ -99,7 +99,8 @@ def eval_models(attack_types: list,
             perturbations = att.generate_perturbations(original_samples=x_test,
                                                        model=model,
                                                        num_chunks=num_chunks,
-                                                       nb_iter=nb_iter)
+                                                       nb_iter=nb_iter,
+                                                       truth_labels=y_test)
             end_attack = time.time()
 
             total_attack_time = end_attack - start_attack
@@ -119,7 +120,7 @@ def eval_models(attack_types: list,
     print(json_test_results)
 
     if save_to_file:
-        json.dump(json_test_results, open(f"{results_dir}/{dataset_name}_{result_filename}.json", "w"))
+        json.dump(json_test_results, open(f"{results_dir}/{dataset_name}_{result_filename}_{eps_iter}.json", "w"))
 
     return json_test_results
 

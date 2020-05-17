@@ -57,7 +57,8 @@ class Attack:
             attack_params.update(
                 {
                     'eps_iter': self.eps_iter,
-                    'nb_iter': nb_iter
+                    'nb_iter': nb_iter,
+                    # 'y': truth_labels
                 }
             )
         elif self.attack_type not in (MomentumIterativeMethod, FastGradientMethod):
@@ -66,15 +67,15 @@ class Attack:
                     'rand_init': self.rand_init
                 }
             )
-        elif self.attack_type == MomentumIterativeMethod:
-            attack_params.update(
-                {
-                    'y': truth_labels
-                }
-            )
+
         wrapped_model = KerasModelWrapper(model)
         attack = self.attack_type(model=wrapped_model, sess=sess)
         chunks = chunk(original_samples, len(original_samples) // num_chunks)
+        chunks_truth = chunk(truth_labels, len(truth_labels) // num_chunks)
+        #TODO refactor to use truth labels
         perturbed_x_samples = itertools.chain.from_iterable(
-            map(lambda x: attack.generate_np(np.array(x), **attack_params), chunks))
+            map(lambda x, y: attack.generate_np(
+                x=np.array(x),
+                y=np.array(y),
+                **attack_params), zip(chunks, chunks_truth)))
         return np.array(list(perturbed_x_samples))

@@ -15,12 +15,10 @@ from evaluation import eval_models, compare_damage
 
 if __name__ == '__main__':
 
-
-
     for iterations_number in (5, 10, 15, 20, 25, 30, 35):
         cifar_model = CifarNetwork()
         mnist_model = MnistNetwork()
-        #change epsilon iter
+        # change epsilon iter
         compare_damage(dataset_name='mnist',
                        dataset=get_keras_dataset(mnist.load_data()),
                        compiled_model=mnist_model,
@@ -35,7 +33,7 @@ if __name__ == '__main__':
                        nb_iter=iterations_number,
                        eps_iter=0.01
                        )
-
+        # TODO relativize training steps
         compare_damage(dataset_name='cifar',
                        dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                        compiled_model=cifar_model,
@@ -46,7 +44,6 @@ if __name__ == '__main__':
                        result_dir='results/json/compare_pgd_iterations',
                        need_train=False,
                        epochs=20,
-                       # model_type='compare_iterations_pgd',
                        nb_iter=iterations_number,
                        eps_iter=0.01
                        )
