@@ -24,10 +24,12 @@ from keras import backend
 sess = backend.get_session()
 
 if __name__ == '__main__':
-    cifar_model = CifarNetwork()
-    mnist_model = MnistNetwork()
+
+
 
     for epochs in [3, 5, 10, 15, 20, 25, 30, 35, 40]:
+        cifar_model = CifarNetwork()
+        mnist_model = MnistNetwork()
         compare_damage(dataset_name='mnist',
                        dataset=get_keras_dataset(mnist.load_data()),
                        compiled_model=mnist_model,
