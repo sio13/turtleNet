@@ -14,10 +14,13 @@ from defences.filters import threshold_data
 from evaluation import eval_models, compare_damage
 
 if __name__ == '__main__':
-    cifar_model = CifarNetwork()
-    mnist_model = MnistNetwork()
 
-    for iterations_number in [5, 10, 15, 20]:
+
+
+    for iterations_number in (5, 10, 15, 20, 25, 30, 35):
+        cifar_model = CifarNetwork()
+        mnist_model = MnistNetwork()
+
         compare_damage(dataset_name='mnist',
                        dataset=get_keras_dataset(mnist.load_data()),
                        compiled_model=mnist_model,
@@ -27,7 +30,7 @@ if __name__ == '__main__':
                        attack_types=[ProjectedGradientDescent],
                        result_dir='results/json/compare_pgd_iterations',
                        need_train=True if iterations_number == 5 else False,
-                       epochs=10,
+                       epochs=20,
                        model_type='compare_iterations_pgd',
                        nb_iter=iterations_number
                        )
@@ -41,7 +44,7 @@ if __name__ == '__main__':
                        attack_types=[ProjectedGradientDescent],
                        result_dir='results/json/compare_pgd_iterations',
                        need_train=True if iterations_number == 5 else False,
-                       epochs=10,
+                       epochs=20,
                        model_type='compare_iterations_pgd',
                        nb_iter=iterations_number
                        )

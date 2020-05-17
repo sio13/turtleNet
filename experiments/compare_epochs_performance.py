@@ -25,9 +25,7 @@ sess = backend.get_session()
 
 if __name__ == '__main__':
 
-
-
-    for epochs in [3, 5, 10, 15, 20, 25, 30, 35, 40]:
+    for epochs in (3, 5, 10, 15, 20, 25, 30, 35, 40):
         cifar_model = CifarNetwork()
         mnist_model = MnistNetwork()
         compare_damage(dataset_name='mnist',

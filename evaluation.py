@@ -158,7 +158,7 @@ def compare_damage(dataset_name: str,
                                 dataset_name=dataset_name,
                                 epochs=epochs,
                                 models_dir_name='models',
-                                model_type=f'{model_type}_{epochs}',
+                                model_type=f'{model_type}_{epochs}_{nb_iter}',
                                 need_train=need_train
                                 )
 
