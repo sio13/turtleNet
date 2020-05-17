@@ -4,7 +4,7 @@ import numpy as np
 from attacks import attack
 from evaluation import eval_models
 from keras.datasets import mnist, cifar10
-from cleverhans.attacks import FastGradientMethod
+from cleverhans.attacks import ProjectedGradientDescent
 from keras.utils import to_categorical
 
 from architectures.target_model_mnist import CNNModelMnist as MnistNetwork
