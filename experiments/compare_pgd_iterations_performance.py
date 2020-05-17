@@ -20,7 +20,7 @@ if __name__ == '__main__':
     for iterations_number in (5, 10, 15, 20, 25, 30, 35):
         cifar_model = CifarNetwork()
         mnist_model = MnistNetwork()
-
+        #change epsilon iter
         compare_damage(dataset_name='mnist',
                        dataset=get_keras_dataset(mnist.load_data()),
                        compiled_model=mnist_model,
@@ -29,10 +29,11 @@ if __name__ == '__main__':
                        clip_max=1,
                        attack_types=[ProjectedGradientDescent],
                        result_dir='results/json/compare_pgd_iterations',
-                       need_train=True if iterations_number == 5 else False,
+                       need_train=False,
                        epochs=20,
                        model_type='compare_iterations_pgd',
-                       nb_iter=iterations_number
+                       nb_iter=iterations_number,
+                       eps_iter=0.01
                        )
 
         compare_damage(dataset_name='cifar',
@@ -43,8 +44,9 @@ if __name__ == '__main__':
                        clip_max=1,
                        attack_types=[ProjectedGradientDescent],
                        result_dir='results/json/compare_pgd_iterations',
-                       need_train=True if iterations_number == 5 else False,
+                       need_train=False,
                        epochs=20,
-                       model_type='compare_iterations_pgd',
-                       nb_iter=iterations_number
+                       # model_type='compare_iterations_pgd',
+                       nb_iter=iterations_number,
+                       eps_iter=0.01
                        )

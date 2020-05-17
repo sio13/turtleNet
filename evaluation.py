@@ -136,7 +136,8 @@ def compare_damage(dataset_name: str,
                    result_dir: str = 'results/json/compare_damage',
                    result_filename='natural_trained',
                    model_type: str = 'compare_damage',
-                   nb_iter: int = 10):
+                   nb_iter: int = 10,
+                   eps_iter: float = 0.02):
     """
     :param dataset_name: name of target dataset
     :param dataset: tuple of np arrays x_train, y_train, x_test and y_test of target dataset
@@ -151,6 +152,7 @@ def compare_damage(dataset_name: str,
     :param result_filename: name of file with results in JSON format
     :param model_type: string of model type
     :param nb_iter: number of iterations of attack method
+    :param eps_iter: size of attacking step
     :return: None
     Compare different attacks against one model and prints results.
     """
@@ -173,7 +175,8 @@ def compare_damage(dataset_name: str,
                 results_dir=result_dir,
                 result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}_epochs_{epochs}",
                 models_list=[model],
-                nb_iter=nb_iter)
+                nb_iter=nb_iter,
+                eps_iter=eps_iter)
 
 
 def evaluate_filters(dataset_name: str,
