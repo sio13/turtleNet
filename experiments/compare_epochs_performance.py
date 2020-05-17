@@ -27,7 +27,7 @@ if __name__ == '__main__':
     cifar_model = CifarNetwork()
     mnist_model = MnistNetwork()
 
-    for epochs in [3, 5, 10, 15]:
+    for epochs in [3, 5, 10, 15, 20, 25, 30, 35, 40]:
         compare_damage(dataset_name='mnist',
                        dataset=get_keras_dataset(mnist.load_data()),
                        compiled_model=mnist_model,
@@ -36,7 +36,7 @@ if __name__ == '__main__':
                        clip_max=1,
                        attack_types=[ProjectedGradientDescent],
                        result_dir='results/json/epochs_performance',
-                       need_train=True,
+                       need_train=False if epochs in (3, 5, 10, 15) else True,
                        epochs=epochs,
                        )
 
@@ -48,6 +48,6 @@ if __name__ == '__main__':
                        clip_max=1,
                        attack_types=[ProjectedGradientDescent],
                        result_dir='results/json/epochs_performance',
-                       need_train=True,
+                       need_train=False if epochs in (3, 5, 10, 15) else True,
                        epochs=epochs,
                        )
