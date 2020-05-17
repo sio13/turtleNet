@@ -174,7 +174,7 @@ def compare_damage(dataset_name: str,
                 clip_max=clip_max,
                 save_to_file=True,
                 results_dir=result_dir,
-                result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}_epochs_{epochs}_{eps_iter}",
+                result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}_epoch_{epochs}_{eps_iter}_{nb_iter}",
                 models_list=[model],
                 nb_iter=nb_iter,
                 eps_iter=eps_iter)
