@@ -33,7 +33,7 @@ def restart_pgd(dataset: tuple,
                                 need_train=need_train
                                 )
     print(model.evaluate(x_test, to_categorical(y_test)))
-    att = attack.Attack(attack_type=FastGradientMethod,
+    att = attack.Attack(attack_type=ProjectedGradientDescent,
                         epsilon=epsilon,
                         clip_min=0,
                         clip_max=1,

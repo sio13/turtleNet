@@ -56,7 +56,8 @@ def eval_models(attack_types: list,
                 folder_list: list = [],
                 folder_name: str = "",
                 prefix: str = "",
-                suffix: str = "") -> dict:
+                suffix: str = "",
+                nb_iter: int = 10) -> dict:
     if len(models_list) == 0:
         model_names = filter(lambda x: x.startswith(prefix) and x.endswith(suffix),
                              os.listdir(folder_name)) if not folder_list else folder_list
@@ -88,14 +89,17 @@ def eval_models(attack_types: list,
             print(f"Evaluating {dataset_name} model for attack '{attack_str}' ...")
 
             att = Attack(attack_type=attack_type,
-                            epsilon=epsilon,
-                            clip_min=clip_min,
-                            clip_max=clip_max,
-                            rand_init=rand_init,
-                            eps_iter=eps_iter)
+                         epsilon=epsilon,
+                         clip_min=clip_min,
+                         clip_max=clip_max,
+                         rand_init=rand_init,
+                         eps_iter=eps_iter)
 
             start_attack = time.time()
-            perturbations = att.generate_perturbations(x_test, model, num_chunks)
+            perturbations = att.generate_perturbations(original_samples=x_test,
+                                                       model=model,
+                                                       num_chunks=num_chunks,
+                                                       nb_iter=nb_iter)
             end_attack = time.time()
 
             total_attack_time = end_attack - start_attack
@@ -130,7 +134,9 @@ def compare_damage(dataset_name: str,
                    epochs: int = 5,
                    need_train: bool = False,
                    result_dir: str = 'results/json/compare_damage',
-                   result_filename='natural_trained'):
+                   result_filename='natural_trained',
+                   model_type: str = 'compare_damage',
+                   nb_iter: int = 10):
     """
     :param dataset_name: name of target dataset
     :param dataset: tuple of np arrays x_train, y_train, x_test and y_test of target dataset
@@ -143,6 +149,8 @@ def compare_damage(dataset_name: str,
     :param need_train: boolean - True for training model, False for loading
     :param result_dir: str - directory path for results in JSON
     :param result_filename: name of file with results in JSON format
+    :param model_type: string of model type
+    :param nb_iter: number of iterations of attack method
     :return: None
     Compare different attacks against one model and prints results.
     """
@@ -150,7 +158,7 @@ def compare_damage(dataset_name: str,
                                 dataset_name=dataset_name,
                                 epochs=epochs,
                                 models_dir_name='models',
-                                model_type=f'compare_damage_{epochs}',
+                                model_type=f'{model_type}_{epochs}',
                                 need_train=need_train
                                 )
 
@@ -164,7 +172,8 @@ def compare_damage(dataset_name: str,
                 save_to_file=True,
                 results_dir=result_dir,
                 result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}_epochs_{epochs}",
-                models_list=[model])
+                models_list=[model],
+                nb_iter=nb_iter)
 
 
 def evaluate_filters(dataset_name: str,

@@ -38,17 +38,29 @@ class Attack:
         self.clip_max = clip_max
         self.rand_init = rand_init
 
-    def generate_perturbations(self, original_samples, model, num_chunks: int, ord=np.inf):
+    def generate_perturbations(self, original_samples, model, num_chunks: int, ord=np.inf, nb_iter: int = 10):
         attack_params = {
             'eps': self.epsilon,
             'clip_min': self.clip_min,
             'clip_max': self.clip_max,
             'ord': ord,
 
-
         }
+        # TODO refactor methods to consume parameters
         if self.attack_type != FastGradientMethod:
-            attack_params.update({'rand_init': self.rand_init, 'eps_iter': self.eps_iter})
+            attack_params.update(
+                {
+                    'eps_iter': self.eps_iter,
+                    'nb_iter': nb_iter
+                }
+            )
+        elif self.attack_type not in (MomentumIterativeMethod, FastGradientMethod):
+            attack_params.update(
+                {
+                    'rand_init': self.rand_init
+                }
+            )
+
         wrapped_model = KerasModelWrapper(model)
         attack = self.attack_type(model=wrapped_model, sess=sess)
         chunks = chunk(original_samples, len(original_samples) // num_chunks)
