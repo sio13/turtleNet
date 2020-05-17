@@ -1,0 +1,3 @@
+,accuracy,attack,attack_time,epsilon,iteration,loss
+0,0.8169999718666071,no attack,0.0,0.1,None,0.587666090631485
+1,0.041400000452995,ProjectedGradientDescent,194.113911151886,0.1,None,37.50935414428711
