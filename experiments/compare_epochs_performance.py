@@ -38,7 +38,7 @@ if __name__ == '__main__':
                        clip_max=1,
                        attack_types=[ProjectedGradientDescent],
                        result_dir='results/json/epochs_performance',
-                       need_train=False if epochs in (3, 5, 10, 15) else True,
+                       need_train=True,
                        epochs=epochs,
                        )
 
@@ -50,6 +50,6 @@ if __name__ == '__main__':
                        clip_max=1,
                        attack_types=[ProjectedGradientDescent],
                        result_dir='results/json/epochs_performance',
-                       need_train=False if epochs in (3, 5, 10, 15) else True,
+                       need_train=True,
                        epochs=epochs,
                        )
