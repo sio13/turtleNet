@@ -38,7 +38,13 @@ class Attack:
         self.clip_max = clip_max
         self.rand_init = rand_init
 
-    def generate_perturbations(self, original_samples, model, num_chunks: int, ord=np.inf, nb_iter: int = 10):
+    def generate_perturbations(self,
+                               original_samples,
+                               model,
+                               num_chunks: int,
+                               ord=np.inf,
+                               nb_iter: int = 10,
+                               truth_labels=None):
         attack_params = {
             'eps': self.epsilon,
             'clip_min': self.clip_min,
@@ -60,7 +66,12 @@ class Attack:
                     'rand_init': self.rand_init
                 }
             )
-
+        elif self.attack_type == MomentumIterativeMethod:
+            attack_params.update(
+                {
+                    'y': truth_labels
+                }
+            )
         wrapped_model = KerasModelWrapper(model)
         attack = self.attack_type(model=wrapped_model, sess=sess)
         chunks = chunk(original_samples, len(original_samples) // num_chunks)

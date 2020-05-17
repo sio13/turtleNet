@@ -35,7 +35,7 @@ class CNNCifar10Model(CNNModel):
         self.y_train = y_train
         self.y_test = y_test
 
-        weight_decay = 1e-4
+        weight_decay = 0.0002
         self.model = Sequential()
         self.model.add(Conv2D(32, (3, 3), padding='same', kernel_regularizer=regularizers.l2(weight_decay),
                               input_shape=input_shape))
