@@ -120,7 +120,7 @@ def eval_models(attack_types: list,
     print(json_test_results)
 
     if save_to_file:
-        json.dump(json_test_results, open(f"{results_dir}/{dataset_name}_{result_filename}_{eps_iter}.json", "w"))
+        json.dump(json_test_results, open(f"{results_dir}/{dataset_name}_{result_filename}.json", "w"))
 
     return json_test_results
 
@@ -174,7 +174,7 @@ def compare_damage(dataset_name: str,
                 clip_max=clip_max,
                 save_to_file=True,
                 results_dir=result_dir,
-                result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}_epochs_{epochs}",
+                result_filename=f"{result_filename}_{str(epsilon).replace('.', '_')}_epochs_{epochs}_{eps_iter}",
                 models_list=[model],
                 nb_iter=nb_iter,
                 eps_iter=eps_iter)
