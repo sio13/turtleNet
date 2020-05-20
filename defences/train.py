@@ -92,7 +92,8 @@ class TurtleNet:
                 original_samples=batch,
                 model=self.train_model if self.use_different_target else self.train_model,
                 num_chunks=max(len(batch) // chunk_size, 1),
-                ord=ord)
+                ord=ord,
+                truth_labels=labels)
 
             self.train_model.train_on_batch(self.perturbed_data, to_categorical(labels, num_classes=10))
             if self.use_different_target:
