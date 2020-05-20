@@ -74,8 +74,8 @@ class Attack:
         chunks_truth = list(chunk(truth_labels, len(truth_labels) // num_chunks))
         #TODO refactor to use truth labels
         perturbed_x_samples = itertools.chain.from_iterable(
-            map(lambda x: attack.generate_np(
+            map(lambda x, y: attack.generate_np(
                 x_val=np.array(x),
-                y=chunks_truth,
+                y=y,
                 **attack_params), chunks, chunks_truth))
         return np.array(list(perturbed_x_samples))
