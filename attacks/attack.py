@@ -72,7 +72,6 @@ class Attack:
         attack = self.attack_type(model=wrapped_model, sess=sess)
         chunks = chunk(original_samples, len(original_samples) // num_chunks)
         chunks_truth = chunk(truth_labels, len(truth_labels) // num_chunks)
-        print(chunks_truth.shape)
         perturbed_x_samples = itertools.chain.from_iterable(
             map(lambda x, y: attack.generate_np(
                 x_val=np.array(x),
