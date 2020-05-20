@@ -71,5 +71,5 @@ if __name__ == '__main__':
                 iteration_so_far=0,
                 attack_type=ProjectedGradientDescent,
                 use_natural=True,
-                frequency_natural=2
+                frequency_natural=1
                 )
