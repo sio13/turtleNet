@@ -15,7 +15,7 @@ from keras.models import *
 from keras.layers import *
 
 import cleverhans
-from cleverhans.attacks import FastGradientMethod
+from cleverhans.attacks import *
 from cleverhans.utils_keras import KerasModelWrapper
 
 from utils import chunk
@@ -77,5 +77,5 @@ class Attack:
             map(lambda x: attack.generate_np(
                 x_val=np.array(x),
                 y=chunks_truth,
-                **attack_params), chunks))
+                **attack_params), chunks, chunks_truth))
         return np.array(list(perturbed_x_samples))
