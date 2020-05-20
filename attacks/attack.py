@@ -29,7 +29,7 @@ class Attack:
                  epsilon: float,
                  clip_min: float,
                  clip_max: float,
-                 eps_iter: float = 0.05,
+                 eps_iter: float = 0.01,
                  rand_init: bool = False):
         self.eps_iter = eps_iter
         self.attack_type = attack_type
@@ -73,8 +73,7 @@ class Attack:
         chunks = chunk(original_samples, len(original_samples) // num_chunks)
         chunks_truth = chunk(truth_labels, len(truth_labels) // num_chunks)
         perturbed_x_samples = itertools.chain.from_iterable(
-            map(lambda x, y: attack.generate_np(
+            map(lambda x: attack.generate_np(
                 x_val=np.array(x),
-                y=np.array(y),
-                **attack_params), chunks, chunks_truth))
+                **attack_params), chunks))
         return np.array(list(perturbed_x_samples))
