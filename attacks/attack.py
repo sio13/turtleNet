@@ -71,7 +71,7 @@ class Attack:
         wrapped_model = KerasModelWrapper(model)
         attack = self.attack_type(model=wrapped_model, sess=sess)
         chunks = chunk(original_samples, len(original_samples) // num_chunks)
-        chunks_truth = list(chunk(truth_labels, len(truth_labels) // num_chunks))
+        chunks_truth = chunk(truth_labels, len(truth_labels) // num_chunks)
         #TODO refactor to use truth labels
         perturbed_x_samples = itertools.chain.from_iterable(
             map(lambda x, y: attack.generate_np(
