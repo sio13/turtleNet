@@ -9,8 +9,16 @@ from keras.models import load_model
 
 
 def chunk(it, size: int):
-    iter_list = iter(np.array(it))
-    return iter(lambda: tuple(islice(iter_list, size)), ())
+    if size == 0:
+        print("Cannot create 0 sized list")
+        return None
+    iterator = list(it)
+    chunk_num = len(iterator) // size
+    chunk_indexes = list(range(chunk_num))
+    result = list(map(lambda i: iterator[i * size:(i + 1) * size], chunk_indexes))
+    if len(iterator) % size != 0:
+        result.append(iterator[chunk_num * size:])
+    return result
 
 
 def save_collage(filepath: str,
@@ -45,7 +53,7 @@ def save_image_and_collage(dir_path: str,
                            image_type: str,
                            rows: int,
                            columns: int,
-                           sample_image_index: int = 2 # toto over alebo bug na GH
+                           sample_image_index: int = 2  # toto over alebo bug na GH
                            ):
     save_image(f"{dir_path}/{image_name}_{image_type}_image",
                array[sample_image_index])
