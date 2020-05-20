@@ -9,7 +9,7 @@ from keras.models import load_model
 
 
 def chunk(it, size: int):
-    iter_list = iter(n.array(it))
+    iter_list = iter(np.array(it))
     return iter(lambda: tuple(islice(iter_list, size)), ())
 
 
