@@ -17,7 +17,6 @@ from keras.regularizers import l2
 from keras import backend as K
 from keras.models import Model
 from keras.datasets import cifar10
-import numpy as np
 import os
 
 # Training parameters
@@ -425,5 +424,6 @@ else:
 
 # Score trained model.
 scores = model.evaluate(x_test, y_test, verbose=1)
+model.save("models/resnet_prepared.h5")
 print('Test loss:', scores[0])
 print('Test accuracy:', scores[1])
