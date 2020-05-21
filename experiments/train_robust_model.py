@@ -55,7 +55,7 @@ def train_model(model,
                              make_checkpoints=make_checkpoints,
                              checkpoint_frequency=checkpoint_frequency,
                              checkpoint_filename="checkpoint",
-                             iteration_start=iteration_so_far + 1,
+                             iteration_start=iteration_so_far,
                              frequency_natural=frequency_natural)
 
 
@@ -65,12 +65,15 @@ if __name__ == '__main__':
     x1, y1, _,_ = d
     target_model.model.train_on_batch(x1[:128], to_categorical(y1[:128]))
 
-    train_model(model=target_model.model,
+    target_model = load_model("../models_cifar_better/checkpoint_900.h5")
+
+    train_model(model=target_model,
                 dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                 iteration_total=15000,
+
                 checkpoint_dir='../models_cifar_better',
                 epsilon=0.3,
-                iteration_so_far=0,
+                iteration_so_far=901,
                 attack_type=ProjectedGradientDescent,
                 use_natural=False
                 )
