@@ -75,5 +75,6 @@ if __name__ == '__main__':
                 epsilon=0.3,
                 iteration_so_far=901,
                 attack_type=ProjectedGradientDescent,
-                use_natural=False
+                use_natural=True,
+                frequency_natural=5
                 )
