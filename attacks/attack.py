@@ -43,7 +43,7 @@ class Attack:
                                model,
                                num_chunks: int,
                                ord=np.inf,
-                               nb_iter: int = 10,
+                               nb_iter: int = 12,
                                truth_labels=None):
         attack_params = {
             'eps': self.epsilon,
