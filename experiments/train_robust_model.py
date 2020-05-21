@@ -65,7 +65,7 @@ if __name__ == '__main__':
     x1, y1, _,_ = d
     target_model.model.train_on_batch(x1[:128], to_categorical(y1[:128]))
 
-    target_model = load_model("../models_cifar_better/checkpoint_900.h5")
+    target_model = load_model("../models_cifar_better_fixed/checkpoint_900.h5")
 
     train_model(model=target_model,
                 dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
