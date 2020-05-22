@@ -4,7 +4,7 @@ from attacks import attack
 from defences.train import TurtleNet
 
 from architectures.target_model_mnist import CNNModelMnist
-from keras.datasets import cifar10,mnist
+from keras.datasets import cifar10, mnist
 from keras.models import load_model
 from keras.utils import to_categorical
 
@@ -59,8 +59,6 @@ def main2():
     # model_new = load_model("models/robust_model.h5")
 
     # print(model_new.evaluate(x_train, to_categorical(y_train)))
-
-
 
 
 def main5():
@@ -126,7 +124,7 @@ def train_cifar10_robust():
                              y_train=y_train,
                              chunk_size=128,
                              batch_size=128,
-                             checkpoint_dir='models_cifar_better',
+                             checkpoint_dir='models_cifar_better_test',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
                              checkpoint_filename="checkpoint")
@@ -134,3 +132,17 @@ def train_cifar10_robust():
 
 if __name__ == '__main__':
     train_cifar10_robust()
+    monitor_baud = ""
+
+    if not monitor_baud:
+        if os.getenv("IDF_MONITOR_BAUD"):
+            monitor_baud = os.getenv("IDF_MONITOR_BAUD", None)
+        elif os.getenv("MONITORBAUD"):
+            monitor_baud = os.getenv("MONITORBAUD", None)
+        else:
+            monitor_baud = project_desc["monitor_baud"]
+
+    monitor_baud = monitor_baud or os.getenv("IDF_MONITOR_BAUD") or os.getenv("MONITORBAUD") or project_desc["monitor_baud"]
+
+    if not monitor_baud:
+        monitor_baud = os.getenv("IDF_MONITOR_BAUD") or os.getenv("MONITORBAUD") or project_desc["monitor_baud"]
