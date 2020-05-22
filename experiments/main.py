@@ -124,7 +124,7 @@ def train_cifar10_robust():
                              y_train=y_train,
                              chunk_size=128,
                              batch_size=128,
-                             checkpoint_dir='models_cifar_better_test',
+                             checkpoint_dir='models_cifar_better',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
                              checkpoint_filename="checkpoint")
