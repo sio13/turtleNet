@@ -65,16 +65,16 @@ if __name__ == '__main__':
     x1, y1, _,_ = d
     target_model.model.train_on_batch(x1[:128], to_categorical(y1[:128]))
 
-    target_model = load_model("../models_cifar_better/checkpoint_8600.h5")
+    target_model = load_model("../models_cifar_better_test/checkpoint_9350.h5")
 
     # TODO low value of step size for 0.3 epsilon
     # use (1/4) * epsilon
     train_model(model=target_model,
                 dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
                 iteration_total=80000,
-                checkpoint_dir='../models_cifar_better_test',
+                checkpoint_dir='../models_cifar_better',
                 epsilon=0.3,
-                iteration_so_far=8600,
+                iteration_so_far=9350,
                 attack_type=ProjectedGradientDescent,
                 use_natural=False
                 )
