@@ -31,7 +31,7 @@ if __name__ == '__main__':
                        epochs=20,
                        model_type='compare_iterations_pgd',
                        nb_iter=iterations_number,
-                       eps_iter=0.01
+                       eps_iter=0.3/iterations_number
                        )
         # TODO relativize training steps
         compare_damage(dataset_name='cifar',
@@ -45,5 +45,5 @@ if __name__ == '__main__':
                        need_train=False,
                        epochs=20,
                        nb_iter=iterations_number,
-                       eps_iter=0.01
+                       eps_iter=0.1/iterations_number
                        )
