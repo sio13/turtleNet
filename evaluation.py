@@ -137,8 +137,8 @@ def compare_damage(dataset_name: str,
                    result_dir: str = 'results/json/compare_damage',
                    result_filename='natural_trained',
                    model_type: str = 'compare_damage',
-                   nb_iter: int = 10,
-                   eps_iter: float = 0.02):
+                   nb_iter: int = 15,
+                   eps_iter: float = 0.01):
     """
     :param dataset_name: name of target dataset
     :param dataset: tuple of np arrays x_train, y_train, x_test and y_test of target dataset

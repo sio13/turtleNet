@@ -39,8 +39,11 @@ if __name__ == '__main__':
                                      BasicIterativeMethod,
                                      ProjectedGradientDescent,
                                      FastGradientMethod],
-                       need_train=False,
-                       epochs=5,
+                       need_train=True,
+                       result_filename='mnist_compare_epsilon',
+                       nb_iter = 12,
+                       eps_iter=eps / 6.0,
+                       epochs=10,
                        )
 
         compare_damage(dataset_name='cifar',
@@ -55,5 +58,8 @@ if __name__ == '__main__':
                                      ProjectedGradientDescent,
                                      FastGradientMethod],
                        need_train=False,
+                       nb_iter=12,
+                       eps_iter=eps / 6.0,
+                       result_filename='cifar_compare_epsilon',
                        epochs=10,
                        )
