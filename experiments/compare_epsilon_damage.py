@@ -39,7 +39,7 @@ if __name__ == '__main__':
                                      BasicIterativeMethod,
                                      ProjectedGradientDescent,
                                      FastGradientMethod],
-                       need_train=True,
+                       need_train=True if eps <= 0.11 else False,
                        result_filename='mnist_compare_epsilon',
                        nb_iter = 12,
                        eps_iter=eps / 6.0,
