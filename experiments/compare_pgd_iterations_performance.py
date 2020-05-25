@@ -30,7 +30,7 @@ if __name__ == '__main__':
                        need_train=False,
                        epochs=20,
                        model_type='compare_iterations_pgd',
-                       nb_iter=iterations_number,
+                       nb_iter=iterations_number*2,
                        eps_iter=0.3/iterations_number
                        )
         # TODO relativize training steps
@@ -44,6 +44,6 @@ if __name__ == '__main__':
                        result_dir='results/json/compare_pgd_iterations',
                        need_train=False,
                        epochs=20,
-                       nb_iter=iterations_number,
+                       nb_iter=iterations_number*2,
                        eps_iter=0.1/iterations_number
                        )
