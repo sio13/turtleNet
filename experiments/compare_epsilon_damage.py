@@ -61,5 +61,5 @@ if __name__ == '__main__':
                        nb_iter=12,
                        eps_iter=eps / 6.0,
                        result_filename='cifar_compare_epsilon',
-                       epochs=10,
+                       epochs=15,
                        )
