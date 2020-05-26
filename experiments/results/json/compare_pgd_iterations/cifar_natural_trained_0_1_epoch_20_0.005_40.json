@@ -1,0 +1,1 @@
+[{"iteration": "None", "attack": "no attack", "loss": 0.6473340274810792, "accuracy": 0.7894999980926514, "attack_time": 0, "epsilon": 0.1}, {"iteration": "None", "attack": "ProjectedGradientDescent", "loss": 35.777206872558594, "accuracy": 0.038100000470876694, "attack_time": 694.9766755104065, "epsilon": 0.1}]
