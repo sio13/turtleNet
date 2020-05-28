@@ -1349,3 +1349,11 @@ Iteration number 16630
 Generating samples for slice from 28768 to 28896.[INFO 2020-05-28 14:30:41,227 cleverhans] Constructing new graph for attack ProjectedGradientDescent
 [INFO 2020-05-28 14:31:09,893 cleverhans] Constructing new graph for attack ProjectedGradientDescent
 [INFO 2020-05-28 14:31:38,371 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:32:06,303 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:32:37,961 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:33:08,765 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:33:37,478 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:34:11,797 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:34:56,246 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:35:50,369 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:36:44,315 cleverhans] Constructing new graph for attack ProjectedGradientDescent
