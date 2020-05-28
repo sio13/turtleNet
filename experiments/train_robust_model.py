@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
     # TODO low value of step size for 0.3 epsilon
     # use (1/4) * epsilon
-    train_model(model=target_model,
+    train_model(model=target_model.model,
                 dataset=get_keras_dataset(mnist.load_data()),
                 iteration_total=15000,
                 checkpoint_dir='../models_mnist_clone',
