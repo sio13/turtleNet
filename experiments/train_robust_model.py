@@ -72,7 +72,7 @@ if __name__ == '__main__':
     # TODO low value of step size for 0.3 epsilon
     # use (1/4) * epsilon
     train_model(model=target_model,
-                dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1,32, 32, 3)),
+                dataset=get_keras_dataset(cifar10.load_data(), input_shape=(32, 32, 3)),
                 iteration_total=80000,
                 checkpoint_dir='../models_cifar_beter_test',
                 epsilon=0.1,
