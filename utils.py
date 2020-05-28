@@ -117,3 +117,20 @@ def load_or_train_model(compiled_model,
         print(f"{dataset_name.capitalize()} training took {end_time - start_time} seconds")
 
     return network.model if need_train else load_model(f"{models_dir_name}/{dataset_name}_{model_type}.h5")
+
+
+def eval_model(model, x_test, y_test):
+    """
+    Prototype - implement generally
+    :param model:
+    :param x_test:
+    :param y_test:
+    :return:
+    """
+    print("This method is only a prototype and shouldn't work well!")
+    corr = 0
+    for i in range(len(x_test)):
+        pred = np.argmax(model.predict(x_test[i].reshape(1,32,32,3)))
+        if pred == y_test[i]:
+            corr+=1
+    print(corr / len(x_test))

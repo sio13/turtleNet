@@ -146,3 +146,6 @@ if __name__ == '__main__':
 
     if not monitor_baud:
         monitor_baud = os.getenv("IDF_MONITOR_BAUD") or os.getenv("MONITORBAUD") or project_desc["monitor_baud"]
+
+
+
