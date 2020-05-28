@@ -79,5 +79,6 @@ if __name__ == '__main__':
                 iteration_so_far=16300,
                 attack_type=ProjectedGradientDescent,
                 use_natural=False,
-                nb_iter=0.1 / 6
+                eps_iter=0.1 / 6,
+                nb_iter=12
                 )
