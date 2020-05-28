@@ -1,0 +1,1359 @@
+2020-05-28 12:04:08.472592: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 12:04:08.514300: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2399970000 Hz
+2020-05-28 12:04:08.519852: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x1591530 executing computations on platform Host. Devices:
+2020-05-28 12:04:08.520077: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2020-05-28 12:04:08.524706: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2020-05-28 12:04:08.540569: E tensorflow/stream_executor/cuda/cuda_driver.cc:318] failed call to cuInit: CUDA_ERROR_COMPAT_NOT_SUPPORTED_ON_DEVICE: forward compatibility was attempted on non supported HW
+2020-05-28 12:04:08.540744: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: superphi1
+2020-05-28 12:04:08.540754: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: superphi1
+2020-05-28 12:04:08.540867: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 418.113.0
+2020-05-28 12:04:08.540933: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 418.74.0
+2020-05-28 12:04:08.540941: E tensorflow/stream_executor/cuda/cuda_diagnostics.cc:313] kernel version 418.74.0 does not match DSO version 418.113.0 -- cannot find working devices in this configuration
+Using TensorFlow backend.
+WARNING:tensorflow:From /home/xganom00/.local/lib/python3.7/site-packages/cleverhans/utils_tf.py:341: The name tf.GraphKeys is deprecated. Please use tf.compat.v1.GraphKeys instead.
+
+Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+
+(train_robust_model.py:7353): Gdk-CRITICAL **: 12:04:08.744: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+
+(train_robust_model.py:7353): Gdk-CRITICAL **: 12:04:08.745: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+WARNING:tensorflow:From /home/xganom00/.local/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:4070: The name tf.nn.max_pool is deprecated. Please use tf.nn.max_pool2d instead.
+
+2020-05-28 12:04:10.194884: W tensorflow/compiler/jit/mark_for_compilation_pass.cc:1412] (One-time warning): Not using XLA:CPU for cluster because envvar TF_XLA_FLAGS=--tf_xla_cpu_global_jit was not set.  If you want XLA:CPU, either set that envvar, or use experimental_jit_scope to enable XLA:CPU.  To confirm that XLA is active, pass --vmodule=xla_compilation_cache=1 (as a proper command-line flag, not via TF_XLA_FLAGS) or set the envvar XLA_FLAGS=--xla_hlo_profile.
+WARNING:tensorflow:From /home/xganom00/.local/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:422: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+WARNING:tensorflow:From /home/xganom00/.local/lib/python3.7/site-packages/cleverhans/attacks/__init__.py:49: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+[INFO 2020-05-28 12:04:13,234 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+WARNING:tensorflow:From /home/xganom00/.local/lib/python3.7/site-packages/cleverhans/attacks/__init__.py:144: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/xganom00/.local/lib/python3.7/site-packages/cleverhans/utils_tf.py:624: The name tf.assert_greater_equal is deprecated. Please use tf.compat.v1.assert_greater_equal instead.
+
+WARNING:tensorflow:From /home/xganom00/.local/lib/python3.7/site-packages/cleverhans/attacks/__init__.py:568: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+WARNING:tensorflow:From /home/xganom00/.local/lib/python3.7/site-packages/cleverhans/compat.py:124: calling softmax_cross_entropy_with_logits_v2_helper (from tensorflow.python.ops.nn_ops) with dim is deprecated and will be removed in a future version.
+Instructions for updating:
+dim is deprecated, use axis instead
+[INFO 2020-05-28 12:04:19,206 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:04:23,534 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:04:27,934 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:04:33,246 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:04:37,775 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:04:42,269 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:04:47,504 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:04:52,021 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:04:59,724 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:05:04,461 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:05:13,195 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:05:23,094 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:05:34,053 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:05:44,118 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:05:54,976 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:06:05,370 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:06:16,706 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:06:27,502 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:06:38,985 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:06:49,769 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:07:00,612 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:07:12,399 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:07:23,260 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:07:34,783 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:07:45,906 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:07:57,603 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:08:09,071 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:08:21,488 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:08:35,102 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:08:46,830 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:08:58,676 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:09:10,890 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:09:22,864 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:09:35,375 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:09:47,582 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:09:56,689 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:10:02,492 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:10:08,954 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:10:14,870 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:10:23,385 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:10:29,658 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:10:36,386 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:10:43,697 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:10:49,819 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:10:56,886 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:11:04,041 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:11:12,318 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:11:21,900 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:11:35,403 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:11:49,448 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:12:03,879 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:12:17,945 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:12:32,024 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:12:46,707 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:13:00,835 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:13:14,855 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:13:29,797 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:13:45,379 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:13:59,765 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:14:14,062 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:14:29,013 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:14:43,384 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:14:57,971 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:15:13,429 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:15:29,453 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:15:44,388 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:15:54,749 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:16:02,995 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:16:10,741 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:16:18,741 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:16:27,003 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:16:36,214 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:16:50,258 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:17:06,299 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:17:22,750 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:17:39,018 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:17:55,272 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:18:11,184 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:18:27,768 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:18:45,707 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:19:02,316 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:19:19,268 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:19:35,874 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:19:52,549 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:20:09,898 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:20:27,189 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:20:43,769 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:21:01,328 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:21:12,426 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:21:21,772 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:21:30,459 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:21:40,633 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:21:51,467 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:22:07,200 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:22:25,783 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:22:43,436 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:23:01,058 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:23:19,388 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:23:37,935 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:23:56,402 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:24:15,489 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:24:35,126 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:24:54,956 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:25:13,421 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+Generating samples for slice from 23600 to 23728.
+Iteration number 16200
+Saving model into ../models_cifar_better_test/checkpoint_16200.h5
+Saving checkpoint for iteration number 16200 into ../models_cifar_better_test/checkpoint_16200.h5.
+Generating samples for slice from 23728 to 23856.
+Iteration number 16201
+Generating samples for slice from 23856 to 23984.
+Iteration number 16202
+Generating samples for slice from 23984 to 24112.
+Iteration number 16203
+Generating samples for slice from 24112 to 24240.
+Iteration number 16204
+Generating samples for slice from 24240 to 24368.
+Iteration number 16205
+Generating samples for slice from 24368 to 24496.
+Iteration number 16206
+Generating samples for slice from 24496 to 24624.
+Iteration number 16207
+Generating samples for slice from 24624 to 24752.
+Iteration number 16208
+Generating samples for slice from 24752 to 24880.
+Iteration number 16209
+Generating samples for slice from 24880 to 25008.
+Iteration number 16210
+Generating samples for slice from 25008 to 25136.
+Iteration number 16211
+Generating samples for slice from 25136 to 25264.
+Iteration number 16212
+Generating samples for slice from 25264 to 25392.
+Iteration number 16213
+Generating samples for slice from 25392 to 25520.
+Iteration number 16214
+Generating samples for slice from 25520 to 25648.
+Iteration number 16215
+Generating samples for slice from 25648 to 25776.
+Iteration number 16216
+Generating samples for slice from 25776 to 25904.
+Iteration number 16217
+Generating samples for slice from 25904 to 26032.
+Iteration number 16218
+Generating samples for slice from 26032 to 26160.
+Iteration number 16219
+Generating samples for slice from 26160 to 26288.
+Iteration number 16220
+Generating samples for slice from 26288 to 26416.
+Iteration number 16221
+Generating samples for slice from 26416 to 26544.
+Iteration number 16222
+Generating samples for slice from 26544 to 26672.
+Iteration number 16223
+Generating samples for slice from 26672 to 26800.
+Iteration number 16224
+Generating samples for slice from 26800 to 26928.
+Iteration number 16225
+Generating samples for slice from 26928 to 27056.
+Iteration number 16226
+Generating samples for slice from 27056 to 27184.
+Iteration number 16227
+Generating samples for slice from 27184 to 27312.
+Iteration number 16228
+Generating samples for slice from 27312 to 27440.
+Iteration number 16229
+Generating samples for slice from 27440 to 27568.
+Iteration number 16230
+Generating samples for slice from 27568 to 27696.
+Iteration number 16231
+Generating samples for slice from 27696 to 27824.
+Iteration number 16232
+Generating samples for slice from 27824 to 27952.
+Iteration number 16233
+Generating samples for slice from 27952 to 28080.
+Iteration number 16234
+Generating samples for slice from 28080 to 28208.
+Iteration number 16235
+Generating samples for slice from 28208 to 28336.
+Iteration number 16236
+Generating samples for slice from 28336 to 28464.
+Iteration number 16237
+Generating samples for slice from 28464 to 28592.
+Iteration number 16238
+Generating samples for slice from 28592 to 28720.
+Iteration number 16239
+Generating samples for slice from 28720 to 28848.
+Iteration number 16240
+Generating samples for slice from 28848 to 28976.
+Iteration number 16241
+Generating samples for slice from 28976 to 29104.
+Iteration number 16242
+Generating samples for slice from 29104 to 29232.
+Iteration number 16243
+Generating samples for slice from 29232 to 29360.
+Iteration number 16244
+Generating samples for slice from 29360 to 29488.
+Iteration number 16245
+Generating samples for slice from 29488 to 29616.
+Iteration number 16246
+Generating samples for slice from 29616 to 29744.
+Iteration number 16247
+Generating samples for slice from 29744 to 29872.
+Iteration number 16248
+Generating samples for slice from 29872 to 30000.
+Iteration number 16249
+Generating samples for slice from 30000 to 30128.
+Iteration number 16250
+Saving model into ../models_cifar_better_test/checkpoint_16250.h5
+Saving checkpoint for iteration number 16250 into ../models_cifar_better_test/checkpoint_16250.h5.
+Generating samples for slice from 30128 to 30256.
+Iteration number 16251
+Generating samples for slice from 30256 to 30384.
+Iteration number 16252
+Generating samples for slice from 30384 to 30512.
+Iteration number 16253
+Generating samples for slice from 30512 to 30640.
+Iteration number 16254
+Generating samples for slice from 30640 to 30768.
+Iteration number 16255
+Generating samples for slice from 30768 to 30896.
+Iteration number 16256
+Generating samples for slice from 30896 to 31024.
+Iteration number 16257
+Generating samples for slice from 31024 to 31152.
+Iteration number 16258
+Generating samples for slice from 31152 to 31280.
+Iteration number 16259
+Generating samples for slice from 31280 to 31408.
+Iteration number 16260
+Generating samples for slice from 31408 to 31536.
+Iteration number 16261
+Generating samples for slice from 31536 to 31664.
+Iteration number 16262
+Generating samples for slice from 31664 to 31792.
+Iteration number 16263
+Generating samples for slice from 31792 to 31920.
+Iteration number 16264
+Generating samples for slice from 31920 to 32048.
+Iteration number 16265
+Generating samples for slice from 32048 to 32176.
+Iteration number 16266
+Generating samples for slice from 32176 to 32304.
+Iteration number 16267
+Generating samples for slice from 32304 to 32432.
+Iteration number 16268
+Generating samples for slice from 32432 to 32560.
+Iteration number 16269
+Generating samples for slice from 32560 to 32688.
+Iteration number 16270
+Generating samples for slice from 32688 to 32816.
+Iteration number 16271
+Generating samples for slice from 32816 to 32944.
+Iteration number 16272
+Generating samples for slice from 32944 to 33072.
+Iteration number 16273
+Generating samples for slice from 33072 to 33200.
+Iteration number 16274
+Generating samples for slice from 33200 to 33328.
+Iteration number 16275
+Generating samples for slice from 33328 to 33456.
+Iteration number 16276
+Generating samples for slice from 33456 to 33584.
+Iteration number 16277
+Generating samples for slice from 33584 to 33712.
+Iteration number 16278
+Generating samples for slice from 33712 to 33840.
+Iteration number 16279
+Generating samples for slice from 33840 to 33968.
+Iteration number 16280
+Generating samples for slice from 33968 to 34096.
+Iteration number 16281
+Generating samples for slice from 34096 to 34224.
+Iteration number 16282
+Generating samples for slice from 34224 to 34352.
+Iteration number 16283
+Generating samples for slice from 34352 to 34480.
+Iteration number 16284
+Generating samples for slice from 34480 to 34608.
+Iteration number 16285
+Generating samples for slice from 34608 to 34736.
+Iteration number 16286
+Generating samples for slice from 34736 to 34864.
+Iteration number 16287
+Generating samples for slice from 34864 to 34992.
+Iteration number 16288
+Generating samples for slice from 34992 to 35120.
+Iteration number 16289
+Generating samples for slice from 35120 to 35248.
+Iteration number 16290
+Generating samples for slice from 35248 to 35376.
+Iteration number 16291
+Generating samples for slice from 35376 to 35504.
+Iteration number 16292
+Generating samples for slice from 35504 to 35632.
+Iteration number 16293
+Generating samples for slice from 35632 to 35760.
+Iteration number 16294
+Generating samples for slice from 35760 to 35888.
+Iteration number 16295
+Generating samples for slice from 35888 to 36016.
+Iteration number 16296
+Generating samples for slice from 36016 to 36144.
+Iteration number 16297
+Generating samples for slice from 36144 to 36272.
+Iteration number 16298
+Generating samples for slice from 36272 to 36400.
+Iteration number 16299
+Generating samples for slice from 36400 to 36528.
+Iteration number 16300
+Saving model into ../models_cifar_better_test/checkpoint_16300.h5
+Saving checkpoint for iteration number 16300 into ../models_cifar_better_test/checkpoint_16300.h5.
+Generating samples for slice from 36528 to 36656.
+Iteration number 16301
+Generating samples for slice from 36656 to 36784.
+Iteration number 16302
+Generating samples for slice from 36784 to 36912.
+Iteration number 16303
+Generating samples for slice from 36912 to 37040.
+Iteration number 16304
+Generating samples for slice from 37040 to 37168.[INFO 2020-05-28 12:25:32,703 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:25:52,393 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:26:09,552 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:26:21,084 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:26:31,433 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:26:41,824 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:26:51,432 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:27:02,709 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:27:13,110 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:27:23,620 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:27:35,738 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:27:56,219 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:28:16,425 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:28:36,396 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:28:56,573 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:29:17,641 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:29:37,954 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:29:58,313 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:30:18,515 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:30:38,994 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:30:59,367 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:31:20,494 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:31:42,411 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:31:58,515 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:32:10,341 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:32:20,921 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:32:32,230 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:32:44,746 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:32:59,761 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:33:21,454 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:33:42,500 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:34:04,913 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:34:27,163 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:34:48,569 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:35:09,735 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:35:31,963 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:35:53,772 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:36:16,500 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:36:39,149 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:37:01,751 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:37:15,791 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:37:27,453 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:37:39,238 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:37:51,240 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:38:03,032 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:38:14,998 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:38:27,407 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:38:39,732 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:38:54,067 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:39:06,924 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:39:21,009 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:39:33,947 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:39:46,685 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:40:01,066 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:40:13,865 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:40:37,649 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:41:02,178 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:41:27,352 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:41:52,182 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:42:17,659 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:42:42,343 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:43:07,907 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:43:32,898 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:43:57,755 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:44:20,337 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:44:35,476 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:44:48,540 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:45:01,959 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:45:15,526 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:45:30,732 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:45:55,058 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:46:21,698 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:46:47,689 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:47:14,084 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:47:40,592 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:48:07,428 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:48:37,757 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:49:04,257 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:49:32,462 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:49:49,826 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:50:03,650 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:50:17,862 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:50:32,034 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:50:46,465 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:51:02,489 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:51:17,348 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:51:31,658 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:51:45,982 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:52:00,447 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:52:15,379 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:52:30,658 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:52:45,090 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:52:59,697 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:53:14,467 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:53:30,398 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:53:45,069 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:54:00,057 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:54:14,964 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:54:29,717 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:54:45,656 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:55:00,724 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:55:15,454 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:55:28,336 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:55:43,307 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:55:58,324 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:56:13,232 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:56:28,074 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:56:43,012 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:56:58,078 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+
+Iteration number 16305
+Generating samples for slice from 37168 to 37296.
+Iteration number 16306
+Generating samples for slice from 37296 to 37424.
+Iteration number 16307
+Generating samples for slice from 37424 to 37552.
+Iteration number 16308
+Generating samples for slice from 37552 to 37680.
+Iteration number 16309
+Generating samples for slice from 37680 to 37808.
+Iteration number 16310
+Generating samples for slice from 37808 to 37936.
+Iteration number 16311
+Generating samples for slice from 37936 to 38064.
+Iteration number 16312
+Generating samples for slice from 38064 to 38192.
+Iteration number 16313
+Generating samples for slice from 38192 to 38320.
+Iteration number 16314
+Generating samples for slice from 38320 to 38448.
+Iteration number 16315
+Generating samples for slice from 38448 to 38576.
+Iteration number 16316
+Generating samples for slice from 38576 to 38704.
+Iteration number 16317
+Generating samples for slice from 38704 to 38832.
+Iteration number 16318
+Generating samples for slice from 38832 to 38960.
+Iteration number 16319
+Generating samples for slice from 38960 to 39088.
+Iteration number 16320
+Generating samples for slice from 39088 to 39216.
+Iteration number 16321
+Generating samples for slice from 39216 to 39344.
+Iteration number 16322
+Generating samples for slice from 39344 to 39472.
+Iteration number 16323
+Generating samples for slice from 39472 to 39600.
+Iteration number 16324
+Generating samples for slice from 39600 to 39728.
+Iteration number 16325
+Generating samples for slice from 39728 to 39856.
+Iteration number 16326
+Generating samples for slice from 39856 to 39984.
+Iteration number 16327
+Generating samples for slice from 39984 to 40112.
+Iteration number 16328
+Generating samples for slice from 40112 to 40240.
+Iteration number 16329
+Generating samples for slice from 40240 to 40368.
+Iteration number 16330
+Generating samples for slice from 40368 to 40496.
+Iteration number 16331
+Generating samples for slice from 40496 to 40624.
+Iteration number 16332
+Generating samples for slice from 40624 to 40752.
+Iteration number 16333
+Generating samples for slice from 40752 to 40880.
+Iteration number 16334
+Generating samples for slice from 40880 to 41008.
+Iteration number 16335
+Generating samples for slice from 41008 to 41136.
+Iteration number 16336
+Generating samples for slice from 41136 to 41264.
+Iteration number 16337
+Generating samples for slice from 41264 to 41392.
+Iteration number 16338
+Generating samples for slice from 41392 to 41520.
+Iteration number 16339
+Generating samples for slice from 41520 to 41648.
+Iteration number 16340
+Generating samples for slice from 41648 to 41776.
+Iteration number 16341
+Generating samples for slice from 41776 to 41904.
+Iteration number 16342
+Generating samples for slice from 41904 to 42032.
+Iteration number 16343
+Generating samples for slice from 42032 to 42160.
+Iteration number 16344
+Generating samples for slice from 42160 to 42288.
+Iteration number 16345
+Generating samples for slice from 42288 to 42416.
+Iteration number 16346
+Generating samples for slice from 42416 to 42544.
+Iteration number 16347
+Generating samples for slice from 42544 to 42672.
+Iteration number 16348
+Generating samples for slice from 42672 to 42800.
+Iteration number 16349
+Generating samples for slice from 42800 to 42928.
+Iteration number 16350
+Saving model into ../models_cifar_better_test/checkpoint_16350.h5
+Saving checkpoint for iteration number 16350 into ../models_cifar_better_test/checkpoint_16350.h5.
+Generating samples for slice from 42928 to 43056.
+Iteration number 16351
+Generating samples for slice from 43056 to 43184.
+Iteration number 16352
+Generating samples for slice from 43184 to 43312.
+Iteration number 16353
+Generating samples for slice from 43312 to 43440.
+Iteration number 16354
+Generating samples for slice from 43440 to 43568.
+Iteration number 16355
+Generating samples for slice from 43568 to 43696.
+Iteration number 16356
+Generating samples for slice from 43696 to 43824.
+Iteration number 16357
+Generating samples for slice from 43824 to 43952.
+Iteration number 16358
+Generating samples for slice from 43952 to 44080.
+Iteration number 16359
+Generating samples for slice from 44080 to 44208.
+Iteration number 16360
+Generating samples for slice from 44208 to 44336.
+Iteration number 16361
+Generating samples for slice from 44336 to 44464.
+Iteration number 16362
+Generating samples for slice from 44464 to 44592.
+Iteration number 16363
+Generating samples for slice from 44592 to 44720.
+Iteration number 16364
+Generating samples for slice from 44720 to 44848.
+Iteration number 16365
+Generating samples for slice from 44848 to 44976.
+Iteration number 16366
+Generating samples for slice from 44976 to 45104.
+Iteration number 16367
+Generating samples for slice from 45104 to 45232.
+Iteration number 16368
+Generating samples for slice from 45232 to 45360.
+Iteration number 16369
+Generating samples for slice from 45360 to 45488.
+Iteration number 16370
+Generating samples for slice from 45488 to 45616.
+Iteration number 16371
+Generating samples for slice from 45616 to 45744.
+Iteration number 16372
+Generating samples for slice from 45744 to 45872.
+Iteration number 16373
+Generating samples for slice from 45872 to 46000.
+Iteration number 16374
+Generating samples for slice from 46000 to 46128.
+Iteration number 16375
+Generating samples for slice from 46128 to 46256.
+Iteration number 16376
+Generating samples for slice from 46256 to 46384.
+Iteration number 16377
+Generating samples for slice from 46384 to 46512.
+Iteration number 16378
+Generating samples for slice from 46512 to 46640.
+Iteration number 16379
+Generating samples for slice from 46640 to 46768.
+Iteration number 16380
+Generating samples for slice from 46768 to 46896.
+Iteration number 16381
+Generating samples for slice from 46896 to 47024.
+Iteration number 16382
+Generating samples for slice from 47024 to 47152.
+Iteration number 16383
+Generating samples for slice from 47152 to 47280.
+Iteration number 16384
+Generating samples for slice from 47280 to 47408.
+Iteration number 16385
+Generating samples for slice from 47408 to 47536.
+Iteration number 16386
+Generating samples for slice from 47536 to 47664.
+Iteration number 16387
+Generating samples for slice from 47664 to 47792.
+Iteration number 16388
+Generating samples for slice from 47792 to 47920.
+Iteration number 16389
+Generating samples for slice from 47920 to 48048.
+Iteration number 16390
+Generating samples for slice from 48048 to 48176.
+Iteration number 16391
+Generating samples for slice from 48176 to 48304.
+Iteration number 16392
+Generating samples for slice from 48304 to 48432.
+Iteration number 16393
+Generating samples for slice from 48432 to 48560.
+Iteration number 16394
+Generating samples for slice from 48560 to 48688.
+Iteration number 16395
+Generating samples for slice from 48688 to 48816.
+Iteration number 16396
+Generating samples for slice from 48816 to 48944.
+Iteration number 16397
+Generating samples for slice from 48944 to 49072.
+Iteration number 16398
+Generating samples for slice from 49072 to 49200.
+Iteration number 16399
+Generating samples for slice from 49200 to 49328.
+Iteration number 16400
+Saving model into ../models_cifar_better_test/checkpoint_16400.h5
+Saving checkpoint for iteration number 16400 into ../models_cifar_better_test/checkpoint_16400.h5.
+Generating samples for slice from 49328 to 49456.
+Iteration number 16401
+Generating samples for slice from 49456 to 49584.
+Iteration number 16402
+Generating samples for slice from 49584 to 49712.
+Iteration number 16403
+Generating samples for slice from 49712 to 49840.
+Iteration number 16404
+Generating samples for slice from 49840 to 49968.
+Iteration number 16405
+Generating samples for slice from 49968 to 50000.
+Iteration number 16406
+Generating samples for slice from 96 to 224.
+Iteration number 16407
+Generating samples for slice from 224 to 352.
+Iteration number 16408
+Generating samples for slice from 352 to 480.
+Iteration number 16409
+Generating samples for slice from 480 to 608.
+Iteration number 16410
+Generating samples for slice from 608 to 736.
+Iteration number 16411
+Generating samples for slice from 736 to 864.
+Iteration number 16412
+Generating samples for slice from 864 to 992.
+Iteration number 16413[INFO 2020-05-28 12:57:14,251 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:57:29,290 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:57:44,382 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:57:59,487 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:58:14,819 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:58:30,391 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:58:46,172 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:59:03,814 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:59:19,964 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:59:36,233 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 12:59:52,248 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:00:10,368 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:00:32,798 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:00:51,792 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:01:07,831 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:01:24,234 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:01:42,539 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:02:02,540 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:02:22,536 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:02:42,203 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:02:58,874 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:03:29,904 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:04:03,167 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:04:34,994 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:05:08,546 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:05:43,460 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:06:17,064 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:06:50,041 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:07:09,731 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:07:27,718 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:07:44,717 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:08:02,300 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:08:19,355 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:08:38,480 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:08:58,634 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:09:19,613 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:09:40,482 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:09:57,950 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:10:16,361 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:10:34,044 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:10:51,222 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:11:08,398 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:11:25,957 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:11:45,045 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:12:04,430 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:12:22,317 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:12:39,981 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:13:04,427 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:13:40,558 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:14:15,494 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:14:51,852 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:15:31,071 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:16:06,864 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:16:43,139 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:17:06,871 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:17:25,295 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:17:45,570 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:18:07,245 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:18:29,285 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:18:49,697 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:19:12,512 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:19:34,761 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:19:55,244 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:20:13,926 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:20:34,318 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:20:54,100 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:21:13,544 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:21:33,737 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:21:55,883 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:22:14,642 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:22:34,216 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:22:53,498 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:23:13,043 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:23:39,474 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:24:10,022 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:24:41,602 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:25:08,315 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:25:28,694 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:25:49,514 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:26:11,732 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:26:44,373 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:27:20,408 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:27:52,607 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:28:13,914 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:28:35,215 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:28:59,897 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:29:33,436 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:30:06,590 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:30:37,549 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:30:58,869 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:31:19,647 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:31:48,704 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:32:28,937 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:33:07,437 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:33:51,953 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:34:40,449 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:35:29,837 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:36:17,889 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:37:05,864 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:37:54,216 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:38:36,633 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:39:12,173 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:39:34,043 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:39:58,840 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:40:25,972 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:41:05,936 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:41:43,187 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:42:09,949 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:42:31,486 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+
+Generating samples for slice from 992 to 1120.
+Iteration number 16414
+Generating samples for slice from 1120 to 1248.
+Iteration number 16415
+Generating samples for slice from 1248 to 1376.
+Iteration number 16416
+Generating samples for slice from 1376 to 1504.
+Iteration number 16417
+Generating samples for slice from 1504 to 1632.
+Iteration number 16418
+Generating samples for slice from 1632 to 1760.
+Iteration number 16419
+Generating samples for slice from 1760 to 1888.
+Iteration number 16420
+Generating samples for slice from 1888 to 2016.
+Iteration number 16421
+Generating samples for slice from 2016 to 2144.
+Iteration number 16422
+Generating samples for slice from 2144 to 2272.
+Iteration number 16423
+Generating samples for slice from 2272 to 2400.
+Iteration number 16424
+Generating samples for slice from 2400 to 2528.
+Iteration number 16425
+Generating samples for slice from 2528 to 2656.
+Iteration number 16426
+Generating samples for slice from 2656 to 2784.
+Iteration number 16427
+Generating samples for slice from 2784 to 2912.
+Iteration number 16428
+Generating samples for slice from 2912 to 3040.
+Iteration number 16429
+Generating samples for slice from 3040 to 3168.
+Iteration number 16430
+Generating samples for slice from 3168 to 3296.
+Iteration number 16431
+Generating samples for slice from 3296 to 3424.
+Iteration number 16432
+Generating samples for slice from 3424 to 3552.
+Iteration number 16433
+Generating samples for slice from 3552 to 3680.
+Iteration number 16434
+Generating samples for slice from 3680 to 3808.
+Iteration number 16435
+Generating samples for slice from 3808 to 3936.
+Iteration number 16436
+Generating samples for slice from 3936 to 4064.
+Iteration number 16437
+Generating samples for slice from 4064 to 4192.
+Iteration number 16438
+Generating samples for slice from 4192 to 4320.
+Iteration number 16439
+Generating samples for slice from 4320 to 4448.
+Iteration number 16440
+Generating samples for slice from 4448 to 4576.
+Iteration number 16441
+Generating samples for slice from 4576 to 4704.
+Iteration number 16442
+Generating samples for slice from 4704 to 4832.
+Iteration number 16443
+Generating samples for slice from 4832 to 4960.
+Iteration number 16444
+Generating samples for slice from 4960 to 5088.
+Iteration number 16445
+Generating samples for slice from 5088 to 5216.
+Iteration number 16446
+Generating samples for slice from 5216 to 5344.
+Iteration number 16447
+Generating samples for slice from 5344 to 5472.
+Iteration number 16448
+Generating samples for slice from 5472 to 5600.
+Iteration number 16449
+Generating samples for slice from 5600 to 5728.
+Iteration number 16450
+Saving model into ../models_cifar_better_test/checkpoint_16450.h5
+Saving checkpoint for iteration number 16450 into ../models_cifar_better_test/checkpoint_16450.h5.
+Generating samples for slice from 5728 to 5856.
+Iteration number 16451
+Generating samples for slice from 5856 to 5984.
+Iteration number 16452
+Generating samples for slice from 5984 to 6112.
+Iteration number 16453
+Generating samples for slice from 6112 to 6240.
+Iteration number 16454
+Generating samples for slice from 6240 to 6368.
+Iteration number 16455
+Generating samples for slice from 6368 to 6496.
+Iteration number 16456
+Generating samples for slice from 6496 to 6624.
+Iteration number 16457
+Generating samples for slice from 6624 to 6752.
+Iteration number 16458
+Generating samples for slice from 6752 to 6880.
+Iteration number 16459
+Generating samples for slice from 6880 to 7008.
+Iteration number 16460
+Generating samples for slice from 7008 to 7136.
+Iteration number 16461
+Generating samples for slice from 7136 to 7264.
+Iteration number 16462
+Generating samples for slice from 7264 to 7392.
+Iteration number 16463
+Generating samples for slice from 7392 to 7520.
+Iteration number 16464
+Generating samples for slice from 7520 to 7648.
+Iteration number 16465
+Generating samples for slice from 7648 to 7776.
+Iteration number 16466
+Generating samples for slice from 7776 to 7904.
+Iteration number 16467
+Generating samples for slice from 7904 to 8032.
+Iteration number 16468
+Generating samples for slice from 8032 to 8160.
+Iteration number 16469
+Generating samples for slice from 8160 to 8288.
+Iteration number 16470
+Generating samples for slice from 8288 to 8416.
+Iteration number 16471
+Generating samples for slice from 8416 to 8544.
+Iteration number 16472
+Generating samples for slice from 8544 to 8672.
+Iteration number 16473
+Generating samples for slice from 8672 to 8800.
+Iteration number 16474
+Generating samples for slice from 8800 to 8928.
+Iteration number 16475
+Generating samples for slice from 8928 to 9056.
+Iteration number 16476
+Generating samples for slice from 9056 to 9184.
+Iteration number 16477
+Generating samples for slice from 9184 to 9312.
+Iteration number 16478
+Generating samples for slice from 9312 to 9440.
+Iteration number 16479
+Generating samples for slice from 9440 to 9568.
+Iteration number 16480
+Generating samples for slice from 9568 to 9696.
+Iteration number 16481
+Generating samples for slice from 9696 to 9824.
+Iteration number 16482
+Generating samples for slice from 9824 to 9952.
+Iteration number 16483
+Generating samples for slice from 9952 to 10080.
+Iteration number 16484
+Generating samples for slice from 10080 to 10208.
+Iteration number 16485
+Generating samples for slice from 10208 to 10336.
+Iteration number 16486
+Generating samples for slice from 10336 to 10464.
+Iteration number 16487
+Generating samples for slice from 10464 to 10592.
+Iteration number 16488
+Generating samples for slice from 10592 to 10720.
+Iteration number 16489
+Generating samples for slice from 10720 to 10848.
+Iteration number 16490
+Generating samples for slice from 10848 to 10976.
+Iteration number 16491
+Generating samples for slice from 10976 to 11104.
+Iteration number 16492
+Generating samples for slice from 11104 to 11232.
+Iteration number 16493
+Generating samples for slice from 11232 to 11360.
+Iteration number 16494
+Generating samples for slice from 11360 to 11488.
+Iteration number 16495
+Generating samples for slice from 11488 to 11616.
+Iteration number 16496
+Generating samples for slice from 11616 to 11744.
+Iteration number 16497
+Generating samples for slice from 11744 to 11872.
+Iteration number 16498
+Generating samples for slice from 11872 to 12000.
+Iteration number 16499
+Generating samples for slice from 12000 to 12128.
+Iteration number 16500
+Saving model into ../models_cifar_better_test/checkpoint_16500.h5
+Saving checkpoint for iteration number 16500 into ../models_cifar_better_test/checkpoint_16500.h5.
+Generating samples for slice from 12128 to 12256.
+Iteration number 16501
+Generating samples for slice from 12256 to 12384.
+Iteration number 16502
+Generating samples for slice from 12384 to 12512.
+Iteration number 16503
+Generating samples for slice from 12512 to 12640.
+Iteration number 16504
+Generating samples for slice from 12640 to 12768.
+Iteration number 16505
+Generating samples for slice from 12768 to 12896.
+Iteration number 16506
+Generating samples for slice from 12896 to 13024.
+Iteration number 16507
+Generating samples for slice from 13024 to 13152.
+Iteration number 16508
+Generating samples for slice from 13152 to 13280.
+Iteration number 16509
+Generating samples for slice from 13280 to 13408.
+Iteration number 16510
+Generating samples for slice from 13408 to 13536.
+Iteration number 16511
+Generating samples for slice from 13536 to 13664.
+Iteration number 16512
+Generating samples for slice from 13664 to 13792.
+Iteration number 16513
+Generating samples for slice from 13792 to 13920.
+Iteration number 16514
+Generating samples for slice from 13920 to 14048.
+Iteration number 16515
+Generating samples for slice from 14048 to 14176.
+Iteration number 16516
+Generating samples for slice from 14176 to 14304.
+Iteration number 16517
+Generating samples for slice from 14304 to 14432.
+Iteration number 16518
+Generating samples for slice from 14432 to 14560.
+Iteration number 16519
+Generating samples for slice from 14560 to 14688.
+Iteration number 16520
+Generating samples for slice from 14688 to 14816.
+Iteration number 16521
+Generating samples for slice from 14816 to 14944.
+Iteration number 16522
+Generating samples for slice from 14944 to 15072.[INFO 2020-05-28 13:42:54,601 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:43:16,382 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:43:39,213 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:44:01,294 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:44:23,343 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:44:45,499 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:45:06,937 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:45:29,321 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:45:51,620 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:46:13,480 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:46:37,689 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:47:00,383 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:47:23,282 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:47:46,086 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:48:08,277 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:48:31,404 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:48:53,845 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:49:16,183 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:49:39,701 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:50:03,832 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:50:27,070 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:50:51,110 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:51:13,811 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:51:36,948 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:52:03,023 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:52:27,675 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:52:52,176 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:53:16,519 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:53:39,742 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:54:08,090 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:54:31,562 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:54:55,425 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:55:19,269 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:55:42,896 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:56:06,888 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:56:31,242 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:56:56,678 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:57:20,943 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:57:45,105 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:58:09,816 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:58:33,950 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:58:59,231 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:59:23,131 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 13:59:47,841 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:00:12,581 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:00:36,610 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:01:03,086 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:01:28,083 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:01:53,053 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:02:18,173 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:02:42,652 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:03:08,566 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:03:33,698 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:04:00,053 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:04:27,314 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:04:53,324 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:05:28,084 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:06:16,283 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:07:03,611 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:07:51,247 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:08:41,871 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:09:15,776 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:09:41,101 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:10:07,439 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:10:32,655 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:10:59,397 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:11:24,722 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:11:52,641 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:12:18,985 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:12:45,116 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:13:11,532 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:13:37,285 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:14:03,965 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:14:29,736 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:14:57,274 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:15:22,885 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:15:51,127 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:16:18,738 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:16:45,793 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:17:12,071 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:17:38,816 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:18:05,974 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:18:34,570 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:19:01,586 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:19:29,070 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:19:55,251 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:20:22,933 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:20:49,185 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:21:16,733 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:21:43,740 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:22:12,671 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:22:41,186 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:23:09,679 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:23:37,552 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:24:05,001 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:24:32,707 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:25:00,822 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:25:29,962 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:25:59,445 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:26:27,838 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:26:56,203 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:27:24,012 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:27:52,343 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:28:21,173 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:28:48,930 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:29:17,375 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:29:44,717 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:30:13,422 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+
+Iteration number 16523
+Generating samples for slice from 15072 to 15200.
+Iteration number 16524
+Generating samples for slice from 15200 to 15328.
+Iteration number 16525
+Generating samples for slice from 15328 to 15456.
+Iteration number 16526
+Generating samples for slice from 15456 to 15584.
+Iteration number 16527
+Generating samples for slice from 15584 to 15712.
+Iteration number 16528
+Generating samples for slice from 15712 to 15840.
+Iteration number 16529
+Generating samples for slice from 15840 to 15968.
+Iteration number 16530
+Generating samples for slice from 15968 to 16096.
+Iteration number 16531
+Generating samples for slice from 16096 to 16224.
+Iteration number 16532
+Generating samples for slice from 16224 to 16352.
+Iteration number 16533
+Generating samples for slice from 16352 to 16480.
+Iteration number 16534
+Generating samples for slice from 16480 to 16608.
+Iteration number 16535
+Generating samples for slice from 16608 to 16736.
+Iteration number 16536
+Generating samples for slice from 16736 to 16864.
+Iteration number 16537
+Generating samples for slice from 16864 to 16992.
+Iteration number 16538
+Generating samples for slice from 16992 to 17120.
+Iteration number 16539
+Generating samples for slice from 17120 to 17248.
+Iteration number 16540
+Generating samples for slice from 17248 to 17376.
+Iteration number 16541
+Generating samples for slice from 17376 to 17504.
+Iteration number 16542
+Generating samples for slice from 17504 to 17632.
+Iteration number 16543
+Generating samples for slice from 17632 to 17760.
+Iteration number 16544
+Generating samples for slice from 17760 to 17888.
+Iteration number 16545
+Generating samples for slice from 17888 to 18016.
+Iteration number 16546
+Generating samples for slice from 18016 to 18144.
+Iteration number 16547
+Generating samples for slice from 18144 to 18272.
+Iteration number 16548
+Generating samples for slice from 18272 to 18400.
+Iteration number 16549
+Generating samples for slice from 18400 to 18528.
+Iteration number 16550
+Saving model into ../models_cifar_better_test/checkpoint_16550.h5
+Saving checkpoint for iteration number 16550 into ../models_cifar_better_test/checkpoint_16550.h5.
+Generating samples for slice from 18528 to 18656.
+Iteration number 16551
+Generating samples for slice from 18656 to 18784.
+Iteration number 16552
+Generating samples for slice from 18784 to 18912.
+Iteration number 16553
+Generating samples for slice from 18912 to 19040.
+Iteration number 16554
+Generating samples for slice from 19040 to 19168.
+Iteration number 16555
+Generating samples for slice from 19168 to 19296.
+Iteration number 16556
+Generating samples for slice from 19296 to 19424.
+Iteration number 16557
+Generating samples for slice from 19424 to 19552.
+Iteration number 16558
+Generating samples for slice from 19552 to 19680.
+Iteration number 16559
+Generating samples for slice from 19680 to 19808.
+Iteration number 16560
+Generating samples for slice from 19808 to 19936.
+Iteration number 16561
+Generating samples for slice from 19936 to 20064.
+Iteration number 16562
+Generating samples for slice from 20064 to 20192.
+Iteration number 16563
+Generating samples for slice from 20192 to 20320.
+Iteration number 16564
+Generating samples for slice from 20320 to 20448.
+Iteration number 16565
+Generating samples for slice from 20448 to 20576.
+Iteration number 16566
+Generating samples for slice from 20576 to 20704.
+Iteration number 16567
+Generating samples for slice from 20704 to 20832.
+Iteration number 16568
+Generating samples for slice from 20832 to 20960.
+Iteration number 16569
+Generating samples for slice from 20960 to 21088.
+Iteration number 16570
+Generating samples for slice from 21088 to 21216.
+Iteration number 16571
+Generating samples for slice from 21216 to 21344.
+Iteration number 16572
+Generating samples for slice from 21344 to 21472.
+Iteration number 16573
+Generating samples for slice from 21472 to 21600.
+Iteration number 16574
+Generating samples for slice from 21600 to 21728.
+Iteration number 16575
+Generating samples for slice from 21728 to 21856.
+Iteration number 16576
+Generating samples for slice from 21856 to 21984.
+Iteration number 16577
+Generating samples for slice from 21984 to 22112.
+Iteration number 16578
+Generating samples for slice from 22112 to 22240.
+Iteration number 16579
+Generating samples for slice from 22240 to 22368.
+Iteration number 16580
+Generating samples for slice from 22368 to 22496.
+Iteration number 16581
+Generating samples for slice from 22496 to 22624.
+Iteration number 16582
+Generating samples for slice from 22624 to 22752.
+Iteration number 16583
+Generating samples for slice from 22752 to 22880.
+Iteration number 16584
+Generating samples for slice from 22880 to 23008.
+Iteration number 16585
+Generating samples for slice from 23008 to 23136.
+Iteration number 16586
+Generating samples for slice from 23136 to 23264.
+Iteration number 16587
+Generating samples for slice from 23264 to 23392.
+Iteration number 16588
+Generating samples for slice from 23392 to 23520.
+Iteration number 16589
+Generating samples for slice from 23520 to 23648.
+Iteration number 16590
+Generating samples for slice from 23648 to 23776.
+Iteration number 16591
+Generating samples for slice from 23776 to 23904.
+Iteration number 16592
+Generating samples for slice from 23904 to 24032.
+Iteration number 16593
+Generating samples for slice from 24032 to 24160.
+Iteration number 16594
+Generating samples for slice from 24160 to 24288.
+Iteration number 16595
+Generating samples for slice from 24288 to 24416.
+Iteration number 16596
+Generating samples for slice from 24416 to 24544.
+Iteration number 16597
+Generating samples for slice from 24544 to 24672.
+Iteration number 16598
+Generating samples for slice from 24672 to 24800.
+Iteration number 16599
+Generating samples for slice from 24800 to 24928.
+Iteration number 16600
+Saving model into ../models_cifar_better_test/checkpoint_16600.h5
+Saving checkpoint for iteration number 16600 into ../models_cifar_better_test/checkpoint_16600.h5.
+Generating samples for slice from 24928 to 25056.
+Iteration number 16601
+Generating samples for slice from 25056 to 25184.
+Iteration number 16602
+Generating samples for slice from 25184 to 25312.
+Iteration number 16603
+Generating samples for slice from 25312 to 25440.
+Iteration number 16604
+Generating samples for slice from 25440 to 25568.
+Iteration number 16605
+Generating samples for slice from 25568 to 25696.
+Iteration number 16606
+Generating samples for slice from 25696 to 25824.
+Iteration number 16607
+Generating samples for slice from 25824 to 25952.
+Iteration number 16608
+Generating samples for slice from 25952 to 26080.
+Iteration number 16609
+Generating samples for slice from 26080 to 26208.
+Iteration number 16610
+Generating samples for slice from 26208 to 26336.
+Iteration number 16611
+Generating samples for slice from 26336 to 26464.
+Iteration number 16612
+Generating samples for slice from 26464 to 26592.
+Iteration number 16613
+Generating samples for slice from 26592 to 26720.
+Iteration number 16614
+Generating samples for slice from 26720 to 26848.
+Iteration number 16615
+Generating samples for slice from 26848 to 26976.
+Iteration number 16616
+Generating samples for slice from 26976 to 27104.
+Iteration number 16617
+Generating samples for slice from 27104 to 27232.
+Iteration number 16618
+Generating samples for slice from 27232 to 27360.
+Iteration number 16619
+Generating samples for slice from 27360 to 27488.
+Iteration number 16620
+Generating samples for slice from 27488 to 27616.
+Iteration number 16621
+Generating samples for slice from 27616 to 27744.
+Iteration number 16622
+Generating samples for slice from 27744 to 27872.
+Iteration number 16623
+Generating samples for slice from 27872 to 28000.
+Iteration number 16624
+Generating samples for slice from 28000 to 28128.
+Iteration number 16625
+Generating samples for slice from 28128 to 28256.
+Iteration number 16626
+Generating samples for slice from 28256 to 28384.
+Iteration number 16627
+Generating samples for slice from 28384 to 28512.
+Iteration number 16628
+Generating samples for slice from 28512 to 28640.
+Iteration number 16629
+Generating samples for slice from 28640 to 28768.
+Iteration number 16630
+Generating samples for slice from 28768 to 28896.[INFO 2020-05-28 14:30:41,227 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:31:09,893 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:31:38,371 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:32:06,303 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:32:37,961 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:33:08,765 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:33:37,478 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:34:11,797 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:34:56,246 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:35:50,369 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:36:44,315 cleverhans] Constructing new graph for attack ProjectedGradientDescent
