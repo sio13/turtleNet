@@ -1124,3 +1124,228 @@ Generating samples for slice from 14944 to 15072.[INFO 2020-05-28 13:42:54,601 c
 [INFO 2020-05-28 14:28:21,173 cleverhans] Constructing new graph for attack ProjectedGradientDescent
 [INFO 2020-05-28 14:28:48,930 cleverhans] Constructing new graph for attack ProjectedGradientDescent
 [INFO 2020-05-28 14:29:17,375 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:29:44,717 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:30:13,422 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+
+Iteration number 16523
+Generating samples for slice from 15072 to 15200.
+Iteration number 16524
+Generating samples for slice from 15200 to 15328.
+Iteration number 16525
+Generating samples for slice from 15328 to 15456.
+Iteration number 16526
+Generating samples for slice from 15456 to 15584.
+Iteration number 16527
+Generating samples for slice from 15584 to 15712.
+Iteration number 16528
+Generating samples for slice from 15712 to 15840.
+Iteration number 16529
+Generating samples for slice from 15840 to 15968.
+Iteration number 16530
+Generating samples for slice from 15968 to 16096.
+Iteration number 16531
+Generating samples for slice from 16096 to 16224.
+Iteration number 16532
+Generating samples for slice from 16224 to 16352.
+Iteration number 16533
+Generating samples for slice from 16352 to 16480.
+Iteration number 16534
+Generating samples for slice from 16480 to 16608.
+Iteration number 16535
+Generating samples for slice from 16608 to 16736.
+Iteration number 16536
+Generating samples for slice from 16736 to 16864.
+Iteration number 16537
+Generating samples for slice from 16864 to 16992.
+Iteration number 16538
+Generating samples for slice from 16992 to 17120.
+Iteration number 16539
+Generating samples for slice from 17120 to 17248.
+Iteration number 16540
+Generating samples for slice from 17248 to 17376.
+Iteration number 16541
+Generating samples for slice from 17376 to 17504.
+Iteration number 16542
+Generating samples for slice from 17504 to 17632.
+Iteration number 16543
+Generating samples for slice from 17632 to 17760.
+Iteration number 16544
+Generating samples for slice from 17760 to 17888.
+Iteration number 16545
+Generating samples for slice from 17888 to 18016.
+Iteration number 16546
+Generating samples for slice from 18016 to 18144.
+Iteration number 16547
+Generating samples for slice from 18144 to 18272.
+Iteration number 16548
+Generating samples for slice from 18272 to 18400.
+Iteration number 16549
+Generating samples for slice from 18400 to 18528.
+Iteration number 16550
+Saving model into ../models_cifar_better_test/checkpoint_16550.h5
+Saving checkpoint for iteration number 16550 into ../models_cifar_better_test/checkpoint_16550.h5.
+Generating samples for slice from 18528 to 18656.
+Iteration number 16551
+Generating samples for slice from 18656 to 18784.
+Iteration number 16552
+Generating samples for slice from 18784 to 18912.
+Iteration number 16553
+Generating samples for slice from 18912 to 19040.
+Iteration number 16554
+Generating samples for slice from 19040 to 19168.
+Iteration number 16555
+Generating samples for slice from 19168 to 19296.
+Iteration number 16556
+Generating samples for slice from 19296 to 19424.
+Iteration number 16557
+Generating samples for slice from 19424 to 19552.
+Iteration number 16558
+Generating samples for slice from 19552 to 19680.
+Iteration number 16559
+Generating samples for slice from 19680 to 19808.
+Iteration number 16560
+Generating samples for slice from 19808 to 19936.
+Iteration number 16561
+Generating samples for slice from 19936 to 20064.
+Iteration number 16562
+Generating samples for slice from 20064 to 20192.
+Iteration number 16563
+Generating samples for slice from 20192 to 20320.
+Iteration number 16564
+Generating samples for slice from 20320 to 20448.
+Iteration number 16565
+Generating samples for slice from 20448 to 20576.
+Iteration number 16566
+Generating samples for slice from 20576 to 20704.
+Iteration number 16567
+Generating samples for slice from 20704 to 20832.
+Iteration number 16568
+Generating samples for slice from 20832 to 20960.
+Iteration number 16569
+Generating samples for slice from 20960 to 21088.
+Iteration number 16570
+Generating samples for slice from 21088 to 21216.
+Iteration number 16571
+Generating samples for slice from 21216 to 21344.
+Iteration number 16572
+Generating samples for slice from 21344 to 21472.
+Iteration number 16573
+Generating samples for slice from 21472 to 21600.
+Iteration number 16574
+Generating samples for slice from 21600 to 21728.
+Iteration number 16575
+Generating samples for slice from 21728 to 21856.
+Iteration number 16576
+Generating samples for slice from 21856 to 21984.
+Iteration number 16577
+Generating samples for slice from 21984 to 22112.
+Iteration number 16578
+Generating samples for slice from 22112 to 22240.
+Iteration number 16579
+Generating samples for slice from 22240 to 22368.
+Iteration number 16580
+Generating samples for slice from 22368 to 22496.
+Iteration number 16581
+Generating samples for slice from 22496 to 22624.
+Iteration number 16582
+Generating samples for slice from 22624 to 22752.
+Iteration number 16583
+Generating samples for slice from 22752 to 22880.
+Iteration number 16584
+Generating samples for slice from 22880 to 23008.
+Iteration number 16585
+Generating samples for slice from 23008 to 23136.
+Iteration number 16586
+Generating samples for slice from 23136 to 23264.
+Iteration number 16587
+Generating samples for slice from 23264 to 23392.
+Iteration number 16588
+Generating samples for slice from 23392 to 23520.
+Iteration number 16589
+Generating samples for slice from 23520 to 23648.
+Iteration number 16590
+Generating samples for slice from 23648 to 23776.
+Iteration number 16591
+Generating samples for slice from 23776 to 23904.
+Iteration number 16592
+Generating samples for slice from 23904 to 24032.
+Iteration number 16593
+Generating samples for slice from 24032 to 24160.
+Iteration number 16594
+Generating samples for slice from 24160 to 24288.
+Iteration number 16595
+Generating samples for slice from 24288 to 24416.
+Iteration number 16596
+Generating samples for slice from 24416 to 24544.
+Iteration number 16597
+Generating samples for slice from 24544 to 24672.
+Iteration number 16598
+Generating samples for slice from 24672 to 24800.
+Iteration number 16599
+Generating samples for slice from 24800 to 24928.
+Iteration number 16600
+Saving model into ../models_cifar_better_test/checkpoint_16600.h5
+Saving checkpoint for iteration number 16600 into ../models_cifar_better_test/checkpoint_16600.h5.
+Generating samples for slice from 24928 to 25056.
+Iteration number 16601
+Generating samples for slice from 25056 to 25184.
+Iteration number 16602
+Generating samples for slice from 25184 to 25312.
+Iteration number 16603
+Generating samples for slice from 25312 to 25440.
+Iteration number 16604
+Generating samples for slice from 25440 to 25568.
+Iteration number 16605
+Generating samples for slice from 25568 to 25696.
+Iteration number 16606
+Generating samples for slice from 25696 to 25824.
+Iteration number 16607
+Generating samples for slice from 25824 to 25952.
+Iteration number 16608
+Generating samples for slice from 25952 to 26080.
+Iteration number 16609
+Generating samples for slice from 26080 to 26208.
+Iteration number 16610
+Generating samples for slice from 26208 to 26336.
+Iteration number 16611
+Generating samples for slice from 26336 to 26464.
+Iteration number 16612
+Generating samples for slice from 26464 to 26592.
+Iteration number 16613
+Generating samples for slice from 26592 to 26720.
+Iteration number 16614
+Generating samples for slice from 26720 to 26848.
+Iteration number 16615
+Generating samples for slice from 26848 to 26976.
+Iteration number 16616
+Generating samples for slice from 26976 to 27104.
+Iteration number 16617
+Generating samples for slice from 27104 to 27232.
+Iteration number 16618
+Generating samples for slice from 27232 to 27360.
+Iteration number 16619
+Generating samples for slice from 27360 to 27488.
+Iteration number 16620
+Generating samples for slice from 27488 to 27616.
+Iteration number 16621
+Generating samples for slice from 27616 to 27744.
+Iteration number 16622
+Generating samples for slice from 27744 to 27872.
+Iteration number 16623
+Generating samples for slice from 27872 to 28000.
+Iteration number 16624
+Generating samples for slice from 28000 to 28128.
+Iteration number 16625
+Generating samples for slice from 28128 to 28256.
+Iteration number 16626
+Generating samples for slice from 28256 to 28384.
+Iteration number 16627
+Generating samples for slice from 28384 to 28512.
+Iteration number 16628
+Generating samples for slice from 28512 to 28640.
+Iteration number 16629
+Generating samples for slice from 28640 to 28768.
+Iteration number 16630
+Generating samples for slice from 28768 to 28896.[INFO 2020-05-28 14:30:41,227 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:31:09,893 cleverhans] Constructing new graph for attack ProjectedGradientDescent
+[INFO 2020-05-28 14:31:38,371 cleverhans] Constructing new graph for attack ProjectedGradientDescent
