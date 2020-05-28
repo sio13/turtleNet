@@ -74,7 +74,7 @@ if __name__ == '__main__':
     train_model(model=target_model,
                 dataset=get_keras_dataset(cifar10.load_data(), input_shape=(32, 32, 3)),
                 iteration_total=80000,
-                checkpoint_dir='../models_cifar_beter_test',
+                checkpoint_dir='../models_cifar_better_test',
                 epsilon=0.1,
                 iteration_so_far=16300,
                 attack_type=ProjectedGradientDescent,
