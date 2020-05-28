@@ -113,7 +113,7 @@ def train_cifar10_robust():
     network_better.train(1)
     # model_resnet = load_model("models/resnet_raw.h5")
     x_train, y_train, x_test, y_test = get_keras_dataset(
-        cifar10.load_data(), input_shape=(-1, 32, 32, 3))
+        mnist.load_data())
 
     net = TurtleNet(train_model=network_better.model,
                     attack_type=ProjectedGradientDescent,
@@ -124,7 +124,7 @@ def train_cifar10_robust():
                              y_train=y_train,
                              chunk_size=128,
                              batch_size=128,
-                             checkpoint_dir='models_cifar_better',
+                             checkpoint_dir='models_mnist_clone',
                              make_checkpoints=True,
                              checkpoint_frequency=50,
                              checkpoint_filename="checkpoint")

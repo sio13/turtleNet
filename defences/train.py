@@ -61,6 +61,7 @@ class TurtleNet:
                              checkpoint_frequency: int = 50,
                              frequency_natural: int = 5,
                              ord=np.inf,
+                             nb_iter: int = 12,
                              checkpoint_filename: str = "checkpoint",
                              iteration_start: int = 0):
         """
@@ -76,6 +77,7 @@ class TurtleNet:
         :param checkpoint_filename: filename of checkpoint -- automatically contains iteration number
         :param ord: order of reference attack
         :param iteration_start: name for the first iteration file
+        :param nb_iter: number of steps of the attack
         :return:
         """
         for iteration in range(iteration_start, iterations):
@@ -93,6 +95,7 @@ class TurtleNet:
                 model=self.train_model if self.use_different_target else self.train_model,
                 num_chunks=max(len(batch) // chunk_size, 1),
                 ord=ord,
+                nb_iter=nb_iter,
                 truth_labels=labels)
 
             self.train_model.train_on_batch(self.perturbed_data, to_categorical(labels, num_classes=10))
@@ -109,6 +112,7 @@ class TurtleNet:
 
                 print(f"Saving checkpoint for iteration number {iteration} into {checkpoint_full_path}.")
 
+    # this method is outdated
     def eval_on_attack(self,
                        attack_type: cleverhans.attacks,
                        epsilon: float,
@@ -118,6 +122,7 @@ class TurtleNet:
                        y_train: np.array,
                        chunk_size: int,
                        ord=np.inf):
+        print("Warning: the method `eval_on_attack` is outdated!")
 
         evaluation_attack = Attack(attack_type, epsilon, clip_min, clip_max)
         self.perturbed_data = evaluation_attack.generate_perturbations(original_samples=np.array(x_train),

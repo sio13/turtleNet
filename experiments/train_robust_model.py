@@ -35,7 +35,8 @@ def train_model(model,
                 frequency_natural: int = 5,
                 make_checkpoints: bool = True,
                 iteration_so_far: int = 0,
-                use_natural: bool = False):
+                use_natural: bool = False,
+                nb_iter: int = 12):
     x_train, y_train, x_test, y_test = dataset
 
     net = TurtleNet(train_model=model,
@@ -56,25 +57,27 @@ def train_model(model,
                              checkpoint_frequency=checkpoint_frequency,
                              checkpoint_filename="checkpoint",
                              iteration_start=iteration_so_far,
-                             frequency_natural=frequency_natural)
+                             frequency_natural=frequency_natural,
+                             nb_iter=nb_iter)
 
 
 if __name__ == '__main__':
-    target_model = CNNCifar10Model()
-    d  = get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3))
-    x1, y1, _,_ = d
+    target_model = CNNModelMnist()
+    d = get_keras_dataset(mnist.load_data())
+    x1, y1, _, _ = d
     target_model.model.train_on_batch(x1[:128], to_categorical(y1[:128]))
 
-    target_model = load_model("../models_cifar_better_test/checkpoint_900.h5")
+    # target_model = load_model("../models_cifar_better_test/checkpoint_900.h5")
 
     # TODO low value of step size for 0.3 epsilon
     # use (1/4) * epsilon
     train_model(model=target_model,
-                dataset=get_keras_dataset(cifar10.load_data(), input_shape=(-1, 32, 32, 3)),
-                iteration_total=80000,
-                checkpoint_dir='../models_cifar_better_test',
+                dataset=get_keras_dataset(mnist.load_data()),
+                iteration_total=15000,
+                checkpoint_dir='../models_mnist_clone',
                 epsilon=0.3,
-                iteration_so_far=900,
+                iteration_so_far=0,
                 attack_type=ProjectedGradientDescent,
-                use_natural=False
+                use_natural=False,
+                nb_iter=0.05
                 )
