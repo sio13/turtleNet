@@ -67,18 +67,17 @@ if __name__ == '__main__':
     x1, y1, _, _ = d
     target_model.model.train_on_batch(x1[:128], to_categorical(y1[:128]))
 
-    # target_model = load_model("../models_cifar_better_test/checkpoint_900.h5")
+    target_model = load_model("../models_cifar_better_test/checkpoint_900.h5")
 
     # TODO low value of step size for 0.3 epsilon
     # use (1/4) * epsilon
-    train_model(model=target_model.model,
+    train_model(model=target_model,
                 dataset=get_keras_dataset(mnist.load_data()),
-                iteration_total=15000,
-                checkpoint_dir='../models_mnist_clone',
-                epsilon=0.3,
+                iteration_total=80000,
+                checkpoint_dir='../models_cifar_beter_test',
+                epsilon=0.1,
                 iteration_so_far=0,
                 attack_type=ProjectedGradientDescent,
                 use_natural=False,
-                nb_iter=12,
-                eps_iter=0.05
+                nb_iter=0.1 / 6
                 )
