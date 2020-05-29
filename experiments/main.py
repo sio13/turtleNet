@@ -113,7 +113,7 @@ def train_cifar10_robust():
     network_better.train(1)
     # model_resnet = load_model("models/resnet_raw.h5")
     x_train, y_train, x_test, y_test = get_keras_dataset(
-        mnist.load_data())
+        cifar10.load_data(), input_shape=(32,32,3))
 
     net = TurtleNet(train_model=network_better.model,
                     attack_type=ProjectedGradientDescent,
