@@ -67,7 +67,7 @@ if __name__ == '__main__':
     x1, y1, _, _ = d
     target_model.model.train_on_batch(x1[:128], to_categorical(y1[:128]))
 
-    target_model = load_model("../models_cifar_better_test/checkpoint_22500.h5")
+    target_model = load_model("../models_cifar_better_test/checkpoint_23650.h5")
 
     # TODO low value of step size for 0.3 epsilon
     # use (1/4) * epsilon
@@ -76,7 +76,7 @@ if __name__ == '__main__':
                 iteration_total=80000,
                 checkpoint_dir='../models_cifar_better_test',
                 epsilon=0.1,
-                iteration_so_far=22500,
+                iteration_so_far=23650,
                 attack_type=ProjectedGradientDescent,
                 use_natural=False,
                 eps_iter=0.1 / 6,
