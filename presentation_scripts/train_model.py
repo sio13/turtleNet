@@ -4,10 +4,11 @@ from experiments.train_robust_model import train_model
 
 if __name__ == '__main__':
 
-    train_model(model=target_model,
+    target_model = CNNModelMnist()
+    train_model(model=target_model.model,
                 dataset=get_keras_dataset(mnist.load_data()),
                 iteration_total=15000,
-                checkpoint_dir='models_mnist',
+                checkpoint_dir='../models_mnist',
                 epsilon=0.3,
                 iteration_so_far=0,
                 attack_type=ProjectedGradientDescent,
@@ -15,7 +16,9 @@ if __name__ == '__main__':
                 eps_iter=0.3 / 6,
                 nb_iter=12
                 )
+
     # for training cifar model
+    # target_model = CNNCifar10Model()
     # train_model(model=target_model,
     #             dataset=get_keras_dataset(cifar10.load_data(), input_shape=(32, 32, 3)),
     #             iteration_total=80000,
