@@ -1,8 +1,7 @@
 import config
 
-from experiments.train_robust_model import train_model
-from architectures.target_model_mnist import CNNModelMnist
-from architectures.target_model_cifar_10_better import CNNCifar10Model
+from experiments.train_robust_model import *
+
 
 if __name__ == '__main__':
 
