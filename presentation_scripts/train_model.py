@@ -24,7 +24,10 @@ if __name__ == '__main__':
 
     # for training cifar model
     # target_model = CNNCifar10Model()
-    # train_model(model=target_model,
+    # d = get_keras_dataset(cifar10.load_data(), input_shape=(32,32,3))
+    # x1, y1, _, _ = d
+    # target_model.model.train_on_batch(x1[:128], to_categorical(y1[:128]))
+    # train_model(model=target_model.model,
     #             dataset=get_keras_dataset(cifar10.load_data(), input_shape=(32, 32, 3)),
     #             iteration_total=80000,
     #             checkpoint_dir='models_cifar',
