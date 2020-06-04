@@ -6,6 +6,10 @@ from experiments.train_robust_model import *
 if __name__ == '__main__':
 
     target_model = CNNModelMnist()
+    d = get_keras_dataset(mnist.load_data())
+    x1, y1, _, _ = d
+    target_model.model.train_on_batch(x1[:128], to_categorical(y1[:128]))
+
     train_model(model=target_model.model,
                 dataset=get_keras_dataset(mnist.load_data()),
                 iteration_total=15000,
