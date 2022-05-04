@@ -1,0 +1,9 @@
+.idea
+.idea/
+.idea/*
+nohup.out
+file.out
+__pycache__
+*.out
+models*
+experiments/models/
